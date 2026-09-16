@@ -16,7 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="mod_api_level">Nivel de API de LineageOS</string>
+    <string name="mod_api_level">Nivel de API de KiroOS</string>
     <string name="app_ops_categories_other">Otros</string>
     <string name="app_ops_summaries_wifi_scan">Escaneo de conexiones Wi-Fi</string>
     <string name="app_ops_summaries_notification">notificación/toast</string>

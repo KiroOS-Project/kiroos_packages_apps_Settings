@@ -30,13 +30,13 @@
     <string name="root_access_apps">Ainult rakendused</string>
     <string name="root_access_adb">Ainult ADB</string>
     <string name="root_access_all">Rakendused ja ADB</string>
-    <string name="mod_version">LineageOS versioon</string>
+    <string name="mod_version">KiroOS versioon</string>
     <string name="mod_version_default">Teadmata</string>
     <string name="device_model">Seadme mudel</string>
     <string name="device_name">Seadme nimi</string>
     <string name="mod_api_level_default">Teadmata</string>
     <string name="build_date">Kooste kuupäev</string>
-    <string name="cmupdate_settings_title">LineageOS uuendused</string>
+    <string name="cmupdate_settings_title">KiroOS uuendused</string>
     <string name="app_ops_categories_location">Asukoht</string>
     <string name="app_ops_categories_personal">Isiklik</string>
     <string name="app_ops_categories_messaging">Sõnumiside</string>
@@ -191,7 +191,7 @@
     <string name="sim_mobile_network_settings_category_title">Mobiilsidevõrgu seaded</string>
     <string name="sim_mobile_network_settings_title">SIM-kaardi %d seaded</string>
     <string name="nfc_title_category">NFC</string>
-    <string name="cmlicense_title">LineageOS juriidiline info</string>
+    <string name="cmlicense_title">KiroOS juriidiline info</string>
     <string name="wifi_setting_countrycode_title">Wi\u2011Fi regioonikood</string>
     <string name="wifi_setting_countrycode_summary">Täpsusta  Wi\u2011Fi regioonikoodi</string>
     <string name="wifi_setting_countrycode_error">Ilmnes probleem piirkonna koodi salvestamisel.</string>

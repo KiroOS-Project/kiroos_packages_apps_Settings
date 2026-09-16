@@ -3276,4 +3276,66 @@
     <string name="bluetooth_connect_access_dialog_content" msgid="4336436466468405850">"<xliff:g id="DEVICE_NAME_0">%1$s</xliff:g> vorrebbe connettersi a questo telefono.\n\nNon hai mai effettuato la connessione al dispositivo <xliff:g id="DEVICE_NAME_1">%2$s</xliff:g>."</string>
     <string name="bluetooth_connect_access_dialog_negative" msgid="4944672755226375059">"Non connettere"</string>
     <string name="bluetooth_connect_access_dialog_positive" msgid="3630561675207269710">"Connetti"</string>
+        <string name="display_resolution_title">Risoluzione display</string>
+    <string name="display_resolution_summary">Regola la risoluzione tra 720p (HD), 1080p (FHD) e 1440p (2K)</string>
+    <string name="touchkey_led_title">Illuminazione tasti a sfioramento</string>
+    <string name="touchkey_led_summary">Illumina i tasti soft touch alla pressione</string>
+    <string name="onscreen_navbar_title">Barra di navigazione a schermo</string>
+    <string name="onscreen_navbar_summary">Abilita la barra di navigazione software a schermo</string>
+    <string name="navbar_reboot_notice">Modifica salvata. Riavvia il dispositivo per applicare la barra di navigazione a schermo.</string>
+    <string name="native_equalizer_title">Equalizzatore KiroOS</string>
+    <string name="native_equalizer_summary">Regolazione frequenze a 5 bande, Bass Boost e profili DSP</string>
+    <string name="kiroos_about_summary">KiroOS 1.0 per Samsung Galaxy S6</string>
+
+    <!-- KiroOS Equalizer UI Strings -->
+    <string name="eq_master_switch_title">Attiva Equalizzatore</string>
+    <string name="eq_preset_title">Profilo Equalizzazione</string>
+    <string name="eq_bass_title">Bassi Potenziati (Bass Boost)</string>
+    <string name="eq_bass_default">0%</string>
+    <string name="eq_bands_title">Regolazione Frequenze</string>
+    <string name="eq_custom">Personalizzato</string>
+
+    <!-- ColorOS Style KiroOS Hero Card Strings -->
+    <string name="kiroos_version_title">1.0</string>
+    <string name="kiroos_badge_internal_beta">BETA INTERNA</string>
+    <string name="kiroos_status_updated">Sistema aggiornato</string>
+    <string name="kiroos_brand_name">KiroOS</string>
+    <string name="kiroos_device_title">Samsung Galaxy S6 (SM-G920F)</string>
+    <string name="kiroos_software_version_title">Versione Software KiroOS</string>
+    <string name="kiroos_software_version_sub">KiroOS 1.0 Beta Interna</string>
+    <string name="kiroos_changelog_title">Changelog • KiroOS 1.0</string>
+    <string name="kiroos_changelog_summary">• Interfaccia scattante e leggera con animazioni fluide a 0.75x\n• Tema Pure Black AMOLED nativo esteso alle Impostazioni\n• Status bar rinnovata con indicatori di segnale verticali e batteria portrait\n• Control Center e Lockscreen completamente rinnovati\n• Equalizzatore DSP permanente attivo in background e audio stereo</string>
+    <string name="kiroos_btn_check_updates_text">Cerca aggiornamenti</string>
+
+    <!-- KiroOS Internal Updater Activity Strings -->
+    <string name="kiroos_update_version_header">KiroOS 1.0</string>
+
+    <!-- KiroOS Updater Beta 2 Strings -->
+    <string name="kiroos_updater_title">Aggiornamento KiroOS</string>
+    <string name="kiroos_update_version_header">KiroOS 1.0</string>
+    <string name="kiroos_badge_dev_beta">DEVELOPER BETA 2</string>
+    <string name="kiroos_updater_package_found">KiroOS 1.0 Developer Beta 2</string>
+    <string name="kiroos_updater_package_desc">Pacchetto di sistema verificato pronto per il download e l\'installazione (%s).</string>
+    <string name="kiroos_updater_btn_download_install">Scarica e Installa</string>
+    <string name="kiroos_updater_btn_downloading">Download in corso...</string>
+    <string name="kiroos_updater_downloading_title">Download aggiornamento in corso...</string>
+    <string name="kiroos_updater_initial_progress">0%</string>
+    <string name="kiroos_updater_download_complete">Download completato (100%)</string>
+    <string name="kiroos_updater_verifying_reboot">Verifica del pacchetto e preparazione al riavvio...</string>
+    <string name="kiroos_updater_rebooting_screen">Riavvio nella schermata di aggiornamento KiroOS...</string>
+    <string name="kiroos_updater_btn_check">Verifica aggiornamenti</string>
+    <string name="kiroos_updater_checking_title">Verifica disponibilità in corso...</string>
+    <string name="kiroos_updater_checking_desc">Connessione ai server KiroOS in corso...</string>
+    <string name="kiroos_updater_toast_latest">Aggiornamento KiroOS 1.0 Developer Beta 2 disponibile!</string>
+    <string name="kiroos_updater_release_notes_title">Note di Rilascio • Developer Beta 2</string>
+    <string name="kiroos_updater_release_notes_content">• Aggiornamento Seamless Boot: Nuovo motore di aggiornamento nativo KiroOS integrato nella boot animation con caricamento fluido senza TWRP.&#10;&#10;• OTA Download Engine: Interfaccia realistica con monitoraggio del download, calcolo MB/s e avanzamento percentuale.&#10;&#10;• Ottimizzazioni Super AMOLED: Tema scuro ad altissimo contrasto (#000000) per azzerare i consumi dello schermo.&#10;&#10;• Performance &amp; Stabilità: Kernel governor reattivo, zero throttling e boot logo Samsung Powered by KiroDev.</string>
+    <string name="kiroos_updater_spec_title">Specifiche Dispositivo &amp; Architettura</string>
+    <string name="kiroos_updater_spec_content">Modello: Samsung Galaxy S6 (SM-G920F)&#10;Piattaforma: Exynos 7420 Octa-Core 64-bit&#10;Display: 5.1" Quad HD Super AMOLED (2560x1440)&#10;Canale di rilascio: KiroDev Developer Channel</string>
+    <!-- Dynamic Beta 2 Hero Card Strings -->
+    <string name="kiroos_updater_summary">KiroOS 1.0 Developer Beta 2 disponibile (692 MB)</string>
+    <string name="kiroos_status_update_available">Aggiornamento disponibile • Developer Beta 2</string>
+    <string name="kiroos_software_version_beta2">KiroOS 1.0 Developer Beta 2 (692 MB)</string>
+    <string name="kiroos_changelog_title_beta2">Novità • Developer Beta 2</string>
+    <string name="kiroos_release_notes_beta2">• Aggiornamento Seamless Boot: Nuovo motore di aggiornamento nativo integrato nella boot animation con caricamento fluido senza passare da TWRP.\n• OTA Download Engine: Interfaccia realistica con monitoraggio del download, calcolo MB/s e avanzamento percentuale.\n• Ottimizzazioni Super AMOLED: Tema scuro ad altissimo contrasto (#000000) per azzerare i consumi dello schermo.\n• Prestazioni e stabilità: Kernel reattivo senza surriscaldamento o throttling, con boot logo Samsung Powered by KiroDev.</string>
+    <string name="kiroos_btn_install_now">Scarica e Installa (692 MB)</string>
 </resources>

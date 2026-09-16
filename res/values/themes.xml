@@ -131,9 +131,18 @@
          layouts against a remote context using our local theme colors. Due to the implementation
          details of Theme, we can't reference any local resources and MUST instead use the values
          directly. So use #ff263238 instead of @color/theme_primary and so on. -->
-    <style name="Theme.SettingsBase" parent="@android:style/Theme.DeviceDefault.Settings" />
+    <style name="Theme.SettingsBase" parent="@*android:style/Theme.DeviceDefault.Settings.Dark" />
 
     <style name="Theme.Settings" parent="Theme.SettingsBase">
+        <!-- Kept standard window title and actionbar for Toolbar & Search affordance -->
+        <item name="android:windowBackground">@color/settings_pure_black</item>
+        <item name="android:colorBackground">@color/settings_pure_black</item>
+        <item name="android:colorBackgroundFloating">@color/settings_card_black</item>
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:textColorSecondary">#FFB0B0B5</item>
+        <item name="android:navigationBarColor">#FF000000</item>
+        <item name="android:statusBarColor">#FF000000</item>
+
         <item name="preferenceTheme">@style/PreferenceTheme</item>
         <item name="@*android:preferenceHeaderPanelStyle">@style/PreferenceHeaderPanelSinglePane</item>
         <item name="@*android:preferencePanelStyle">@style/PreferencePanelSinglePane</item>
@@ -159,8 +168,11 @@
 
         <item name="preferenceBackgroundColor">@drawable/preference_background</item>
 
-        <!-- For all Alert Dialogs -->
+        <!-- For all Dialogs & Alert Dialogs -->
+        <item name="android:dialogTheme">@style/Theme.AlertDialog</item>
+        <item name="dialogTheme">@style/Theme.AlertDialog</item>
         <item name="android:alertDialogTheme">@style/Theme.AlertDialog</item>
+        <item name="alertDialogTheme">@style/Theme.AlertDialog</item>
 
         <!-- LockPatternView colors -->
         <item name="@*android:regularColor">@color/lock_pattern_view_regular_color</item>
@@ -169,10 +181,17 @@
     </style>
 
     <style name="Theme.SubSettings" parent="Theme.Settings">
-        <!-- Redefine the ActionBar style for contentInsetStart -->
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowActionBar">true</item>
+        <item name="android:windowBackground">@color/settings_pure_black</item>
+        <item name="android:colorBackground">@color/settings_pure_black</item>
+        <item name="android:colorBackgroundFloating">@color/settings_card_black</item>
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:textColorSecondary">#FFB0B0B5</item>
         <item name="android:actionBarStyle">@style/Theme.ActionBar.SubSettings</item>
-
         <item name="switchBarTheme">@style/ThemeOverlay.SwitchBar.SubSettings</item>
+        <item name="android:navigationBarColor">#FF000000</item>
+        <item name="android:statusBarColor">#FF000000</item>
     </style>
 
     <style name="Theme.ProvisioningActivity" parent="@android:style/Theme.Translucent.NoTitleBar">
@@ -187,6 +206,13 @@
 
     <style name="Theme.ActionBar" parent="@android:style/Widget.Material.ActionBar.Solid">
         <item name="android:contentInsetStart">@dimen/actionbar_contentInsetStart</item>
+        <item name="android:background">#FF000000</item>
+        <item name="android:titleTextStyle">@style/Theme.ActionBar.TitleText</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+    <style name="Theme.ActionBar.TitleText" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Theme.ActionBar.SubSettings" parent="Theme.ActionBar">
@@ -205,11 +231,13 @@
         <item name="switchBarBackgroundColor">?android:attr/colorSecondary</item>
     </style>
 
-    <style name="Theme.DialogWhenLarge" parent="@*android:style/Theme.DeviceDefault.Settings.DialogWhenLarge">
-        <!-- Redefine the ActionBar style for contentInsetStart -->
+    <style name="Theme.DialogWhenLarge" parent="Theme.Settings">
         <item name="android:actionBarStyle">@style/Theme.ActionBar</item>
-
         <item name="preferenceBackgroundColor">@drawable/preference_background</item>
+        <item name="android:windowBackground">@color/settings_pure_black</item>
+        <item name="android:colorBackground">@color/settings_pure_black</item>
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:textColorSecondary">#FFB0B0B5</item>
     </style>
 
     <style name="Theme.CryptKeeper" parent="@android:style/Theme.Material.NoActionBar">
@@ -224,11 +252,14 @@
         <item name="@*android:errorColor">@color/unlock_pattern_view_error_color</item>
     </style>
 
-    <style name="Theme.SubSettingsDialogWhenLarge" parent="Theme.DialogWhenLarge">
+    <style name="Theme.SubSettingsDialogWhenLarge" parent="Theme.SubSettings">
         <item name="preferenceTheme">@style/PreferenceTheme</item>
         <item name="android:actionBarWidgetTheme">@null</item>
         <item name="android:actionBarTheme">@android:style/ThemeOverlay.Material.Dark.ActionBar</item>
-
+        <item name="android:windowBackground">@color/settings_pure_black</item>
+        <item name="android:colorBackground">@color/settings_pure_black</item>
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:textColorSecondary">#FFB0B0B5</item>
         <item name="preferenceBackgroundColor">@drawable/preference_background</item>
     </style>
 
@@ -236,10 +267,13 @@
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
 
-    <style name="Theme.AlertDialog" parent="@*android:style/Theme.DeviceDefault.Settings.Dialog.Alert">
+    <style name="Theme.AlertDialog" parent="@*android:style/Theme.DeviceDefault.Dialog.Alert">
         <item name="android:windowSoftInputMode">adjustResize</item>
-
-        <!-- Redefine the ActionBar style for contentInsetStart -->
+        <item name="android:colorBackground">@color/settings_pure_black</item>
+        <item name="android:colorBackgroundFloating">@color/settings_card_black</item>
+        <item name="android:windowBackground">@color/settings_pure_black</item>
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:textColorSecondary">#FFB0B0B5</item>
         <item name="android:actionBarStyle">@style/Theme.ActionBar</item>
     </style>
 

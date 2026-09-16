@@ -31,14 +31,14 @@
     <string name="root_access_all">アプリとADB</string>
     <string name="root_appops_title">ルートアクセスを管理</string>
     <string name="root_appops_summary">ルートの規則を表示またはコントロールする</string>
-    <string name="mod_version">LineageOS バージョン</string>
+    <string name="mod_version">KiroOS バージョン</string>
     <string name="mod_version_default">不明</string>
     <string name="device_model">端末モデル</string>
     <string name="device_name">端末名</string>
-    <string name="mod_api_level">LineageOS API レベル</string>
+    <string name="mod_api_level">KiroOS API レベル</string>
     <string name="mod_api_level_default">不明</string>
     <string name="build_date">ビルド日時</string>
-    <string name="cmupdate_settings_title">LineageOS アップデート</string>
+    <string name="cmupdate_settings_title">KiroOS アップデート</string>
     <string name="app_ops_categories_location">位置情報</string>
     <string name="app_ops_categories_personal">個人情報</string>
     <string name="app_ops_categories_messaging">メッセージ</string>
@@ -290,7 +290,7 @@
     <string name="sim_mobile_network_settings_title">SIM %dの設定</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">通知の詳細なコントロール</string>
-    <string name="cmlicense_title">LineageOS 利用規約</string>
+    <string name="cmlicense_title">KiroOS 利用規約</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">端末の<xliff:g id="sensor_location">%1$s</xliff:g>にある指紋認証センサーを探します。</string>
     <string name="security_settings_fingerprint_sensor_location_back">背面</string>
     <string name="security_settings_fingerprint_sensor_location_front">前面</string>

@@ -30,13 +30,13 @@
     <string name="root_access_apps">Just Appen</string>
     <string name="root_access_adb">Just ADB</string>
     <string name="root_access_all">Appen an ADB</string>
-    <string name="mod_version">LineageOS-Versioun</string>
+    <string name="mod_version">KiroOS-Versioun</string>
     <string name="mod_version_default">Onbekannt</string>
     <string name="device_model">Apparatmodell</string>
     <string name="device_name">Apparatnumm</string>
     <string name="mod_api_level_default">Onbekannt</string>
     <string name="build_date">Build-Datum</string>
-    <string name="cmupdate_settings_title">LineageOS-Aktualiséierungen</string>
+    <string name="cmupdate_settings_title">KiroOS-Aktualiséierungen</string>
     <string name="app_ops_categories_location">Standuert</string>
     <string name="app_ops_categories_personal">Perséinlech</string>
     <string name="app_ops_categories_messaging">Messagen</string>
@@ -230,7 +230,7 @@
     <string name="sim_mobile_network_settings_category_title">Datennetzwierk-Astellungen</string>
     <string name="sim_mobile_network_settings_title">SIM %d-Einstellungen</string>
     <string name="nfc_title_category">NFC</string>
-    <string name="cmlicense_title">Rechtlech Hiweiser iwwer LineageOS</string>
+    <string name="cmlicense_title">Rechtlech Hiweiser iwwer KiroOS</string>
     <string name="wifi_setting_countrycode_title">WLAN-Lännercode</string>
     <string name="wifi_setting_countrycode_summary">WLAN-Lännercode festleeën</string>
     <string name="wifi_setting_countrycode_error">Beim Festleeë vum WLAN-Lännercode ass e Problem opgetrueden.</string>

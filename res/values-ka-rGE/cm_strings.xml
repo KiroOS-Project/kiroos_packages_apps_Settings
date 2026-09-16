@@ -17,10 +17,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="mod_version">LineageOS-ის ვერსია</string>
+    <string name="mod_version">KiroOS-ის ვერსია</string>
     <string name="mod_version_default">უცნობი</string>
     <string name="mod_api_level_default">უცნობი</string>
-    <string name="cmupdate_settings_title">LineageOS-ის განახლებები</string>
+    <string name="cmupdate_settings_title">KiroOS-ის განახლებები</string>
     <string name="app_ops_summaries_run_in_background">ფონურად გაშვება</string>
     <string name="app_ops_labels_gps">GPS</string>
     <string name="app_ops_labels_read_call_log">ზარების ჩანაწერების წაკითხვა</string>

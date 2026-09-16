@@ -36,14 +36,14 @@
     <string name="root_access_all">Apiau ac ADB</string>
     <string name="root_appops_title">Rheoli mynediad craidd</string>
     <string name="root_appops_summary">Gweld a rheoli rheolau craidd</string>
-    <string name="mod_version">Fersiwn LineageOS</string>
+    <string name="mod_version">Fersiwn KiroOS</string>
     <string name="mod_version_default">Anhysybys</string>
     <string name="device_model">Model y ddyfais</string>
     <string name="device_name">Enw\'r ddyfais</string>
-    <string name="mod_api_level">Lefel API LineageOS</string>
+    <string name="mod_api_level">Lefel API KiroOS</string>
     <string name="mod_api_level_default">Anhysybys</string>
     <string name="build_date">Dyddiad adeiledd</string>
-    <string name="cmupdate_settings_title">Diweddariadau LineageOS</string>
+    <string name="cmupdate_settings_title">Diweddariadau KiroOS</string>
     <string name="app_ops_categories_location">Lleoliad</string>
     <string name="app_ops_categories_personal">Personol</string>
     <string name="app_ops_categories_messaging">Negesu</string>
@@ -295,7 +295,7 @@
     <string name="sim_mobile_network_settings_title">Gosodiadau SIM %d</string>
     <string name="nfc_title_category">Cyfathrebiad Maes Cyfagos (NFC)</string>
     <string name="tuner_full_importance_settings">Rheolaeth hysbysiad pŵer</string>
-    <string name="cmlicense_title">Cyfreithiol LineageOS</string>
+    <string name="cmlicense_title">Cyfreithiol KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Darganfyddi\'r synhwyrydd ôl bys ar <xliff:g id="sensor_location">%1$s</xliff:g> dy ffôn.</string>
     <string name="security_settings_fingerprint_sensor_location_back">gefn</string>
     <string name="security_settings_fingerprint_sensor_location_front">flaen</string>

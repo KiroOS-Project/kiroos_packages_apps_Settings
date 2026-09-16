@@ -240,12 +240,13 @@ public class BillingCycleSettings extends DataUsageBase implements
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             final Context context = getActivity();
-            final LayoutInflater dialogInflater = LayoutInflater.from(context);
+            final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            final LayoutInflater dialogInflater = LayoutInflater.from(builder.getContext());
             final boolean isLimit = getArguments().getBoolean(EXTRA_LIMIT);
             mView = dialogInflater.inflate(R.layout.data_usage_bytes_editor, null, false);
             setupPicker((EditText) mView.findViewById(R.id.bytes),
                     (Spinner) mView.findViewById(R.id.size_spinner));
-            return new AlertDialog.Builder(context)
+            return builder
                     .setTitle(isLimit ? R.string.data_usage_limit_editor_title
                             : R.string.data_usage_warning_editor_title)
                     .setView(mView)

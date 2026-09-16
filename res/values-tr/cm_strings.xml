@@ -32,14 +32,14 @@
     <string name="root_access_all">Uygulamalar ve ADB</string>
     <string name="root_appops_title">Kök erişimini yönet</string>
     <string name="root_appops_summary">Kök erişimi kurallarını görüntüle ve kontrol et</string>
-    <string name="mod_version">LineageOS sürümü</string>
+    <string name="mod_version">KiroOS sürümü</string>
     <string name="mod_version_default">Bilinmeyen</string>
     <string name="device_model">Cihaz modeli</string>
     <string name="device_name">Cihaz adı</string>
-    <string name="mod_api_level">LineageOS API düzeyi</string>
+    <string name="mod_api_level">KiroOS API düzeyi</string>
     <string name="mod_api_level_default">Bilinmeyen</string>
     <string name="build_date">İnşa tarihi</string>
-    <string name="cmupdate_settings_title">LineageOS güncellemeleri</string>
+    <string name="cmupdate_settings_title">KiroOS güncellemeleri</string>
     <string name="app_ops_categories_location">Konum</string>
     <string name="app_ops_categories_personal">Kişisel</string>
     <string name="app_ops_categories_messaging">Mesajlaşma</string>
@@ -291,7 +291,7 @@
     <string name="sim_mobile_network_settings_title">SIM %d ayarları</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Güç bildirim kontrolleri</string>
-    <string name="cmlicense_title">LineageOS yasal</string>
+    <string name="cmlicense_title">KiroOS yasal</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Telefonunuzun <xliff:g id="sensor_location">%1$s</xliff:g> parmak izi sensörünü bulun.</string>
     <string name="security_settings_fingerprint_sensor_location_back">arkasındaki</string>
     <string name="security_settings_fingerprint_sensor_location_front">önündeki</string>

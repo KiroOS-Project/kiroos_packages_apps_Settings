@@ -134,6 +134,28 @@
                 android:fragment="com.android.settings.accessibility.ToggleFontSizePreferenceFragment"
                 settings:keywords="@string/keywords_display_font_size" />
 
+        
+        <!-- KiroOS Dynamic Resolution & Hardware Controls -->
+        <ListPreference
+                android:key="display_resolution"
+                android:title="@string/display_resolution_title"
+                android:summary="%s"
+                android:entries="@array/display_resolution_entries"
+                android:entryValues="@array/display_resolution_values"
+                android:dialogTitle="@string/display_resolution_title" />
+
+        <SwitchPreference
+                android:key="touchkey_led_toggle"
+                android:title="@string/touchkey_led_title"
+                android:summary="@string/touchkey_led_summary"
+                android:defaultValue="true" />
+
+        <SwitchPreference
+                android:key="onscreen_navbar_toggle"
+                android:title="@string/onscreen_navbar_title"
+                android:summary="@string/onscreen_navbar_summary"
+                android:defaultValue="false" />
+
         <com.android.settings.display.ScreenZoomPreference
                 android:key="screen_zoom"
                 android:title="@string/screen_zoom_title"

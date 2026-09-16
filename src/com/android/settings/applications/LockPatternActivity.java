@@ -17,6 +17,7 @@
 package com.android.settings.applications;
 
 import android.app.Activity;
+import android.app.ActionBar;
 import android.content.SharedPreferences;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
@@ -246,7 +247,10 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patternlock);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         mPatternLockHeader = (TextView) findViewById(R.id.pattern_lock_header);
         mCancel = (Button) findViewById(R.id.pattern_lock_btn_cancel);
@@ -267,7 +271,7 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
 
         mFingerprintManager = (FingerprintManager) getSystemService(FingerprintManager.class);
 
-        if (mFingerprintManager.isHardwareDetected()) {
+        if (mFingerprintManager != null && mFingerprintManager.isHardwareDetected()) {
             if (mFingerprintManager.hasEnrolledFingerprints() && !mCreate) {
                 mFingerPrintSetUp = true;
                 mFingerPrintUiHelper =

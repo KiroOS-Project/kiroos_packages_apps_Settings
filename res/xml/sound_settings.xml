@@ -104,6 +104,15 @@
                 android:summary="@string/headset_connect_player_summary" />
 
         <!-- Other sounds -->
+                <!-- KiroOS Native Equalizer -->
+        <Preference
+                android:key="native_equalizer"
+                android:title="@string/native_equalizer_title"
+                android:summary="@string/native_equalizer_summary">
+            <intent android:targetPackage="com.android.settings"
+                    android:targetClass="com.android.settings.notification.NativeEqualizerActivity" />
+        </Preference>
+
         <Preference
                 android:key="other_sounds"
                 android:title="@string/other_sound_settings"

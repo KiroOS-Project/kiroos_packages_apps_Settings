@@ -26,7 +26,7 @@
     <string name="root_access_all">অ্যাপস এবং এডিবি</string>
     <string name="mod_version">সায়ানোজেনমড সংস্করণ</string>
     <string name="mod_version_default">অজানা</string>
-    <string name="mod_api_level">LineageOS এপিআই লেভেল</string>
+    <string name="mod_api_level">KiroOS এপিআই লেভেল</string>
     <string name="mod_api_level_default">অজানা</string>
     <string name="build_date">তৈরী তারিখ</string>
     <string name="cmupdate_settings_title">সায়ানোজেনমড আধুনিকীকরণ</string>

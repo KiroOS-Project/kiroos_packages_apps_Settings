@@ -33,14 +33,14 @@
     <string name="root_access_all">Aplicații și ADB</string>
     <string name="root_appops_title">Gestionați accesul root</string>
     <string name="root_appops_summary">Vizualizați și controlați regulile root-ului</string>
-    <string name="mod_version">versiune LineageOS</string>
+    <string name="mod_version">versiune KiroOS</string>
     <string name="mod_version_default">Necunoscut</string>
     <string name="device_model">Modelul dispozitivului</string>
     <string name="device_name">Numele dispozitivului</string>
-    <string name="mod_api_level">Nivel API LineageOS</string>
+    <string name="mod_api_level">Nivel API KiroOS</string>
     <string name="mod_api_level_default">Necunoscut</string>
     <string name="build_date">Dată compilare</string>
-    <string name="cmupdate_settings_title">Actualizări LineageOS</string>
+    <string name="cmupdate_settings_title">Actualizări KiroOS</string>
     <string name="app_ops_categories_location">Locație</string>
     <string name="app_ops_categories_personal">Personal</string>
     <string name="app_ops_categories_messaging">Mesagerie</string>
@@ -292,7 +292,7 @@
     <string name="sim_mobile_network_settings_title">Setări cartelă SIM %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Controale de putere a notificărilor</string>
-    <string name="cmlicense_title">Juridic LineageOS</string>
+    <string name="cmlicense_title">Juridic KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Localizați senzorul de amprentă pe <xliff:g id="sensor_location">%1$s</xliff:g> telefonului dvs.</string>
     <string name="security_settings_fingerprint_sensor_location_back">înapoia</string>
     <string name="security_settings_fingerprint_sensor_location_front">fața</string>

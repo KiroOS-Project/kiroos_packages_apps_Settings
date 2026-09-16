@@ -594,9 +594,15 @@ public class AccountSyncSettings extends AccountPreferenceBase {
 
     private void updateAccountSwitches() {
         mInvisibleAdapters.clear();
+        if (mAccount == null || mAccount.type == null) {
+            return;
+        }
 
         SyncAdapterType[] syncAdapters = ContentResolver.getSyncAdapterTypesAsUser(
                 mUserHandle.getIdentifier());
+        if (syncAdapters == null) {
+            return;
+        }
         ArrayList<SyncAdapterType> authorities = new ArrayList<>();
         for (int i = 0, n = syncAdapters.length; i < n; i++) {
             final SyncAdapterType sa = syncAdapters[i];
@@ -652,17 +658,21 @@ public class AccountSyncSettings extends AccountPreferenceBase {
             mProviderIcon.setImageDrawable(getDrawableForType(mAccount.type));
             mProviderId.setText(getLabelForType(mAccount.type));
             //Sim Icon Customisation feature change
-            OperatorSimInfo operatorSimInfo = new OperatorSimInfo(getActivity().
-                    getApplicationContext());
-            boolean isCustomSimFeatureEnabled = operatorSimInfo.
-                    isOperatorFeatureEnabled();
-            if (isCustomSimFeatureEnabled) {
-                String accountName = mAccount.name;
-                if (accountName.equalsIgnoreCase(SIM1_ACCOUNT_NAME)) {
-                    showOperatorSimIcon(0, operatorSimInfo);
-                } else if (accountName.equalsIgnoreCase(SIM2_ACCOUNT_NAME)) {
-                    showOperatorSimIcon(1, operatorSimInfo);
+            try {
+                if (getActivity() != null && getActivity().getApplicationContext() != null) {
+                    OperatorSimInfo operatorSimInfo = new OperatorSimInfo(getActivity().getApplicationContext());
+                    boolean isCustomSimFeatureEnabled = operatorSimInfo.isOperatorFeatureEnabled();
+                    if (isCustomSimFeatureEnabled && mAccount.name != null) {
+                        String accountName = mAccount.name;
+                        if (accountName.equalsIgnoreCase(SIM1_ACCOUNT_NAME)) {
+                            showOperatorSimIcon(0, operatorSimInfo);
+                        } else if (accountName.equalsIgnoreCase(SIM2_ACCOUNT_NAME)) {
+                            showOperatorSimIcon(1, operatorSimInfo);
+                        }
+                    }
                 }
+            } catch (Throwable t) {
+                Log.w(TAG, "OperatorSimInfo error", t);
             }
 
         }

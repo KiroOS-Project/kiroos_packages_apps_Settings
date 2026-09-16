@@ -306,8 +306,23 @@ public class PowerUsageSummary extends PowerUsageBase {
         final double averagePower = powerProfile.getAveragePower(PowerProfile.POWER_SCREEN_FULL);
 
         TypedValue value = new TypedValue();
-        getContext().getTheme().resolveAttribute(android.R.attr.colorControlNormal, value, true);
-        int colorControl = getContext().getColor(value.resourceId);
+        int colorControl = 0;
+        if (getContext() != null && getContext().getTheme() != null) {
+            if (getContext().getTheme().resolveAttribute(android.R.attr.colorControlNormal, value, true)) {
+                if (value.resourceId != 0) {
+                    try {
+                        colorControl = getContext().getColor(value.resourceId);
+                    } catch (Exception e) {
+                        colorControl = value.data;
+                    }
+                } else {
+                    colorControl = value.data;
+                }
+            }
+        }
+        if (colorControl == 0) {
+            colorControl = 0xFFFFFFFF;
+        }
 
         if (averagePower >= MIN_AVERAGE_POWER_THRESHOLD_MILLI_AMP || USE_FAKE_DATA) {
             final List<BatterySipper> usageList = getCoalescedUsageList(

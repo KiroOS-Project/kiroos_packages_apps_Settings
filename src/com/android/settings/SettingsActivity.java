@@ -154,6 +154,7 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     // Constants for state save/restore
     private static final String SAVE_KEY_CATEGORIES = ":settings:categories";
+    private static final String SAVE_KEY_LOCALE = ":settings:locale";
     private static final String SAVE_KEY_SEARCH_MENU_EXPANDED = ":settings:search_menu_expanded";
     private static final String SAVE_KEY_SEARCH_QUERY = ":settings:search_query";
     private static final String SAVE_KEY_SHOW_HOME_AS_UP = ":settings:show_home_as_up";
@@ -413,6 +414,7 @@ public class SettingsActivity extends SettingsDrawerActivity
     private ActionBar mActionBar;
     private SwitchBar mSwitchBar;
 
+    private java.util.Locale mCurrentLocale;
     private Button mNextButton;
 
     private boolean mDisplayHomeAsUpEnabled;
@@ -458,6 +460,8 @@ public class SettingsActivity extends SettingsDrawerActivity
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        com.android.settingslib.drawer.SettingsDrawerActivity.clearTileCache();
+        recreate();
         Index.getInstance(this).update();
     }
 
@@ -534,6 +538,7 @@ public class SettingsActivity extends SettingsDrawerActivity
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+        mCurrentLocale = java.util.Locale.getDefault();
 
         if (isLockTaskModePinned() && !isSettingsRunOnTop() && !isLaunchableInTaskModePinned()) {
             Log.w(LOG_TAG, "Devices lock task mode pinned.");
@@ -607,12 +612,18 @@ public class SettingsActivity extends SettingsDrawerActivity
         getFragmentManager().addOnBackStackChangedListener(this);
 
         if (mIsShowingDashboard) {
-            // Run the Index update only if we have some space
+            // Run the Index update asynchronously in background to prevent freeze when throttled
             if (!Utils.isLowStorage(this)) {
-                long indexStartTime = System.currentTimeMillis();
-                Index.getInstance(getApplicationContext()).update();
-                if (DEBUG_TIMING) Log.d(LOG_TAG, "Index.update() took "
-                        + (System.currentTimeMillis() - indexStartTime) + " ms");
+                AsyncTask.THREAD_POOL_EXECUTOR.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Index.getInstance(getApplicationContext()).update();
+                        } catch (Exception e) {
+                            Log.w(LOG_TAG, "Async index update failed", e);
+                        }
+                    }
+                });
             } else {
                 Log.w(LOG_TAG, "Cannot update the Indexer as we are running low on storage space!");
             }
@@ -625,12 +636,21 @@ public class SettingsActivity extends SettingsDrawerActivity
             mSearchQuery = savedState.getString(SAVE_KEY_SEARCH_QUERY);
             setTitleFromIntent(intent);
 
-            ArrayList<DashboardCategory> categories =
-                    savedState.getParcelableArrayList(SAVE_KEY_CATEGORIES);
-            if (categories != null) {
+            String savedLocale = savedState.getString(SAVE_KEY_LOCALE);
+            String currentLocaleStr = java.util.Locale.getDefault().toString();
+            if (savedLocale != null && !savedLocale.equals(currentLocaleStr)) {
+                // Locale changed: drop stale categories cache from savedState
+                savedState.remove(SAVE_KEY_CATEGORIES);
+                com.android.settingslib.drawer.SettingsDrawerActivity.clearTileCache();
                 mCategories.clear();
-                mCategories.addAll(categories);
-                setTitleFromBackStack();
+            } else {
+                ArrayList<DashboardCategory> categories =
+                        savedState.getParcelableArrayList(SAVE_KEY_CATEGORIES);
+                if (categories != null) {
+                    mCategories.clear();
+                    mCategories.addAll(categories);
+                    setTitleFromBackStack();
+                }
             }
 
             mDisplayHomeAsUpEnabled = savedState.getBoolean(SAVE_KEY_SHOW_HOME_AS_UP);
@@ -673,6 +693,7 @@ public class SettingsActivity extends SettingsDrawerActivity
         if (mActionBar != null) {
             mActionBar.setDisplayHomeAsUpEnabled(mDisplayHomeAsUpEnabled);
             mActionBar.setHomeButtonEnabled(mDisplayHomeAsUpEnabled);
+            mActionBar.show();
         }
         mSwitchBar = (SwitchBar) findViewById(R.id.switch_bar);
         if (mSwitchBar != null) {
@@ -812,6 +833,8 @@ public class SettingsActivity extends SettingsDrawerActivity
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
+        outState.putString(SAVE_KEY_LOCALE, java.util.Locale.getDefault().toString());
+
         if (mCategories.size() > 0) {
             outState.putParcelableArrayList(SAVE_KEY_CATEGORIES, mCategories);
         }
@@ -860,6 +883,18 @@ public class SettingsActivity extends SettingsDrawerActivity
             onQueryTextSubmit(mSearchQuery);
         }
         updateTilesList();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mCurrentLocale != null && !mCurrentLocale.equals(java.util.Locale.getDefault())) {
+            mCurrentLocale = java.util.Locale.getDefault();
+            com.android.settingslib.drawer.SettingsDrawerActivity.clearTileCache();
+            mCategories.clear();
+            recreate();
+            return;
+        }
     }
 
     @Override
@@ -1062,6 +1097,9 @@ public class SettingsActivity extends SettingsDrawerActivity
         }
         if (addToBackStack) {
             transaction.addToBackStack(SettingsActivity.BACK_STACK_PREFS);
+            if (mActionBar != null) {
+                mActionBar.show();
+            }
         }
         if (titleResId > 0) {
             transaction.setBreadCrumbTitle(titleResId);
@@ -1325,6 +1363,7 @@ public class SettingsActivity extends SettingsDrawerActivity
         if (mSearchMenuItem != null) {
             mSearchMenuItem.collapseActionView();
         }
+        // mActionBar preserved for search visibility
     }
 
     public Intent getResultIntentData() {

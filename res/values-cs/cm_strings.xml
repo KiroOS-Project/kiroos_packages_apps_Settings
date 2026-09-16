@@ -34,14 +34,14 @@
     <string name="root_access_all">Aplikace a ADB</string>
     <string name="root_appops_title">Spravovat přístupy root</string>
     <string name="root_appops_summary">Zobrazit a zpravovat pravidla přístupů root</string>
-    <string name="mod_version">Verze systému LineageOS</string>
+    <string name="mod_version">Verze systému KiroOS</string>
     <string name="mod_version_default">Neznámá</string>
     <string name="device_model">Model</string>
     <string name="device_name">Název zařízení</string>
-    <string name="mod_api_level">Verze LineageOS API</string>
+    <string name="mod_api_level">Verze KiroOS API</string>
     <string name="mod_api_level_default">Neznámá</string>
     <string name="build_date">Datum sestavení</string>
-    <string name="cmupdate_settings_title">Aktualizace LineageOS</string>
+    <string name="cmupdate_settings_title">Aktualizace KiroOS</string>
     <string name="app_ops_categories_location">Poloha</string>
     <string name="app_ops_categories_personal">Osobní</string>
     <string name="app_ops_categories_messaging">Zprávy</string>
@@ -293,7 +293,7 @@
     <string name="sim_mobile_network_settings_title">Nastavení SIM %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Ovládací prvky rozšířeného oznámení</string>
-    <string name="cmlicense_title">Právní ujednání LineageOS</string>
+    <string name="cmlicense_title">Právní ujednání KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Vyhledejte snímač otisku prstů <xliff:g id="sensor_location">%1$s</xliff:g> na telefonu.</string>
     <string name="security_settings_fingerprint_sensor_location_back">zpět</string>
     <string name="security_settings_fingerprint_sensor_location_front">přední</string>

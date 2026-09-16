@@ -32,14 +32,14 @@
     <string name="root_access_all">Programme en ADB</string>
     <string name="root_appops_title">Bestuur root toegang</string>
     <string name="root_appops_summary">Kyk na en beheer die root reëls</string>
-    <string name="mod_version">LineageOS weergawe</string>
+    <string name="mod_version">KiroOS weergawe</string>
     <string name="mod_version_default">Onbekend</string>
     <string name="device_model">Toestel tipe</string>
     <string name="device_name">Toestel naam</string>
-    <string name="mod_api_level">LineageOS API vlak</string>
+    <string name="mod_api_level">KiroOS API vlak</string>
     <string name="mod_api_level_default">Onbekend</string>
     <string name="build_date">Bou datum</string>
-    <string name="cmupdate_settings_title">LineageOS opgradering</string>
+    <string name="cmupdate_settings_title">KiroOS opgradering</string>
     <string name="app_ops_categories_location">Ligging</string>
     <string name="app_ops_categories_personal">Persoonlik</string>
     <string name="app_ops_categories_messaging">Boodskappe</string>
@@ -290,7 +290,7 @@
     <string name="sim_mobile_network_settings_title">SIM %d instellings</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Krag kennisgewing kontroles</string>
-    <string name="cmlicense_title">LineageOS Regs</string>
+    <string name="cmlicense_title">KiroOS Regs</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Vind die vingerafdruk sensor op die <xliff:g id="sensor_location">%1$s </xliff:g> van jou foon.</string>
     <string name="security_settings_fingerprint_sensor_location_back">terug</string>
     <string name="security_settings_fingerprint_sensor_location_front">voorkant</string>

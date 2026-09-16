@@ -44,6 +44,14 @@ import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceCategory;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Display;
+import android.view.IWindowManager;
+import android.view.WindowManagerGlobal;
+import android.os.UserHandle;
+import android.widget.Toast;
+import java.io.FileWriter;
+import java.io.File;
+
 
 import com.android.internal.app.NightDisplayController;
 import com.android.internal.logging.MetricsLogger;
@@ -105,6 +113,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mTapToWakePreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
+    private static final String KEY_DISPLAY_RESOLUTION = "display_resolution";
+    private static final String KEY_TOUCHKEY_LED = "touchkey_led_toggle";
+    private static final String KEY_ONSCREEN_NAVBAR = "onscreen_navbar_toggle";
+
+    private ListPreference mDisplayResolutionPref;
+    private SwitchPreference mTouchkeyLedPref;
+    private SwitchPreference mNavbarPref;
+
 
     @Override
     protected int getMetricsCategory() {
@@ -127,6 +143,70 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 && getResources().getBoolean(
                         com.android.internal.R.bool.config_dreamsSupported) == false) {
             getPreferenceScreen().removePreference(mScreenSaverPreference);
+        }
+
+        
+        mDisplayResolutionPref = (ListPreference) findPreference(KEY_DISPLAY_RESOLUTION);
+        if (mDisplayResolutionPref != null) {
+            mDisplayResolutionPref.setOnPreferenceChangeListener(this);
+            updateDisplayResolutionSummary();
+        }
+
+        mTouchkeyLedPref = (SwitchPreference) findPreference(KEY_TOUCHKEY_LED);
+        if (mTouchkeyLedPref != null) {
+            boolean ledOn = !"0".equals(SystemProperties.get("persist.sys.touchkey_led", "1"));
+            mTouchkeyLedPref.setChecked(ledOn);
+            mTouchkeyLedPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    boolean enabled = (Boolean) newValue;
+                    SystemProperties.set("persist.sys.touchkey_led", enabled ? "1" : "0");
+                    try {
+                        cyanogenmod.providers.CMSettings.Secure.putInt(getContentResolver(),
+                                cyanogenmod.providers.CMSettings.Secure.BUTTON_BRIGHTNESS, enabled ? 255 : 0);
+                    } catch (Exception ignored) {}
+                    try {
+                        FileWriter fw = new FileWriter("/sys/class/sec/sec_touchkey/brightness");
+                        fw.write(enabled ? "1\n" : "0\n");
+                        fw.close();
+                    } catch (Exception e) {
+                        Log.e(TAG, "Failed writing to touchkey brightness", e);
+                    }
+                    try {
+                        FileWriter fw = new FileWriter("/sys/class/sec/sec_touchkey/input/enabled");
+                        fw.write(enabled ? "1\n" : "0\n");
+                        fw.close();
+                    } catch (Exception e) {
+                        Log.e(TAG, "Failed writing to touchkey input enabled", e);
+                    }
+                    return true;
+                }
+            });
+        }
+
+        mNavbarPref = (SwitchPreference) findPreference(KEY_ONSCREEN_NAVBAR);
+        if (mNavbarPref != null) {
+            boolean navOn = "0".equals(SystemProperties.get("persist.sys.qemu.mainkeys", SystemProperties.get("qemu.hw.mainkeys", "1")));
+            mNavbarPref.setChecked(navOn);
+            mNavbarPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    boolean enabled = (Boolean) newValue;
+                    SystemProperties.set("persist.sys.qemu.mainkeys", enabled ? "0" : "1");
+                    try {
+                        FileWriter fw = new FileWriter("/sys/class/sec/sec_touchkey/input/enabled");
+                        fw.write(enabled ? "0\n" : "1\n");
+                        fw.close();
+                    } catch (Exception ignored) {}
+                    try {
+                        FileWriter fw = new FileWriter("/sys/class/sec/sec_touchkey/brightness");
+                        fw.write(enabled ? "0\n" : "1\n");
+                        fw.close();
+                    } catch (Exception ignored) {}
+                    Toast.makeText(getActivity(), R.string.navbar_reboot_notice, Toast.LENGTH_LONG).show();
+                    return true;
+                }
+            });
         }
 
         mScreenTimeoutPreference = (TimeoutListPreference) findPreference(KEY_SCREEN_TIMEOUT);
@@ -415,8 +495,70 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mFontSizePref.setSummary(entries[index]);
     }
 
+    
+    private void updateDisplayResolutionSummary() {
+        if (mDisplayResolutionPref == null) return;
+        try {
+            IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+            android.graphics.Point initialSize = new android.graphics.Point();
+            android.graphics.Point baseSize = new android.graphics.Point();
+            wm.getInitialDisplaySize(Display.DEFAULT_DISPLAY, initialSize);
+            wm.getBaseDisplaySize(Display.DEFAULT_DISPLAY, baseSize);
+            int currentWidth = baseSize.x;
+            if (currentWidth == 1080) {
+                mDisplayResolutionPref.setValue("1080");
+            } else if (currentWidth == 720) {
+                mDisplayResolutionPref.setValue("720");
+            } else {
+                mDisplayResolutionPref.setValue("1440");
+            }
+        } catch (Exception e) {
+            mDisplayResolutionPref.setValue("1440");
+        }
+    }
+
+    private boolean handleResolutionChange(String val) {
+        try {
+            int res = Integer.parseInt(val);
+            IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+            int userId = UserHandle.myUserId();
+            if (res == 1440) {
+                wm.clearForcedDisplaySize(Display.DEFAULT_DISPLAY);
+                wm.clearForcedDisplayDensityForUser(Display.DEFAULT_DISPLAY, userId);
+                SystemProperties.set("persist.sys.display_width", "");
+                SystemProperties.set("persist.sys.display_height", "");
+            } else if (res == 1080) {
+                wm.setForcedDisplaySize(Display.DEFAULT_DISPLAY, 1080, 1920);
+                wm.setForcedDisplayDensityForUser(Display.DEFAULT_DISPLAY, 480, userId);
+                SystemProperties.set("persist.sys.display_width", "1080");
+                SystemProperties.set("persist.sys.display_height", "1920");
+            } else if (res == 720) {
+                wm.setForcedDisplaySize(Display.DEFAULT_DISPLAY, 720, 1280);
+                wm.setForcedDisplayDensityForUser(Display.DEFAULT_DISPLAY, 320, userId);
+                SystemProperties.set("persist.sys.display_width", "720");
+                SystemProperties.set("persist.sys.display_height", "1280");
+            }
+            if (mDisplayResolutionPref != null) {
+                mDisplayResolutionPref.setValue(val);
+                int idx = mDisplayResolutionPref.findIndexOfValue(val);
+                if (idx >= 0) {
+                    mDisplayResolutionPref.setSummary(mDisplayResolutionPref.getEntries()[idx]);
+                }
+            }
+            updateDisplayResolutionSummary();
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "Failed changing display resolution", e);
+            return false;
+        }
+    }
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mDisplayResolutionPref) {
+            return handleResolutionChange((String) objValue);
+        }
+
         final String key = preference.getKey();
         if (KEY_SCREEN_TIMEOUT.equals(key)) {
             try {

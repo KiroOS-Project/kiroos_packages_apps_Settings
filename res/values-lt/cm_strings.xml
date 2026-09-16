@@ -26,13 +26,13 @@
     <string name="root_access_apps">Tik programos</string>
     <string name="root_access_adb">Tik „Android“ derinimas</string>
     <string name="root_access_all">Programos ir „Android“ derinimas</string>
-    <string name="mod_version">„LineageOS“ versija</string>
+    <string name="mod_version">„KiroOS“ versija</string>
     <string name="mod_version_default">Nežinoma</string>
     <string name="device_model">Įrenginio modelis</string>
     <string name="device_name">Įrenginio pavadinimas</string>
     <string name="mod_api_level_default">Nežinoma</string>
     <string name="build_date">Surinkimo data</string>
-    <string name="cmupdate_settings_title">„LineageOS“ atnaujinimai</string>
+    <string name="cmupdate_settings_title">„KiroOS“ atnaujinimai</string>
     <string name="app_ops_categories_location">Vieta</string>
     <string name="app_ops_categories_personal">Asmeninės</string>
     <string name="app_ops_categories_messaging">Susirašinėjimas žinutėmis</string>
@@ -186,7 +186,7 @@
     <string name="sim_mobile_network_settings_category_title">Mobiliojo tinklo nustatymai</string>
     <string name="sim_mobile_network_settings_title">SIM %d nustatymai</string>
     <string name="nfc_title_category">NFC</string>
-    <string name="cmlicense_title">Teisinė „LineageOS“ informacija</string>
+    <string name="cmlicense_title">Teisinė „KiroOS“ informacija</string>
     <string name="wifi_setting_countrycode_title">„Wi-Fi“ regiono kodas</string>
     <string name="wifi_setting_countrycode_summary">Nurodyti „Wi-Fi“ regiono kodą</string>
     <string name="wifi_setting_countrycode_error">Iškilo problema nustatant regiono kodą.</string>

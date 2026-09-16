@@ -32,6 +32,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Switch;
+import android.net.wifi.WifiManager;
+import android.bluetooth.BluetoothAdapter;
+import android.widget.CompoundButton;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -52,6 +56,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     public static final String TAG = "DashboardAdapter";
     private static final String STATE_SUGGESTION_LIST = "suggestion_list";
     private static final String STATE_CATEGORY_LIST = "category_list";
+    private static final String STATE_LOCALE = "dashboard:locale";
     private static final String STATE_IS_SHOWING_ALL = "is_showing_all";
     private static final String STATE_SUGGESTION_MODE = "suggestion_mode";
     private static final int NS_SPACER = 0;
@@ -96,8 +101,12 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
 
         boolean showAll = true;
         if (savedInstanceState != null) {
-            mSuggestions = savedInstanceState.getParcelableArrayList(STATE_SUGGESTION_LIST);
-            mCategories = savedInstanceState.getParcelableArrayList(STATE_CATEGORY_LIST);
+            String savedLocale = savedInstanceState.getString(STATE_LOCALE);
+            String currentLocaleStr = java.util.Locale.getDefault().toString();
+            if (savedLocale == null || savedLocale.equals(currentLocaleStr)) {
+                mSuggestions = savedInstanceState.getParcelableArrayList(STATE_SUGGESTION_LIST);
+                mCategories = savedInstanceState.getParcelableArrayList(STATE_CATEGORY_LIST);
+            }
             showAll = savedInstanceState.getBoolean(STATE_IS_SHOWING_ALL, true);
             mSuggestionMode = savedInstanceState.getInt(
                     STATE_SUGGESTION_MODE, SUGGESTION_MODE_DEFAULT);
@@ -159,17 +168,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
             hasConditions |= shouldShow;
             countItem(mConditions.get(i), R.layout.condition_card, shouldShow, NS_CONDITION);
         }
-        boolean hasSuggestions = mSuggestions != null && mSuggestions.size() != 0;
-        countItem(null, R.layout.dashboard_spacer, hasConditions && hasSuggestions, NS_SPACER);
-        countItem(null, R.layout.suggestion_header, hasSuggestions, NS_SPACER);
-        resetCount();
-        if (mSuggestions != null) {
-            int maxSuggestions = getDisplayableSuggestionCount();
-            for (int i = 0; i < mSuggestions.size(); i++) {
-                countItem(mSuggestions.get(i), R.layout.suggestion_tile, i < maxSuggestions,
-                        NS_SUGGESTION);
-            }
-        }
         resetCount();
         for (int i = 0; mCategories != null && i < mCategories.size(); i++) {
             DashboardCategory category = mCategories.get(i);
@@ -179,6 +177,18 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
                 countItem(tile, R.layout.dashboard_tile, mIsShowingAll
                         || ArrayUtils.contains(DashboardSummary.INITIAL_ITEMS,
                         tile.intent.getComponent().getClassName()), NS_ITEMS);
+            }
+        }
+        resetCount();
+        boolean hasSuggestions = mSuggestions != null && mSuggestions.size() != 0;
+        countItem(null, R.layout.dashboard_spacer, hasSuggestions, NS_SPACER);
+        countItem(null, R.layout.suggestion_header, hasSuggestions, NS_SPACER);
+        resetCount();
+        if (mSuggestions != null) {
+            int maxSuggestions = getDisplayableSuggestionCount();
+            for (int i = 0; i < mSuggestions.size(); i++) {
+                countItem(mSuggestions.get(i), R.layout.suggestion_tile, i < maxSuggestions,
+                        NS_SUGGESTION);
             }
         }
         notifyDataSetChanged();
@@ -351,6 +361,40 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
         } else {
             holder.summary.setVisibility(View.GONE);
         }
+
+        if (holder.switchWidget != null) {
+            String comp = (tile.intent != null && tile.intent.getComponent() != null) ? tile.intent.getComponent().getClassName() : "";
+            if (comp.contains("WifiSettings")) {
+                final WifiManager wm = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+                holder.switchWidget.setVisibility(View.VISIBLE);
+                holder.switchWidget.setOnCheckedChangeListener(null);
+                holder.switchWidget.setChecked(wm.isWifiEnabled());
+                holder.switchWidget.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton btn, boolean isChecked) {
+                        wm.setWifiEnabled(isChecked);
+                    }
+                });
+            } else if (comp.contains("BluetoothSettings")) {
+                final BluetoothAdapter ba = BluetoothAdapter.getDefaultAdapter();
+                if (ba != null) {
+                    holder.switchWidget.setVisibility(View.VISIBLE);
+                    holder.switchWidget.setOnCheckedChangeListener(null);
+                    holder.switchWidget.setChecked(ba.isEnabled());
+                    holder.switchWidget.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(CompoundButton btn, boolean isChecked) {
+                            if (isChecked) ba.enable(); else ba.disable();
+                        }
+                    });
+                } else {
+                    holder.switchWidget.setVisibility(View.GONE);
+                }
+            } else {
+                holder.switchWidget.setVisibility(View.GONE);
+            }
+        }
+
     }
 
     private void onBindCategory(DashboardItemHolder holder, DashboardCategory category) {
@@ -434,6 +478,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     }
 
     void onSaveInstanceState(Bundle outState) {
+        outState.putString(STATE_LOCALE, java.util.Locale.getDefault().toString());
         if (mSuggestions != null) {
             outState.putParcelableArrayList(STATE_SUGGESTION_LIST,
                     new ArrayList<Tile>(mSuggestions));
@@ -469,12 +514,14 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
         public final ImageView icon;
         public final TextView title;
         public final TextView summary;
+        public final Switch switchWidget;
 
         public DashboardItemHolder(View itemView) {
             super(itemView);
             icon = (ImageView) itemView.findViewById(android.R.id.icon);
             title = (TextView) itemView.findViewById(android.R.id.title);
             summary = (TextView) itemView.findViewById(android.R.id.summary);
+            switchWidget = (Switch) itemView.findViewById(R.id.dashboard_switch);
         }
     }
 }

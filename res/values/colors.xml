@@ -15,11 +15,19 @@
 -->
 
 <resources>
+    <!-- KiroOS 1.0 Pure AMOLED Black Palette -->
+    <color name="settings_pure_black">#FF000000</color>
+    <color name="settings_card_black">#FF181818</color>
+    <color name="settings_card_stroke">#FF2A2A2E</color>
+    <color name="card_background">#FF181818</color>
+    <color name="card_background_grey">#FF000000</color>
+    <color name="material_empty_color_light">#FF202020</color>
+
     <color name="black">#000</color>
     <color name="red">#F00</color>
     <color name="blue">#00F</color>
 
-    <color name="material_empty_color_light">#FFCED7DB</color>
+    <color name="material_empty_color_light_old">#FF202020</color>
 
     <color name="memory_used">#F00</color>
     <color name="memory_avail">@color/material_empty_color_light</color>
@@ -69,7 +77,7 @@
     <color name="running_processes_system_ram">#ff384248</color>
     <color name="running_processes_free_ram">#ffced7db</color>
 
-    <color name="card_background">#fffafafa</color>
+    <color name="card_background_light">#FF181818</color>
 
     <color name="wifi_divider">#ffe0e0e0</color>
     <color name="sim_noitification">@*android:color/material_deep_teal_500</color>
@@ -107,7 +115,7 @@
     <color name="timestamp_text_incoming">#99ffffff</color>
     <color name="message_bubble_incoming">#689f38</color>
     <color name="message_bubble_outgoing">#ffffffff</color>
-    <color name="conversation_background">#eeeeee</color>
+    <color name="conversation_background">#FF181818</color>
     <color name="message_icon_background_incoming">#689f38</color>
     <color name="message_icon_text_incoming">#ffffffff</color>
     <color name="message_icon_background_outgoing">#4285f4</color>
@@ -120,9 +128,9 @@
 
     <color name="usage_graph_dots">#B0BEC5</color>
 
-    <color name="card_background_grey">#eeeeee</color>
+    <color name="card_background_grey_old">#FF000000</color>
 
     <!-- Gestures settings -->
-    <color name="gestures_setting_background_color">#f5f5f5</color>
+    <color name="gestures_setting_background_color">#FF000000</color>
 
 </resources>

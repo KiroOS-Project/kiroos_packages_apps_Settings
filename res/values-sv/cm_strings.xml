@@ -31,14 +31,14 @@
     <string name="root_access_adb">Endast ADB</string>
     <string name="root_access_all">Appar och ADB</string>
     <string name="root_appops_title">Hantera root-åtkomster</string>
-    <string name="mod_version">LineageOS-version</string>
+    <string name="mod_version">KiroOS-version</string>
     <string name="mod_version_default">Okänd</string>
     <string name="device_model">Enhetsmodell</string>
     <string name="device_name">Enhetsnamn</string>
-    <string name="mod_api_level">LineageOS API nivå</string>
+    <string name="mod_api_level">KiroOS API nivå</string>
     <string name="mod_api_level_default">Okänd</string>
     <string name="build_date">Byggdatum</string>
-    <string name="cmupdate_settings_title">LineageOS-uppdateringar</string>
+    <string name="cmupdate_settings_title">KiroOS-uppdateringar</string>
     <string name="app_ops_categories_location">Plats</string>
     <string name="app_ops_categories_personal">Personligt</string>
     <string name="app_ops_categories_messaging">Meddelanden</string>
@@ -271,7 +271,7 @@
     <string name="sim_mobile_network_settings_category_title">Inställningar för mobilt nätverk</string>
     <string name="sim_mobile_network_settings_title">SIM %d inställningar</string>
     <string name="nfc_title_category">NFC</string>
-    <string name="cmlicense_title">LineageOS Juridik</string>
+    <string name="cmlicense_title">KiroOS Juridik</string>
     <string name="security_settings_fingerprint_sensor_location_back">bakre</string>
     <string name="security_settings_fingerprint_sensor_location_front">främre</string>
     <string name="security_settings_fingerprint_sensor_location_left">vänster sida</string>

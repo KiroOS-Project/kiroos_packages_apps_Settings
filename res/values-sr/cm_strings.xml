@@ -33,11 +33,11 @@
     <string name="root_access_all">Апликације и ADB</string>
     <string name="root_appops_title">Управљање правима суперкорисника</string>
     <string name="root_appops_summary">Прегледајте и управљајте дозволама за права суперкорисника.</string>
-    <string name="mod_version">Верзија LineageOS-а</string>
+    <string name="mod_version">Верзија KiroOS-а</string>
     <string name="mod_version_default">Непознато</string>
     <string name="device_model">Модел уређаја</string>
     <string name="device_name">Име уређаја</string>
-    <string name="mod_api_level">Ниво API-ја LineageOS-а</string>
+    <string name="mod_api_level">Ниво API-ја KiroOS-а</string>
     <string name="mod_api_level_default">Непознато</string>
     <string name="build_date">Датум израде</string>
     <string name="cmupdate_settings_title">Ажурирања система</string>
@@ -292,7 +292,7 @@
     <string name="sim_mobile_network_settings_title">Подешавања SIM %d картице</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Напредна подешавања обавештења</string>
-    <string name="cmlicense_title">Политика приватности LineageOS-а</string>
+    <string name="cmlicense_title">Политика приватности KiroOS-а</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Сензор за отисак прста се налази <xliff:g id="sensor_location">%1$s</xliff:g> телефона.</string>
     <string name="security_settings_fingerprint_sensor_location_back">на задњој страни</string>
     <string name="security_settings_fingerprint_sensor_location_front">на предњој страни</string>

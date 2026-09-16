@@ -32,14 +32,14 @@
     <string name="root_access_all">App e ADB</string>
     <string name="root_appops_title">Gestione accesso root</string>
     <string name="root_appops_summary">Visualizza e controlla l\'utilizzo dei permessi root</string>
-    <string name="mod_version">Versione LineageOS</string>
+    <string name="mod_version">Versione KiroOS</string>
     <string name="mod_version_default">Sconosciuto</string>
     <string name="device_model">Modello dispositivo</string>
     <string name="device_name">Nome dispositivo</string>
-    <string name="mod_api_level">Livello API LineageOS</string>
+    <string name="mod_api_level">Livello API KiroOS</string>
     <string name="mod_api_level_default">Sconosciuto</string>
     <string name="build_date">Data build</string>
-    <string name="cmupdate_settings_title">Aggiornamento LineageOS</string>
+    <string name="cmupdate_settings_title">Aggiornamenti KiroOS</string>
     <string name="app_ops_categories_location">Posizione</string>
     <string name="app_ops_categories_personal">Personale</string>
     <string name="app_ops_categories_messaging">Messaggistica</string>
@@ -291,7 +291,7 @@
     <string name="sim_mobile_network_settings_title">Impostazioni SIM %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Controlli avanzati notifiche</string>
-    <string name="cmlicense_title">Note legali LineageOS</string>
+    <string name="cmlicense_title">Note legali KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Individua il sensore d\'impronte nella parte <xliff:g id="sensor_location">%1$s</xliff:g> del tuo telefono.</string>
     <string name="security_settings_fingerprint_sensor_location_back">posteriore</string>
     <string name="security_settings_fingerprint_sensor_location_front">anteriore</string>

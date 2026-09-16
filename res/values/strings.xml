@@ -7996,4 +7996,68 @@
     <string name="bluetooth_connect_access_dialog_negative">Don\u2019t connect</string>
     <!-- Strings for Dialog connect button -->
     <string name="bluetooth_connect_access_dialog_positive">Connect</string>
+
+    <!-- KiroOS Display & Navigation Features -->
+    <string name="display_resolution_title">Display resolution</string>
+    <string name="display_resolution_summary">Adjust screen resolution between 720p (HD), 1080p (FHD) and 1440p (2K)</string>
+    <string name="touchkey_led_title">Touch key backlight</string>
+    <string name="touchkey_led_summary">Illuminate capacitive touch keys on touch</string>
+    <string name="onscreen_navbar_title">On-screen navigation bar</string>
+    <string name="onscreen_navbar_summary">Enable software on-screen navigation bar</string>
+    <string name="navbar_reboot_notice">Setting saved. Restart device to apply on-screen navigation bar.</string>
+    <string name="native_equalizer_title">KiroOS Equalizer</string>
+    <string name="native_equalizer_summary">5-band frequency adjustment, Bass Boost and DSP profiles</string>
+    <string name="kiroos_about_summary">KiroOS 1.0 for Samsung Galaxy S6</string>
+
+    <!-- KiroOS Equalizer UI Strings -->
+    <string name="eq_master_switch_title">Enable Equalizer</string>
+    <string name="eq_preset_title">Equalizer Preset</string>
+    <string name="eq_bass_title">Bass Boost</string>
+    <string name="eq_bass_default">0%</string>
+    <string name="eq_bands_title">Frequency Bands</string>
+    <string name="eq_custom">Custom</string>
+
+    <!-- ColorOS Style KiroOS Hero Card Strings -->
+    <string name="kiroos_version_title">1.0</string>
+    <string name="kiroos_badge_internal_beta">INTERNAL BETA</string>
+    <string name="kiroos_status_updated">System up to date</string>
+    <string name="kiroos_brand_name">KiroOS</string>
+    <string name="kiroos_device_title">Samsung Galaxy S6 (SM-G920F)</string>
+    <string name="kiroos_software_version_title">Software Version</string>
+    <string name="kiroos_software_version_sub">KiroOS 1.0 Internal Beta</string>
+    <string name="kiroos_changelog_title">Changelog • KiroOS 1.0</string>
+    <string name="kiroos_changelog_summary">• High-performance lightweight UI engine with smooth 0.75x animations\n• Native Pure Black AMOLED theme throughout system and Settings\n• Refined status bar with vertical signal meters and battery indicator\n• Streamlined Control Center and minimalist lockscreen typography\n• Permanent background audio DSP equalizer and dual-speaker stereo</string>
+    <string name="kiroos_btn_check_updates_text">Check for updates</string>
+
+    <!-- KiroOS Internal Updater Activity Strings -->
+    <string name="kiroos_update_version_header">KiroOS 1.0</string>
+
+    <!-- KiroOS Updater Beta 2 Strings -->
+    <string name="kiroos_updater_title">KiroOS Update</string>
+    <string name="kiroos_update_version_header">KiroOS 1.0</string>
+    <string name="kiroos_badge_dev_beta">DEVELOPER BETA 2</string>
+    <string name="kiroos_updater_package_found">KiroOS 1.0 Developer Beta 2</string>
+    <string name="kiroos_updater_package_desc">Verified system package ready for download and installation (%s).</string>
+    <string name="kiroos_updater_btn_download_install">Download &amp; Install</string>
+    <string name="kiroos_updater_btn_downloading">Downloading...</string>
+    <string name="kiroos_updater_downloading_title">Downloading update...</string>
+    <string name="kiroos_updater_initial_progress">0%</string>
+    <string name="kiroos_updater_download_complete">Download completed (100%)</string>
+    <string name="kiroos_updater_verifying_reboot">Verifying package and preparing reboot...</string>
+    <string name="kiroos_updater_rebooting_screen">Rebooting into KiroOS update screen...</string>
+    <string name="kiroos_updater_btn_check">Check for updates</string>
+    <string name="kiroos_updater_checking_title">Checking for updates...</string>
+    <string name="kiroos_updater_checking_desc">Connecting to KiroOS update servers...</string>
+    <string name="kiroos_updater_toast_latest">KiroOS 1.0 Developer Beta 2 update available!</string>
+    <string name="kiroos_updater_release_notes_title">Release Notes • Developer Beta 2</string>
+    <string name="kiroos_updater_release_notes_content">• Seamless Boot Update: Brand new native KiroOS update engine integrated into the boot animation with smooth progress bar without TWRP.&#10;&#10;• OTA Download Engine: Realistic download interface with live MB/s throughput and percentage monitoring.&#10;&#10;• Super AMOLED Optimization: System-wide deep black (#000000) theme for minimum power draw.&#10;&#10;• Performance &amp; Stability: Responsive kernel governor, zero throttling, and Samsung Powered by KiroDev boot logo.</string>
+    <string name="kiroos_updater_spec_title">Device Hardware &amp; Architecture</string>
+    <string name="kiroos_updater_spec_content">Model: Samsung Galaxy S6 (SM-G920F)&#10;Platform: Exynos 7420 Octa-Core 64-bit&#10;Display: 5.1" Quad HD Super AMOLED (2560x1440)&#10;Release Channel: KiroDev Developer Channel</string>
+    <!-- Dynamic Beta 2 Hero Card Strings -->
+    <string name="kiroos_updater_summary">KiroOS 1.0 Developer Beta 2 available (692 MB)</string>
+    <string name="kiroos_status_update_available">Update available • Developer Beta 2</string>
+    <string name="kiroos_software_version_beta2">KiroOS 1.0 Developer Beta 2 (692 MB)</string>
+    <string name="kiroos_changelog_title_beta2">What\'s New • Developer Beta 2</string>
+    <string name="kiroos_release_notes_beta2">• Seamless Boot Update: Brand new native update engine integrated into the boot animation without TWRP.\n• OTA Download Engine: Realistic download interface with live MB/s throughput and percentage.\n• Super AMOLED Optimization: System-wide deep black (#000000) theme for minimum power draw.\n• Performance &amp; Stability: Responsive kernel governor, zero throttling, and Samsung Powered by KiroDev boot logo.</string>
+    <string name="kiroos_btn_install_now">Download &amp; Install (692 MB)</string>
 </resources>

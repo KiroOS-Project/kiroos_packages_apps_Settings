@@ -32,11 +32,11 @@
     <string name="root_access_all">За приложения и ADB</string>
     <string name="root_appops_title">Управление на администраторски достъп</string>
     <string name="root_appops_summary">Преглед и управление на правилата за администраторски достъп</string>
-    <string name="mod_version">Версия на LineageOS</string>
+    <string name="mod_version">Версия на KiroOS</string>
     <string name="mod_version_default">Неизвестна</string>
     <string name="device_model">Модел на устройството</string>
     <string name="device_name">Име на устройството</string>
-    <string name="mod_api_level">LineageOS приложно-програмен интерфейс ниво</string>
+    <string name="mod_api_level">KiroOS приложно-програмен интерфейс ниво</string>
     <string name="mod_api_level_default">Неизвестна</string>
     <string name="build_date">Дата на изграждане</string>
     <string name="cmupdate_settings_title">Системни актуализации</string>
@@ -291,7 +291,7 @@
     <string name="sim_mobile_network_settings_title">Настройки на СИМ карта %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Разширени настройки на уведомления</string>
-    <string name="cmlicense_title">LineageOS правна информация</string>
+    <string name="cmlicense_title">KiroOS правна информация</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Намерете сензора за пръстови отпечатъци <xliff:g id="sensor_location">%1$s </xliff:g> на вашия телефон.</string>
     <string name="security_settings_fingerprint_sensor_location_back">Отзад</string>
     <string name="security_settings_fingerprint_sensor_location_front">Отпред</string>

@@ -31,14 +31,14 @@
     <string name="root_access_all">应用与 ADB</string>
     <string name="root_appops_title">管理 Root 访问</string>
     <string name="root_appops_summary">查看和控制 Root 规则</string>
-    <string name="mod_version">LineageOS 版本</string>
+    <string name="mod_version">KiroOS 版本</string>
     <string name="mod_version_default">未知</string>
     <string name="device_model">设备型号</string>
     <string name="device_name">设备名称</string>
-    <string name="mod_api_level">LineageOS API 级别</string>
+    <string name="mod_api_level">KiroOS API 级别</string>
     <string name="mod_api_level_default">未知</string>
     <string name="build_date">编译日期</string>
-    <string name="cmupdate_settings_title">LineageOS 更新</string>
+    <string name="cmupdate_settings_title">KiroOS 更新</string>
     <string name="app_ops_categories_location">位置</string>
     <string name="app_ops_categories_personal">个人</string>
     <string name="app_ops_categories_messaging">信息</string>
@@ -290,7 +290,7 @@
     <string name="sim_mobile_network_settings_title">SIM 卡 %d 设置</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">强力通知控制</string>
-    <string name="cmlicense_title">LineageOS 法律信息</string>
+    <string name="cmlicense_title">KiroOS 法律信息</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">在您手机的 <xliff:g id="sensor_location">%1$s</xliff:g> 找到指纹传感器。</string>
     <string name="security_settings_fingerprint_sensor_location_back">后置</string>
     <string name="security_settings_fingerprint_sensor_location_front">前置</string>

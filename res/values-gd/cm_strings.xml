@@ -34,14 +34,14 @@
     <string name="root_access_all">Aplacaidean is ADB</string>
     <string name="root_appops_title">Stiùir na h-inntrigidhean root</string>
     <string name="root_appops_summary">Seall is stiùir na riaghailtean root</string>
-    <string name="mod_version">An tionndadh de LineageOS</string>
+    <string name="mod_version">An tionndadh de KiroOS</string>
     <string name="mod_version_default">Neo-aithnichte</string>
     <string name="device_model">Modail an uidheim</string>
     <string name="device_name">Ainm an uidheim</string>
-    <string name="mod_api_level">Leibheil API LineageOS</string>
+    <string name="mod_api_level">Leibheil API KiroOS</string>
     <string name="mod_api_level_default">Neo-aithnichte</string>
     <string name="build_date">Ceann-là na togail</string>
-    <string name="cmupdate_settings_title">Ùrachaidhean air LineageOS</string>
+    <string name="cmupdate_settings_title">Ùrachaidhean air KiroOS</string>
     <string name="app_ops_categories_location">Ionad</string>
     <string name="app_ops_categories_personal">Pearsanta</string>
     <string name="app_ops_categories_messaging">Grad-theachdaireachdan</string>
@@ -293,7 +293,7 @@
     <string name="sim_mobile_network_settings_title">Roghainnean a’ SIM %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Stiùireadh bhrathan cumhachdach</string>
-    <string name="cmlicense_title">Sgrìobhainnean laghail LineageOS</string>
+    <string name="cmlicense_title">Sgrìobhainnean laghail KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Lorg mothaichear nan lorgan-meòir air <xliff:g id="sensor_location">%1$s</xliff:g> an fhòn agad.</string>
     <string name="security_settings_fingerprint_sensor_location_back">cùlaibh</string>
     <string name="security_settings_fingerprint_sensor_location_front">beulaibh</string>

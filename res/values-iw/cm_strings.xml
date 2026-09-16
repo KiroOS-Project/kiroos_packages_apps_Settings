@@ -34,14 +34,14 @@
     <string name="root_access_all">יישומים ו-ADB</string>
     <string name="root_appops_title">ניהול גישות שורש</string>
     <string name="root_appops_summary">הצג ושלוט בחוקי גישת השורש</string>
-    <string name="mod_version">גרסת LineageOS</string>
+    <string name="mod_version">גרסת KiroOS</string>
     <string name="mod_version_default">לא ידוע</string>
     <string name="device_model">דגם המכשיר</string>
     <string name="device_name">שם המכשיר</string>
-    <string name="mod_api_level">רמת ה-API של LineageOS</string>
+    <string name="mod_api_level">רמת ה-API של KiroOS</string>
     <string name="mod_api_level_default">לא ידוע</string>
     <string name="build_date">תאריך בנייה</string>
-    <string name="cmupdate_settings_title">עדכוני LineageOS</string>
+    <string name="cmupdate_settings_title">עדכוני KiroOS</string>
     <string name="app_ops_categories_location">מיקום</string>
     <string name="app_ops_categories_personal">אישי</string>
     <string name="app_ops_categories_messaging">העברת הודעות</string>
@@ -293,7 +293,7 @@
     <string name="sim_mobile_network_settings_title">הגדרות SIM %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">מנהל התראות מתקדם</string>
-    <string name="cmlicense_title">LineageOS משפטי</string>
+    <string name="cmlicense_title">KiroOS משפטי</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">אתר את חיישן טביעות האצבע הנמצא ב<xliff:g id="sensor_location">%1$s</xliff:g> המכשיר שלך.</string>
     <string name="security_settings_fingerprint_sensor_location_back">חלק האחורי</string>
     <string name="security_settings_fingerprint_sensor_location_front">חלק הקדמי</string>

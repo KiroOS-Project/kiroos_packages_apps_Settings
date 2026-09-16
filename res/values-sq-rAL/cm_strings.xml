@@ -31,14 +31,14 @@
     <string name="root_access_adb">Vetëm ADB</string>
     <string name="root_access_all">Aplikacionet dhe ADB</string>
     <string name="root_appops_title">Menaxho akseset Root</string>
-    <string name="mod_version">Versioni i LineageOS</string>
+    <string name="mod_version">Versioni i KiroOS</string>
     <string name="mod_version_default">I panjohur</string>
     <string name="device_model">Modeli i pajisjes</string>
     <string name="device_name">Emri i pajisjes</string>
-    <string name="mod_api_level">Niveli API i LineageOS</string>
+    <string name="mod_api_level">Niveli API i KiroOS</string>
     <string name="mod_api_level_default">I panjohur</string>
     <string name="build_date">Data e ndërtimit</string>
-    <string name="cmupdate_settings_title">Përditësimet e LineageOS</string>
+    <string name="cmupdate_settings_title">Përditësimet e KiroOS</string>
     <string name="app_ops_categories_location">Vendndodhja</string>
     <string name="app_ops_categories_messaging">Mesazhet</string>
     <string name="app_ops_categories_media">Media</string>
@@ -209,7 +209,7 @@
     <string name="sim_mobile_network_settings_category_title">Parametrat e rrjetit celular</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Kontrolli i rëndësisë së njoftimeve</string>
-    <string name="cmlicense_title">Liçensa e LineageOS</string>
+    <string name="cmlicense_title">Liçensa e KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Lokalizo sensorin e shenjave të gishtave në <xliff:g id="sensor_location">%1$s</xliff:g> të telefonit tuaj.</string>
     <string name="security_settings_fingerprint_sensor_location_back">mbrapa</string>
     <string name="security_settings_fingerprint_sensor_location_front">përpara</string>

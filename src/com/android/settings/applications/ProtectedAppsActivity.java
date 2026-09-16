@@ -17,6 +17,7 @@
 package com.android.settings.applications;
 
 import android.app.Activity;
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -146,7 +147,10 @@ public class ProtectedAppsActivity extends Activity {
                 };
         refreshAppsTask.execute(null, null, null);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         // Update Protected Apps list
         updateProtectedComponentsList();

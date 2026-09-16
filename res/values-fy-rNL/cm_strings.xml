@@ -32,14 +32,14 @@
     <string name="root_access_all">Apps en ADB</string>
     <string name="root_appops_title">Root-tagong beheare</string>
     <string name="root_appops_summary">Root-ynstellingen besjen en beheare</string>
-    <string name="mod_version">LineageOS-ferzje</string>
+    <string name="mod_version">KiroOS-ferzje</string>
     <string name="mod_version_default">Unbekend</string>
     <string name="device_model">Model</string>
     <string name="device_name">Apparaatnamme</string>
-    <string name="mod_api_level">Nivo fan LineageOS-API</string>
+    <string name="mod_api_level">Nivo fan KiroOS-API</string>
     <string name="mod_api_level_default">Unbekend</string>
     <string name="build_date">Build-datum</string>
-    <string name="cmupdate_settings_title">LineageOS-fernijingen</string>
+    <string name="cmupdate_settings_title">KiroOS-fernijingen</string>
     <string name="app_ops_categories_location">Lokaasje</string>
     <string name="app_ops_categories_personal">Persoanlik</string>
     <string name="app_ops_categories_messaging">Berjochten</string>
@@ -291,7 +291,7 @@
     <string name="sim_mobile_network_settings_title">Ynstellingen SIM %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Avansearre meldingsynstellingen</string>
-    <string name="cmlicense_title">Juridyske ynformaasje fan LineageOS</string>
+    <string name="cmlicense_title">Juridyske ynformaasje fan KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Fyn de fingerôfdruksensor op de <xliff:g id="sensor_location">%1$s</xliff:g> fan jo telefoan.</string>
     <string name="security_settings_fingerprint_sensor_location_back">efterkant</string>
     <string name="security_settings_fingerprint_sensor_location_front">foarkant</string>

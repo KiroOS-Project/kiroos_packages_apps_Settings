@@ -17,6 +17,7 @@
 package com.android.settings.nfc;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
@@ -86,28 +87,37 @@ public class AndroidBeam extends InstrumentedFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        SettingsActivity activity = (SettingsActivity) getActivity();
+        Activity cur = getActivity();
+        if (cur instanceof SettingsActivity) {
+            SettingsActivity activity = (SettingsActivity) cur;
+            ActionBar ab = activity.getActionBar();
+            if (ab != null) {
+                mOldActivityTitle = ab.getTitle();
+            }
+            mSwitchBar = activity.getSwitchBar();
+        }
 
-        mOldActivityTitle = activity.getActionBar().getTitle();
-
-        mSwitchBar = activity.getSwitchBar();
-        if (mBeamDisallowedByOnlyAdmin) {
-            mSwitchBar.hide();
-        } else {
-            mSwitchBar.setChecked(!mBeamDisallowedByBase && mNfcAdapter.isNdefPushEnabled());
-            mSwitchBar.addOnSwitchChangeListener(this);
-            mSwitchBar.setEnabled(!mBeamDisallowedByBase);
-            mSwitchBar.show();
+        if (mSwitchBar != null) {
+            if (mBeamDisallowedByOnlyAdmin) {
+                mSwitchBar.hide();
+            } else {
+                boolean isBeamOn = !mBeamDisallowedByBase && (mNfcAdapter != null && mNfcAdapter.isNdefPushEnabled());
+                mSwitchBar.setChecked(isBeamOn);
+                mSwitchBar.addOnSwitchChangeListener(this);
+                mSwitchBar.setEnabled(!mBeamDisallowedByBase && (mNfcAdapter != null));
+                mSwitchBar.show();
+            }
         }
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mOldActivityTitle != null) {
-            getActivity().getActionBar().setTitle(mOldActivityTitle);
+        Activity cur = getActivity();
+        if (mOldActivityTitle != null && cur != null && cur.getActionBar() != null) {
+            cur.getActionBar().setTitle(mOldActivityTitle);
         }
-        if (!mBeamDisallowedByOnlyAdmin) {
+        if (!mBeamDisallowedByOnlyAdmin && mSwitchBar != null) {
             mSwitchBar.removeOnSwitchChangeListener(this);
             mSwitchBar.hide();
         }
@@ -116,16 +126,20 @@ public class AndroidBeam extends InstrumentedFragment
     @Override
     public void onSwitchChanged(Switch switchView, boolean desiredState) {
         boolean success = false;
-        mSwitchBar.setEnabled(false);
+        if (mSwitchBar != null) {
+            mSwitchBar.setEnabled(false);
+        }
         if (desiredState) {
-            success = mNfcAdapter.enableNdefPush();
+            success = (mNfcAdapter != null) && mNfcAdapter.enableNdefPush();
         } else {
-            success = mNfcAdapter.disableNdefPush();
+            success = (mNfcAdapter != null) && mNfcAdapter.disableNdefPush();
         }
-        if (success) {
-            mSwitchBar.setChecked(desiredState);
+        if (mSwitchBar != null) {
+            if (success) {
+                mSwitchBar.setChecked(desiredState);
+            }
+            mSwitchBar.setEnabled(true);
         }
-        mSwitchBar.setEnabled(true);
     }
 
     @Override

@@ -34,14 +34,14 @@
     <string name="root_access_all">Aplikacije in ADB</string>
     <string name="root_appops_title">Upravljaj s skrbniškimi dostopi</string>
     <string name="root_appops_summary">Ogled in nadzor skrbniških pravil</string>
-    <string name="mod_version">Različica LineageOS</string>
+    <string name="mod_version">Različica KiroOS</string>
     <string name="mod_version_default">Neznano</string>
     <string name="device_model">Model naprave</string>
     <string name="device_name">Ime naprave</string>
-    <string name="mod_api_level">Raven LineageOS API-ja</string>
+    <string name="mod_api_level">Raven KiroOS API-ja</string>
     <string name="mod_api_level_default">Neznano</string>
     <string name="build_date">Datum izgradnje</string>
-    <string name="cmupdate_settings_title">Posodobitve LineageOS</string>
+    <string name="cmupdate_settings_title">Posodobitve KiroOS</string>
     <string name="app_ops_categories_location">Lokacija</string>
     <string name="app_ops_categories_personal">Osebni</string>
     <string name="app_ops_categories_messaging">Sporočanje</string>
@@ -293,7 +293,7 @@
     <string name="sim_mobile_network_settings_title">Nastavitve kartice SIM %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Nadzorne tipke za obvestila</string>
-    <string name="cmlicense_title">Pravna obvestila LineageOS</string>
+    <string name="cmlicense_title">Pravna obvestila KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Poiščite tipalo za prstne odtise na <xliff:g id="sensor_location">%1$s</xliff:g> vašega telefona.</string>
     <string name="security_settings_fingerprint_sensor_location_back">zadnji strani</string>
     <string name="security_settings_fingerprint_sensor_location_front">sprednji strani</string>

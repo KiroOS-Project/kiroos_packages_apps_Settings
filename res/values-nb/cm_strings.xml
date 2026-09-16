@@ -32,14 +32,14 @@
     <string name="root_access_all">Apper og ADB</string>
     <string name="root_appops_title">Administrer root tilganger</string>
     <string name="root_appops_summary">Se over og endre root reglene</string>
-    <string name="mod_version">LineageOS versjon</string>
+    <string name="mod_version">KiroOS versjon</string>
     <string name="mod_version_default">Ukjent</string>
     <string name="device_model">Enhetsmodell</string>
     <string name="device_name">Enhetsnavn</string>
-    <string name="mod_api_level">LineageOS API nivå</string>
+    <string name="mod_api_level">KiroOS API nivå</string>
     <string name="mod_api_level_default">Ukjent</string>
     <string name="build_date">Build-dato</string>
-    <string name="cmupdate_settings_title">LineageOS oppdateringer</string>
+    <string name="cmupdate_settings_title">KiroOS oppdateringer</string>
     <string name="app_ops_categories_location">Posisjon</string>
     <string name="app_ops_categories_personal">Personlig</string>
     <string name="app_ops_categories_messaging">Meldinger</string>
@@ -291,7 +291,7 @@
     <string name="sim_mobile_network_settings_title">SIM %d-innstillinger</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Nivåorganiserte varsler</string>
-    <string name="cmlicense_title">LineageOS juridisk</string>
+    <string name="cmlicense_title">KiroOS juridisk</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Finn fingerskanneren på <xliff:g id="sensor_location">%1$s</xliff:g> av telefonen din.</string>
     <string name="security_settings_fingerprint_sensor_location_back">baksiden</string>
     <string name="security_settings_fingerprint_sensor_location_front">forsiden</string>

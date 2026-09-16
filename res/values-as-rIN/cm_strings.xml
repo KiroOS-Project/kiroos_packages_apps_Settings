@@ -31,14 +31,14 @@
     <string name="root_access_apps">কেৱল এপ্প্‌চ</string>
     <string name="root_access_adb">কেৱল ADB</string>
     <string name="root_access_all">এপ্প্‌চ আৰু ADB</string>
-    <string name="mod_version">LineageOS সংস্কৰণ</string>
+    <string name="mod_version">KiroOS সংস্কৰণ</string>
     <string name="mod_version_default">অজ্ঞাত</string>
     <string name="device_model">ডিভাইচৰ মডেল</string>
     <string name="device_name">ডিভাইচ নাম</string>
-    <string name="mod_api_level">LineageOS API স্তৰ</string>
+    <string name="mod_api_level">KiroOS API স্তৰ</string>
     <string name="mod_api_level_default">অজ্ঞাত</string>
     <string name="build_date">নিৰ্মাণৰ তাৰিখ</string>
-    <string name="cmupdate_settings_title">LineageOS আপডেটসমূহ</string>
+    <string name="cmupdate_settings_title">KiroOS আপডেটসমূহ</string>
     <string name="app_ops_categories_location">স্থান</string>
     <string name="app_ops_categories_personal">ব্যক্তিগত</string>
     <string name="app_ops_categories_messaging">মেছেজিং</string>
@@ -255,7 +255,7 @@
     <string name="sim_mobile_network_settings_category_title">ম\'বাইল নেটৱৰ্ক ছেটিংছ</string>
     <string name="sim_mobile_network_settings_title">SIM %d ছেটিংছ</string>
     <string name="nfc_title_category">NFC</string>
-    <string name="cmlicense_title">LineageOS আইনী</string>
+    <string name="cmlicense_title">KiroOS আইনী</string>
     <string name="wifi_setting_countrycode_title">ৱাই\u2011ফাই অঞ্চল কোড</string>
     <string name="wifi_setting_countrycode_summary">ৱাই\u2011ফাই ৰ বাবে অঞ্চল কোড নিৰ্দিষ্ট কৰক</string>
     <string name="wifi_setting_countrycode_error">অঞ্চল কোড ছেটিং কৰাত এটা সমস্যা হৈছিল</string>

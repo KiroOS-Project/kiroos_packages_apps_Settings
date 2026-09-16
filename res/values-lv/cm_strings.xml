@@ -23,11 +23,11 @@
     <string name="root_access_apps">Tikai lietotnēm</string>
     <string name="root_access_adb">Tikai ADB</string>
     <string name="root_access_all">Lietotnēm un ADB</string>
-    <string name="mod_version">LineageOS versija</string>
+    <string name="mod_version">KiroOS versija</string>
     <string name="mod_version_default">Nezināms</string>
     <string name="mod_api_level_default">Nezināms</string>
     <string name="build_date">Būvējuma datums</string>
-    <string name="cmupdate_settings_title">LineageOS atjaunojumi</string>
+    <string name="cmupdate_settings_title">KiroOS atjaunojumi</string>
     <string name="app_ops_categories_location">Atrašanās vieta</string>
     <string name="app_ops_categories_personal">Personīgi</string>
     <string name="app_ops_categories_messaging">Ziņapmaiņa</string>
@@ -138,7 +138,7 @@
     <string name="adb_over_network">ADB pa tīklu</string>
     <string name="adb_over_network_summary">Ieslēgt TCP/IP atkļūdošanu tīkla saskarnēm (Wi-Fi, USB tīkliem). Šis iestatījums tiek atstatīts pēc pārsāknēšanas</string>
     <string name="device_hostname">Iekārtas nosaukums tīklā</string>
-    <string name="cmlicense_title">LineageOS atbildība</string>
+    <string name="cmlicense_title">KiroOS atbildība</string>
     <string name="wake_when_plugged_or_unplugged_title">Pamodināt, iespraužot vadu</string>
     <string name="wake_when_plugged_or_unplugged_summary">Pievienojot, vai atvienojot no barošanas avota, ieslēgt ekrānu</string>
     <string name="status_bar_double_tap_to_sleep_title">Lai iemidzinātu, veiciet dubultu piesitienu</string>

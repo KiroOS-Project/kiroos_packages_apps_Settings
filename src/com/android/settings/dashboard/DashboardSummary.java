@@ -218,10 +218,24 @@ public class DashboardSummary extends InstrumentedFragment
         rebuildUI();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        rebuildUI();
+    }
+
     private void rebuildUI() {
         if (!isAdded()) {
             Log.w(TAG, "Cannot build the DashboardSummary UI yet as the Fragment is not added");
             return;
+        }
+
+        // Load categories immediately to eliminate blank screen lag
+        Activity activity = getActivity();
+        if (activity instanceof SettingsActivity && mAdapter != null) {
+            List<DashboardCategory> categories =
+                    ((SettingsActivity) activity).getDashboardCategories();
+            mAdapter.setCategoriesAndSuggestions(categories, null);
         }
 
         // recheck to see if any suggestions have been changed.

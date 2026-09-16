@@ -31,14 +31,14 @@
     <string name="root_access_all">Cả ứng dụng và ADB</string>
     <string name="root_appops_title">Quản lý truy cập root</string>
     <string name="root_appops_summary">Xem và kiểm soát các truy cập root</string>
-    <string name="mod_version">Phiên bản LineageOS</string>
+    <string name="mod_version">Phiên bản KiroOS</string>
     <string name="mod_version_default">Không rõ</string>
     <string name="device_model">Mẫu thiết bị</string>
     <string name="device_name">Tên thiết bị</string>
-    <string name="mod_api_level">Cấp độ API LineageOS</string>
+    <string name="mod_api_level">Cấp độ API KiroOS</string>
     <string name="mod_api_level_default">Không rõ</string>
     <string name="build_date">Ngày dựng</string>
-    <string name="cmupdate_settings_title">Các cập nhật LineageOS</string>
+    <string name="cmupdate_settings_title">Các cập nhật KiroOS</string>
     <string name="app_ops_categories_location">Vị trí</string>
     <string name="app_ops_categories_personal">Cá nhân</string>
     <string name="app_ops_categories_messaging">Nhắn tin</string>
@@ -290,7 +290,7 @@
     <string name="sim_mobile_network_settings_title">Cài đặt %d SIM</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Các điều khiển thông báo nguồn</string>
-    <string name="cmlicense_title">Bộ phận pháp chế của LineageOS</string>
+    <string name="cmlicense_title">Bộ phận pháp chế của KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Xác định vị trí cảm biến vân tay trên <xliff:g id="sensor_location">%1$s</xliff:g> điện thoại của bạn.</string>
     <string name="security_settings_fingerprint_sensor_location_back">quay lại</string>
     <string name="security_settings_fingerprint_sensor_location_front">trước</string>

@@ -30,14 +30,14 @@
     <string name="root_access_apps">ಆಪ್ಸ್ ಮಾತ್ರ</string>
     <string name="root_access_adb">ಎಡಿಬಿ ಮಾತ್ರ</string>
     <string name="root_access_all">ಆಪ್ಸ್ ಮತ್ತು ಎಡಿಬಿ</string>
-    <string name="mod_version">LineageOS ಆವೃತ್ತಿ</string>
+    <string name="mod_version">KiroOS ಆವೃತ್ತಿ</string>
     <string name="mod_version_default">ಅಜ್ಞಾತ</string>
     <string name="device_model">ಸಾಧನ ಮಾದರಿ</string>
     <string name="device_name">ಸಾಧನ ಹೆಸರು</string>
     <string name="mod_api_level">ಸೈನೋಜನ್ ಮೋಡ್ API ಮಟ್ಟ</string>
     <string name="mod_api_level_default">ಅಜ್ಞಾತ</string>
     <string name="build_date">ನಿರ್ಮಾಣ ದಿನಾಂಕ</string>
-    <string name="cmupdate_settings_title">LineageOS ನವೀಕರಣೆಗಳು</string>
+    <string name="cmupdate_settings_title">KiroOS ನವೀಕರಣೆಗಳು</string>
     <string name="app_ops_categories_location">ಸ್ಥಳ</string>
     <string name="app_ops_categories_personal">ವಯಕ್ತಿಕ</string>
     <string name="app_ops_categories_messaging">ಸಂದೇಶಿಸುವಿಕೆ</string>
@@ -250,7 +250,7 @@
     <string name="sim_mobile_network_settings_category_title">ಮೊಬೈಲ್ ನೆಟ್‍ವರ್ಕ್ ಸೆಟ್ಟಿಂಗ್ಸ್</string>
     <string name="sim_mobile_network_settings_title">ಸಿಮ್ %d ಸೆಟ್ಟಿಂಗ್ಸ್</string>
     <string name="nfc_title_category">ಎನ್ಎಫ್‍ಸಿ</string>
-    <string name="cmlicense_title">LineageOS ಕಾನೂನು</string>
+    <string name="cmlicense_title">KiroOS ಕಾನೂನು</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">ನಿಮ್ಮ ಫೋನ್ನ <xliff:g id="sensor_location">%1$s</xliff:g> ನಲ್ಲಿ ಬೆರಳಚ್ಚು ಸಂವೇದವಕನ್ನು ಗುರುತಿಸಿ.</string>
     <string name="wifi_setting_countrycode_title">ವೈ\u2011ಫೈ ಪ್ರದೇಶ ಕೋಡ್</string>
     <string name="wifi_setting_countrycode_summary">ವೈ\u2011ಫೈ‍ಗಾಗಿ ಪ್ರದೇಶ ಕೋಡ್ ಸೂಚಿಸಿ</string>

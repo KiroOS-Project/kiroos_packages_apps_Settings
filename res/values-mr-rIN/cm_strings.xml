@@ -31,14 +31,14 @@
     <string name="root_access_apps">केवळ अनुप्रयोग</string>
     <string name="root_access_adb">केवळ ADB</string>
     <string name="root_access_all">अनुप्रयोग आणि ADB</string>
-    <string name="mod_version">LineageOS आवृत्ती</string>
+    <string name="mod_version">KiroOS आवृत्ती</string>
     <string name="mod_version_default">अज्ञात</string>
     <string name="device_model">डिव्हाइस मॉडेल</string>
     <string name="device_name">डिव्हाइस नाव</string>
-    <string name="mod_api_level">LineageOS API लेव्हल</string>
+    <string name="mod_api_level">KiroOS API लेव्हल</string>
     <string name="mod_api_level_default">अज्ञात</string>
     <string name="build_date">बांधणी तारीख</string>
-    <string name="cmupdate_settings_title">LineageOS अद्यतने</string>
+    <string name="cmupdate_settings_title">KiroOS अद्यतने</string>
     <string name="app_ops_categories_location">स्थान</string>
     <string name="app_ops_categories_personal">वैयक्तिक</string>
     <string name="app_ops_categories_messaging">संदेशन</string>
@@ -255,7 +255,7 @@
     <string name="sim_mobile_network_settings_category_title">मोबाईल नेटवर्क सेटिंग्ज</string>
     <string name="sim_mobile_network_settings_title">सिम %d सेटिंग्ज</string>
     <string name="nfc_title_category">NFC</string>
-    <string name="cmlicense_title">LineageOS लिगल</string>
+    <string name="cmlicense_title">KiroOS लिगल</string>
     <string name="wifi_setting_countrycode_title">Wi\u2011Fi प्रदेश कोड</string>
     <string name="wifi_setting_countrycode_summary">Wi\u2011Fiसाठी प्रदेश कोड नमूद करा</string>
     <string name="wifi_setting_countrycode_error">प्रदेश कोड सेट करण्यात समस्या आली.</string>

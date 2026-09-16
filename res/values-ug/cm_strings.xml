@@ -26,14 +26,14 @@
     <string name="root_access_apps">ئەپلەرلا</string>
     <string name="root_access_adb">ADB لا</string>
     <string name="root_access_all">Apps ۋە ADB</string>
-    <string name="mod_version">LineageOS نەشرى</string>
+    <string name="mod_version">KiroOS نەشرى</string>
     <string name="mod_version_default">يوچۇن</string>
     <string name="device_model">ئۈسكىنە تىپى</string>
     <string name="device_name">ئۈسكۈنە ئاتى</string>
-    <string name="mod_api_level">LineageOS نىڭ API دەرىجىسى</string>
+    <string name="mod_api_level">KiroOS نىڭ API دەرىجىسى</string>
     <string name="mod_api_level_default">يوچۇن</string>
     <string name="build_date">ھاسىللىغان چېسلا</string>
-    <string name="cmupdate_settings_title">LineageOS يېڭىلانمىلار</string>
+    <string name="cmupdate_settings_title">KiroOS يېڭىلانمىلار</string>
     <string name="app_ops_categories_location">ئورنى</string>
     <string name="app_ops_categories_personal">شەخسىي</string>
     <string name="app_ops_categories_messaging">ئۇچۇر</string>
@@ -251,7 +251,7 @@
     <string name="sim_mobile_network_settings_category_title">كۆچمە تور تەڭشىكى</string>
     <string name="sim_mobile_network_settings_title">SIM %d تەڭشىكى</string>
     <string name="nfc_title_category">NFC</string>
-    <string name="cmlicense_title">LineageOS قانۇن ئۇچۇرى</string>
+    <string name="cmlicense_title">KiroOS قانۇن ئۇچۇرى</string>
     <string name="wifi_setting_countrycode_title">Wi\u2011Fi رايون كودى</string>
     <string name="wifi_setting_countrycode_summary">Wi\u2011Fi ئۈچۈن رايون كودى بېكىتىڭ</string>
     <string name="wifi_setting_countrycode_error">رايون كودىنى تەڭشىگەندە مەسىلە كۆرۈلدى.</string>

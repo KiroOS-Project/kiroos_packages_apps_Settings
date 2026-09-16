@@ -32,14 +32,14 @@
     <string name="root_access_all">Tətbiqetmələr və ADB</string>
     <string name="root_appops_title">Kök müraciətlərini idarə et</string>
     <string name="root_appops_summary">Kök qaydalarına bax və nəzarət et</string>
-    <string name="mod_version">LineageOS versiyası</string>
+    <string name="mod_version">KiroOS versiyası</string>
     <string name="mod_version_default">Bilinməyən</string>
     <string name="device_model">Cihaz modeli</string>
     <string name="device_name">Cihaz adı</string>
-    <string name="mod_api_level">LineageOS API səviyyəsi</string>
+    <string name="mod_api_level">KiroOS API səviyyəsi</string>
     <string name="mod_api_level_default">Bilinməyən</string>
     <string name="build_date">Quruluş tarixi</string>
-    <string name="cmupdate_settings_title">LineageOS yeniləmələri</string>
+    <string name="cmupdate_settings_title">KiroOS yeniləmələri</string>
     <string name="app_ops_categories_location">Yerləşmə</string>
     <string name="app_ops_categories_personal">Şəxsi</string>
     <string name="app_ops_categories_messaging">Mesajlaşma</string>
@@ -291,7 +291,7 @@
     <string name="sim_mobile_network_settings_title">SIM %d tənzimləmələri</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Güc bildiriş nəzarəti</string>
-    <string name="cmlicense_title">LineageOS qanuni</string>
+    <string name="cmlicense_title">KiroOS qanuni</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Telefonunuzdakı <xliff:g id="sensor_location">%1$s</xliff:g> barmaq izi sensorunu tapın.</string>
     <string name="security_settings_fingerprint_sensor_location_back">arxa</string>
     <string name="security_settings_fingerprint_sensor_location_front">ön</string>

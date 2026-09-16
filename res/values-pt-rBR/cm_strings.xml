@@ -36,10 +36,10 @@
     <string name="mod_version_default">Desconhecida</string>
     <string name="device_model">Modelo do dispositivo</string>
     <string name="device_name">Nome do dispositivo</string>
-    <string name="mod_api_level">Nível de API LineageOS</string>
+    <string name="mod_api_level">Nível de API KiroOS</string>
     <string name="mod_api_level_default">Desconhecida</string>
     <string name="build_date">Data de compilação</string>
-    <string name="cmupdate_settings_title">Atualizações LineageOS</string>
+    <string name="cmupdate_settings_title">Atualizações KiroOS</string>
     <string name="app_ops_categories_location">Localização</string>
     <string name="app_ops_categories_personal">Pessoal</string>
     <string name="app_ops_categories_messaging">Mensagem</string>
@@ -291,7 +291,7 @@
     <string name="sim_mobile_network_settings_title">Configurações do SIM %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Controles poderosos de notificação</string>
-    <string name="cmlicense_title">Licença LineageOS</string>
+    <string name="cmlicense_title">Licença KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Localize o sensor de impressão digital sobre o(a) <xliff:g id="sensor_location">%1$s </xliff:g> do seu telefone.</string>
     <string name="security_settings_fingerprint_sensor_location_back">traseira</string>
     <string name="security_settings_fingerprint_sensor_location_front">frente</string>

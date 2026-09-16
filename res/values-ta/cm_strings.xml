@@ -30,14 +30,14 @@
     <string name="root_access_apps">பயன்பாடுகள் மட்டும்</string>
     <string name="root_access_adb">ADB மட்டும்</string>
     <string name="root_access_all">ஆப்கள் மற்றும் ADB</string>
-    <string name="mod_version">LineageOS பதிப்பு</string>
+    <string name="mod_version">KiroOS பதிப்பு</string>
     <string name="mod_version_default">தெரியாதது</string>
     <string name="device_model">கருவி மாதிரி</string>
     <string name="device_name">சாதனத்தின் பெயர்</string>
-    <string name="mod_api_level">LineageOS API நிலை</string>
+    <string name="mod_api_level">KiroOS API நிலை</string>
     <string name="mod_api_level_default">தெரியாதது</string>
     <string name="build_date">கட்டிய தேதி</string>
-    <string name="cmupdate_settings_title">LineageOS புதுப்பித்தல்கள்</string>
+    <string name="cmupdate_settings_title">KiroOS புதுப்பித்தல்கள்</string>
     <string name="app_ops_categories_location">இருப்பிடம்</string>
     <string name="app_ops_categories_personal">தனிப்பட்டவை</string>
     <string name="app_ops_categories_messaging">செய்தியிடல்</string>
@@ -254,7 +254,7 @@
     <string name="sim_mobile_network_settings_category_title">மொபைல் நெட்வொர்க் அமைப்புகள்</string>
     <string name="sim_mobile_network_settings_title">SIM %d அமைப்புகள்</string>
     <string name="nfc_title_category">NFC</string>
-    <string name="cmlicense_title">LineageOS சட்டம்</string>
+    <string name="cmlicense_title">KiroOS சட்டம்</string>
     <string name="wifi_setting_countrycode_title">Wi\i2011Fi பிராந்திய குறியீடு</string>
     <string name="wifi_setting_countrycode_summary">Wi\u2011Fiக்கான பிராந்திய குறியீட்டை குறிப்பிடு</string>
     <string name="wifi_setting_countrycode_error">பிராந்திய குறியீட்டை அமைப்பதில் ஒரு பிரச்சனை உள்ளது.</string>

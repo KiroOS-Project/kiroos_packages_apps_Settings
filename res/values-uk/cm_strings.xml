@@ -28,14 +28,14 @@
     <string name="root_access_all">Програми та ADB</string>
     <string name="root_appops_title">Керування root правами</string>
     <string name="root_appops_summary">Перегляд та керування root правилами</string>
-    <string name="mod_version">Версія LineageOS</string>
+    <string name="mod_version">Версія KiroOS</string>
     <string name="mod_version_default">Невідомо</string>
     <string name="device_model">Модель пристрою</string>
     <string name="device_name">Назва пристрою</string>
-    <string name="mod_api_level">Рівень LineageOS API</string>
+    <string name="mod_api_level">Рівень KiroOS API</string>
     <string name="mod_api_level_default">Невідомо</string>
     <string name="build_date">Дата збірки</string>
-    <string name="cmupdate_settings_title">Оновлення LineageOS</string>
+    <string name="cmupdate_settings_title">Оновлення KiroOS</string>
     <string name="app_ops_categories_location">Місцезнаходження</string>
     <string name="app_ops_categories_personal">Особисті дані</string>
     <string name="app_ops_categories_messaging">Повідомлення</string>
@@ -287,7 +287,7 @@
     <string name="sim_mobile_network_settings_title">Налаштування SIM %d</string>
     <string name="nfc_title_category">NFC</string>
     <string name="tuner_full_importance_settings">Елементи керування сповіщеннями</string>
-    <string name="cmlicense_title">Політика конфіденційності LineageOS</string>
+    <string name="cmlicense_title">Політика конфіденційності KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Сканер відбитку пальців розташовано на <xliff:g id="sensor_location">%1$s</xliff:g> вашого телефону.</string>
     <string name="security_settings_fingerprint_sensor_location_back">задній панелі</string>
     <string name="security_settings_fingerprint_sensor_location_front">передній панелі</string>

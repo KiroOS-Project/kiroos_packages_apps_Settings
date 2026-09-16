@@ -118,11 +118,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setStringSummary(KEY_FIRMWARE_VERSION, Build.VERSION.RELEASE);
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
 
-        final String patch = DeviceInfoUtils.getSecurityPatch();
-        if (!TextUtils.isEmpty(patch)) {
-            setStringSummary(KEY_SECURITY_PATCH, patch);
-        } else {
-            getPreferenceScreen().removePreference(findPreference(KEY_SECURITY_PATCH));
+        Preference secPatchPref = findPreference(KEY_SECURITY_PATCH);
+        if (secPatchPref != null) {
+            getPreferenceScreen().removePreference(secPatchPref);
         }
 
         setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
@@ -139,8 +137,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         if(mQGPVersion == null){
             getPreferenceScreen().removePreference(findPreference(KEY_QGP_VERSION));
         }
-        findPreference(KEY_KERNEL_VERSION).setSummary(DeviceInfoUtils.customizeFormatKernelVersion(
-                getResources().getBoolean(R.bool.def_hide_kernel_version_name)));
+        Preference kernelPref = findPreference(KEY_KERNEL_VERSION);
+        if (kernelPref != null) {
+            getPreferenceScreen().removePreference(kernelPref);
+        }
         String mMbnVersion = getMBNVersionValue();
         setStringSummary(KEY_MBN_VERSION, mMbnVersion);
         if(mMbnVersion == null){
@@ -195,13 +195,16 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         // These are contained by the root preference screen
         PreferenceGroup parentPreference = getPreferenceScreen();
 
-        if (mUm.isAdminUser()) {
-            Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
-                    KEY_SYSTEM_UPDATE_SETTINGS,
-                    Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
-        } else {
-            // Remove for secondary users
-            removePreference(KEY_SYSTEM_UPDATE_SETTINGS);
+        Preference sysUpdatePref = findPreference(KEY_SYSTEM_UPDATE_SETTINGS);
+        if (sysUpdatePref != null) {
+            sysUpdatePref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent intent = new Intent(getActivity(), com.android.settings.deviceinfo.KiroOSUpdateActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+            });
         }
 
         // Read platform settings for additional system update setting

@@ -31,14 +31,14 @@
     <string name="root_access_all">แอปและ ADB</string>
     <string name="root_appops_title">จัดการการเข้าถึง root</string>
     <string name="root_appops_summary">ดูและควบคุมกฎของ root</string>
-    <string name="mod_version">รุ่นของ LineageOS</string>
+    <string name="mod_version">รุ่นของ KiroOS</string>
     <string name="mod_version_default">ไม่รู้จัก</string>
     <string name="device_model">รุ่นอุปกรณ์</string>
     <string name="device_name">ชื่ออุปกรณ์</string>
-    <string name="mod_api_level">ระดับ API ของ LineageOS</string>
+    <string name="mod_api_level">ระดับ API ของ KiroOS</string>
     <string name="mod_api_level_default">ไม่รู้จัก</string>
     <string name="build_date">วันที่สร้าง</string>
-    <string name="cmupdate_settings_title">การอัปเดตรุ่น LineageOS</string>
+    <string name="cmupdate_settings_title">การอัปเดตรุ่น KiroOS</string>
     <string name="app_ops_categories_location">ตำแหน่งที่ตั้ง</string>
     <string name="app_ops_categories_personal">ส่วนบุคคล</string>
     <string name="app_ops_categories_messaging">ข้อความ</string>
@@ -288,7 +288,7 @@
     <string name="sim_mobile_network_settings_category_title">การตั้งค่าเครือข่ายโทรศัพท์</string>
     <string name="sim_mobile_network_settings_title">การตั้งค่าซิม %d</string>
     <string name="nfc_title_category">NFC</string>
-    <string name="cmlicense_title">เกี่ยวกับกฎหมาย LineageOS</string>
+    <string name="cmlicense_title">เกี่ยวกับกฎหมาย KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">ค้นหาเซ็นเซอร์ลายนิ้วมือที่ <xliff:g id="sensor_location">%1$s</xliff:g> ของโทรศัพท์ของคุณ</string>
     <string name="security_settings_fingerprint_sensor_location_back">ด้านหลัง</string>
     <string name="security_settings_fingerprint_sensor_location_front">ด้านหน้า</string>

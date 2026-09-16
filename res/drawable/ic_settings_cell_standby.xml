@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Modern Cell Standby Vector -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0">
+    <path android:pathData="M 4,16.5 A 1.5,1.5 0 0 1 5.5,18 L 5.5,20.5 A 1.5,1.5 0 0 1 4,22 A 1.5,1.5 0 0 1 2.5,20.5 L 2.5,18 A 1.5,1.5 0 0 1 4,16.5 Z"
+          android:fillColor="#FF2196F3" />
+    <path android:pathData="M 9,12 A 1.5,1.5 0 0 1 10.5,13.5 L 10.5,20.5 A 1.5,1.5 0 0 1 9,22 A 1.5,1.5 0 0 1 7.5,20.5 L 7.5,13.5 A 1.5,1.5 0 0 1 9,12 Z"
+          android:fillColor="#FF2196F3" />
+    <path android:pathData="M 14,7.5 A 1.5,1.5 0 0 1 15.5,9 L 15.5,20.5 A 1.5,1.5 0 0 1 14,22 A 1.5,1.5 0 0 1 12.5,20.5 L 12.5,9 A 1.5,1.5 0 0 1 14,7.5 Z"
+          android:fillColor="#FF2196F3" />
+    <path android:pathData="M 19,3 A 1.5,1.5 0 0 1 20.5,4.5 L 20.5,20.5 A 1.5,1.5 0 0 1 19,22 A 1.5,1.5 0 0 1 17.5,20.5 L 17.5,4.5 A 1.5,1.5 0 0 1 19,3 Z"
+          android:fillColor="#FF2196F3" />
+</vector>

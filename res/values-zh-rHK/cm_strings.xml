@@ -23,12 +23,12 @@
     <string name="root_access_apps">僅限應用程式</string>
     <string name="root_access_adb">僅限 ADB</string>
     <string name="root_access_all">應用程式和 ADB</string>
-    <string name="mod_version">LineageOS 版本</string>
+    <string name="mod_version">KiroOS 版本</string>
     <string name="mod_version_default">不明</string>
     <string name="device_name">裝置名稱</string>
     <string name="mod_api_level_default">不明</string>
     <string name="build_date">版本日期</string>
-    <string name="cmupdate_settings_title">LineageOS 更新</string>
+    <string name="cmupdate_settings_title">KiroOS 更新</string>
     <string name="app_ops_categories_location">位置</string>
     <string name="app_ops_categories_personal">個人</string>
     <string name="app_ops_categories_messaging">訊息</string>
@@ -165,7 +165,7 @@
     <string name="adb_over_network_warning">警告：啟用透過網絡連接 ADB 後，所有已連接的網絡均可能入侵您的手機！\n\n建議您連接到信任的網絡時才使用此功能。\n\n您確定想啟用此功能嗎？</string>
     <string name="device_hostname">裝置主機名稱</string>
     <string name="increasing_ring_ramp_up_time_title">漸強時間</string>
-    <string name="cmlicense_title">LineageOS 法律條款</string>
+    <string name="cmlicense_title">KiroOS 法律條款</string>
     <string name="wifi_setting_countrycode_title">Wi\u2011Fi 區域代碼</string>
     <string name="wifi_setting_countrycode_summary">指定 Wi\u2011Fi 區域代碼</string>
     <string name="wifi_setting_countrycode_error">設定區域代碼時遇到了問題。</string>

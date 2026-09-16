@@ -26,11 +26,11 @@
     <string name="root_access_apps">Толькі для дадаткаў</string>
     <string name="root_access_adb">Толькі для ADB</string>
     <string name="root_access_all">Для дадаткаў і ADB</string>
-    <string name="mod_version">Версія LineageOS</string>
+    <string name="mod_version">Версія KiroOS</string>
     <string name="mod_version_default">Невядома</string>
     <string name="device_model">Мадэль прылады</string>
     <string name="device_name">Імя прылады</string>
-    <string name="mod_api_level">Узровень LineageOS API</string>
+    <string name="mod_api_level">Узровень KiroOS API</string>
     <string name="mod_api_level_default">Невядома</string>
     <string name="build_date">Дата зборкі</string>
     <string name="cmupdate_settings_title">Абнаўленні сістэмы</string>
@@ -257,7 +257,7 @@
     <string name="sim_mobile_network_settings_category_title">Налады мабільнай сеткі</string>
     <string name="sim_mobile_network_settings_title">Параметры SIM %d</string>
     <string name="nfc_title_category">NFC</string>
-    <string name="cmlicense_title">Палітыка прыватнасці LineageOS</string>
+    <string name="cmlicense_title">Палітыка прыватнасці KiroOS</string>
     <string name="wifi_setting_countrycode_title">Код рэгіёну Wi-Fi</string>
     <string name="wifi_setting_countrycode_summary">Пакажыце код рэгіёну Wi\u2011Fi</string>
     <string name="wifi_setting_countrycode_error">Пры наладзе кода рэгіёна Wi-Fi паўстала памылка.</string>

@@ -31,14 +31,14 @@
     <string name="root_access_all">Aplikasi dan ADB</string>
     <string name="root_appops_title">Kelola akses root</string>
     <string name="root_appops_summary">Lihat dan kontrol aturan akses root</string>
-    <string name="mod_version">Versi LineageOS</string>
+    <string name="mod_version">Versi KiroOS</string>
     <string name="mod_version_default">Tidak diketahui</string>
     <string name="device_model">Model perangkat</string>
     <string name="device_name">Nama perangkat</string>
-    <string name="mod_api_level">Tingkat API LineageOS</string>
+    <string name="mod_api_level">Tingkat API KiroOS</string>
     <string name="mod_api_level_default">Tidak diketahui</string>
     <string name="build_date">Tanggal pembuatan</string>
-    <string name="cmupdate_settings_title">Pembaruan LineageOS</string>
+    <string name="cmupdate_settings_title">Pembaruan KiroOS</string>
     <string name="app_ops_categories_location">Lokasi</string>
     <string name="app_ops_categories_personal">Pribadi</string>
     <string name="app_ops_categories_messaging">Pesan</string>
@@ -290,7 +290,7 @@
     <string name="sim_mobile_network_settings_title">Pengaturan SIM %d</string>
     <string name="nfc_title_category">Komunikasi jarak dekat</string>
     <string name="tuner_full_importance_settings">Kontrol kekuatan notifikasi</string>
-    <string name="cmlicense_title">Hukum LineageOS</string>
+    <string name="cmlicense_title">Hukum KiroOS</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Tempatkan sensor sidik jari pada <xliff:g id="sensor_location">%1$s</xliff:g> telepon anda.</string>
     <string name="security_settings_fingerprint_sensor_location_back">kembali</string>
     <string name="security_settings_fingerprint_sensor_location_front">depan</string>
