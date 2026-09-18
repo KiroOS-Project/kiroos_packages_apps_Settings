@@ -1136,4 +1136,19 @@
         <item>720</item>
     </string-array>
 
+    <!-- KiroOS Always On Display duration -->
+    <string-array name="kiroos_aod_timeout_entries">
+        <item>@string/kiroos_aod_timeout_5</item>
+        <item>@string/kiroos_aod_timeout_10</item>
+        <item>@string/kiroos_aod_timeout_30</item>
+        <item>@string/kiroos_aod_timeout_60</item>
+        <item>@string/kiroos_aod_timeout_always</item>
+    </string-array>
+    <string-array name="kiroos_aod_timeout_values" translatable="false">
+        <item>5</item>
+        <item>10</item>
+        <item>30</item>
+        <item>60</item>
+        <item>0</item>
+    </string-array>
 </resources>

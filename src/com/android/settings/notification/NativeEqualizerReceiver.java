@@ -15,17 +15,6 @@ public class NativeEqualizerReceiver extends BroadcastReceiver {
         String action = intent.getAction();
         Log.d(TAG, "onReceive action: " + action);
 
-        if (Intent.ACTION_BOOT_COMPLETED.equals(action)) {
-            try {
-                Class<?> sysProp = Class.forName("android.os.SystemProperties");
-                java.lang.reflect.Method setMethod = sysProp.getMethod("set", String.class, String.class);
-                setMethod.invoke(null, "persist.sys.kiro_updating", "0");
-            } catch (Exception ignored) {}
-            try {
-                new java.io.File("/cache/kiro_updating").delete();
-            } catch (Exception ignored) {}
-        }
-
         Intent serviceIntent = new Intent(context, NativeEqualizerService.class);
         serviceIntent.setAction(action);
 

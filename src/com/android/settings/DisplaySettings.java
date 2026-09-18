@@ -36,6 +36,8 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+
+import com.android.internal.hardware.AmbientDisplayConfiguration;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.DropDownPreference;
 import android.support.v7.preference.ListPreference;
@@ -115,6 +117,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mCameraGesturePreference;
     private static final String KEY_DISPLAY_RESOLUTION = "display_resolution";
     private static final String KEY_TOUCHKEY_LED = "touchkey_led_toggle";
+    private static final String KEY_KIROOS_AOD = "kiroos_aod";
+    private static final String KEY_KIROOS_AOD_TIMEOUT = "kiroos_aod_timeout";
     private static final String KEY_ONSCREEN_NAVBAR = "onscreen_navbar_toggle";
 
     private ListPreference mDisplayResolutionPref;
@@ -152,9 +156,39 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             updateDisplayResolutionSummary();
         }
 
+        // KiroOS: always on display (read by SystemUI's doze service)
+        final SwitchPreference aodPref = (SwitchPreference) findPreference(KEY_KIROOS_AOD);
+        final ListPreference aodTimeoutPref = (ListPreference) findPreference(KEY_KIROOS_AOD_TIMEOUT);
+        if (aodPref != null && aodTimeoutPref != null) {
+            final android.content.ContentResolver cr = getContentResolver();
+            aodPref.setChecked(Settings.Secure.getInt(cr,
+                    AmbientDisplayConfiguration.ALWAYS_ON_ENABLED, 1) != 0);
+            aodPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    Settings.Secure.putInt(cr, AmbientDisplayConfiguration.ALWAYS_ON_ENABLED,
+                            (Boolean) newValue ? 1 : 0);
+                    return true;
+                }
+            });
+            aodTimeoutPref.setValue(String.valueOf(Settings.Secure.getInt(cr,
+                    AmbientDisplayConfiguration.ALWAYS_ON_TIMEOUT,
+                    AmbientDisplayConfiguration.ALWAYS_ON_DEFAULT_TIMEOUT)));
+            aodTimeoutPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    Settings.Secure.putInt(cr, AmbientDisplayConfiguration.ALWAYS_ON_TIMEOUT,
+                            Integer.parseInt((String) newValue));
+                    return true;
+                }
+            });
+        }
         mTouchkeyLedPref = (SwitchPreference) findPreference(KEY_TOUCHKEY_LED);
         if (mTouchkeyLedPref != null) {
-            boolean ledOn = !"0".equals(SystemProperties.get("persist.sys.touchkey_led", "1"));
+            // The LED follows the button brightness used by the power manager: with 0 it is
+            // never lit again on touch (the touch keys themselves keep working).
+            boolean ledOn = cyanogenmod.providers.CMSettings.Secure.getInt(getContentResolver(),
+                    cyanogenmod.providers.CMSettings.Secure.BUTTON_BRIGHTNESS, 255) > 0;
             mTouchkeyLedPref.setChecked(ledOn);
             mTouchkeyLedPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
@@ -164,20 +198,16 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     try {
                         cyanogenmod.providers.CMSettings.Secure.putInt(getContentResolver(),
                                 cyanogenmod.providers.CMSettings.Secure.BUTTON_BRIGHTNESS, enabled ? 255 : 0);
-                    } catch (Exception ignored) {}
+                    } catch (Exception e) {
+                        Log.e(TAG, "Failed to save button brightness", e);
+                        return false;
+                    }
                     try {
                         FileWriter fw = new FileWriter("/sys/class/sec/sec_touchkey/brightness");
                         fw.write(enabled ? "1\n" : "0\n");
                         fw.close();
                     } catch (Exception e) {
-                        Log.e(TAG, "Failed writing to touchkey brightness", e);
-                    }
-                    try {
-                        FileWriter fw = new FileWriter("/sys/class/sec/sec_touchkey/input/enabled");
-                        fw.write(enabled ? "1\n" : "0\n");
-                        fw.close();
-                    } catch (Exception e) {
-                        Log.e(TAG, "Failed writing to touchkey input enabled", e);
+                        Log.w(TAG, "Failed writing to touchkey brightness", e);
                     }
                     return true;
                 }
@@ -199,8 +229,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                         fw.close();
                     } catch (Exception ignored) {}
                     try {
+                        boolean ledOn = cyanogenmod.providers.CMSettings.Secure.getInt(
+                                getContentResolver(),
+                                cyanogenmod.providers.CMSettings.Secure.BUTTON_BRIGHTNESS, 255) > 0;
                         FileWriter fw = new FileWriter("/sys/class/sec/sec_touchkey/brightness");
-                        fw.write(enabled ? "0\n" : "1\n");
+                        fw.write(!enabled && ledOn ? "1\n" : "0\n");
                         fw.close();
                     } catch (Exception ignored) {}
                     Toast.makeText(getActivity(), R.string.navbar_reboot_notice, Toast.LENGTH_LONG).show();

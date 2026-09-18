@@ -2124,6 +2124,13 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             return false;
         }
 
+        if ("kiroos_diag".equals(preference.getKey())) {
+            // KiroOS: init runs /system/bin/kiroos_diag.sh when this property changes
+            SystemProperties.set("debug.kiroos.diag", "snapshot");
+            Toast.makeText(getActivity(), R.string.kiroos_diag_started, Toast.LENGTH_LONG).show();
+            return true;
+        }
+
         if (preference == mEnableAdb) {
             if (mEnableAdb.isChecked()) {
                 mDialogClicked = false;

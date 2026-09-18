@@ -33,6 +33,12 @@
             android:title="@*android:string/bugreport_title"
             android:dialogTitle="@*android:string/bugreport_title" />
 
+    <!-- KiroOS: local diagnostics report (kiroos_diag.sh) -->
+    <Preference
+            android:key="kiroos_diag"
+            android:title="@string/kiroos_diag_title"
+            android:summary="@string/kiroos_diag_summary" />
+
     <cyanogenmod.preference.CMSecureSettingSwitchPreference
             android:key="advanced_reboot"
             android:title="@string/advanced_reboot_title"

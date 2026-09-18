@@ -2,9 +2,10 @@ package com.android.settings.deviceinfo;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Environment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceViewHolder;
+import android.text.TextUtils;
+import android.text.format.Formatter;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 
 import com.android.settings.R;
 
-import java.io.File;
+import java.util.Locale;
 
 public class KiroOSColorOSCardPreference extends Preference {
 
@@ -43,38 +44,6 @@ public class KiroOSColorOSCardPreference extends Preference {
         setSelectable(false);
     }
 
-    private boolean isUpdatePackageAvailable() {
-        String[] candidatePaths = new String[]{
-                "/sdcard/KiroOS-1.0-20260912-zerofltexx.zip",
-                "/storage/emulated/0/KiroOS-1.0-20260912-zerofltexx.zip",
-                "/data/media/0/KiroOS-1.0-20260912-zerofltexx.zip",
-                "/sdcard/Download/KiroOS-1.0-20260912-zerofltexx.zip",
-                "/storage/emulated/0/Download/KiroOS-1.0-20260912-zerofltexx.zip"
-        };
-        for (String p : candidatePaths) {
-            File f = new File(p);
-            if (f.exists() && f.length() > 1000000) {
-                return true;
-            }
-        }
-        try {
-            File ext = Environment.getExternalStorageDirectory();
-            if (ext != null && ext.exists()) {
-                File direct = new File(ext, "KiroOS-1.0-20260912-zerofltexx.zip");
-                if (direct.exists() && direct.length() > 1000000) return true;
-                File[] files = ext.listFiles();
-                if (files != null) {
-                    for (File f : files) {
-                        if (f.isFile() && f.getName().startsWith("KiroOS-") && f.getName().endsWith(".zip") && f.length() > 1000000) {
-                            return true;
-                        }
-                    }
-                }
-            }
-        } catch (Exception ignored) {}
-        return true; // Target package is staged for update
-    }
-
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
@@ -88,27 +57,52 @@ public class KiroOSColorOSCardPreference extends Preference {
         TextView changelogTitle = (TextView) root.findViewById(R.id.kiroos_changelog_title);
         TextView changelogSummary = (TextView) root.findViewById(R.id.kiroos_changelog_summary);
 
-        boolean updateReady = isUpdatePackageAvailable();
+        // Installed version and channel come from the build properties.
+        String channel = KiroOSUpdateManager.installedChannel();
+        if (topBadge != null) {
+            topBadge.setVisibility(TextUtils.isEmpty(channel) ? View.GONE : View.VISIBLE);
+            topBadge.setText(channel.toUpperCase(Locale.getDefault()));
+        }
+        if (versionSub != null) {
+            versionSub.setText(KiroOSUpdateManager.installedVersion());
+        }
 
-        if (updateReady) {
-            if (topBadge != null) {
-                topBadge.setText(R.string.kiroos_badge_dev_beta);
-            }
+        // Update status comes from the last real check (screen or background job): never claim
+        // "up to date" on its own, only show what the last answer of the server said and when.
+        Context context = getContext();
+        KiroOSUpdateJobService.schedule(context);
+        KiroOSUpdateManager.UpdateInfo cached = KiroOSUpdateManager.loadCachedInfo(context);
+        boolean available = cached != null && KiroOSUpdateManager.isNewer(cached);
+        if (changelogTitle != null) changelogTitle.setVisibility(available ? View.VISIBLE : View.GONE);
+        if (changelogSummary != null) {
+            changelogSummary.setVisibility(available && !TextUtils.isEmpty(cached.changelog)
+                    ? View.VISIBLE : View.GONE);
+        }
+        if (available) {
             if (statusBadge != null) {
                 statusBadge.setText(R.string.kiroos_status_update_available);
                 statusBadge.setTextColor(0xFF00E5FF);
             }
-            if (versionSub != null) {
-                versionSub.setText(R.string.kiroos_software_version_beta2);
-            }
             if (changelogTitle != null) {
-                changelogTitle.setText(R.string.kiroos_changelog_title_beta2);
+                changelogTitle.setText(context.getString(R.string.kiroos_ota_release_notes,
+                        cached.displayName()));
             }
-            if (changelogSummary != null) {
-                changelogSummary.setText(R.string.kiroos_release_notes_beta2);
+            if (changelogSummary != null && !TextUtils.isEmpty(cached.changelog)) {
+                changelogSummary.setText(cached.changelog);
             }
             if (checkUpdatesBtn != null) {
-                checkUpdatesBtn.setText(R.string.kiroos_btn_install_now);
+                checkUpdatesBtn.setText(context.getString(R.string.kiroos_ota_download,
+                        Formatter.formatFileSize(context, cached.size)));
+            }
+        } else if (statusBadge != null) {
+            long last = KiroOSUpdateManager.lastCheck(context);
+            if (last == 0) {
+                statusBadge.setText(R.string.kiroos_status_not_checked);
+            } else {
+                statusBadge.setText(context.getString(R.string.kiroos_ota_last_check,
+                        android.text.format.DateUtils.formatDateTime(context, last,
+                                android.text.format.DateUtils.FORMAT_SHOW_DATE
+                                        | android.text.format.DateUtils.FORMAT_SHOW_TIME)));
             }
         }
 

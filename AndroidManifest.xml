@@ -90,6 +90,7 @@
 
     <uses-permission android:name="cyanogenmod.permission.PROTECTED_APP" />
     <uses-permission android:name="cyanogenmod.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="cyanogenmod.permission.WRITE_SECURE_SETTINGS" />
     <uses-permission android:name="cyanogenmod.permission.MANAGE_REMOTE_PREFERENCES" />
 
     <application android:label="@string/settings_label"
@@ -3240,6 +3241,21 @@
         </receiver>
 
     
+        <service android:name=".deviceinfo.KiroOSUpdateService"
+                 android:exported="false" />
+
+        <!-- KiroOS: periodic background check for new updates -->
+        <service android:name=".deviceinfo.KiroOSUpdateJobService"
+                 android:permission="android.permission.BIND_JOB_SERVICE"
+                 android:exported="false" />
+        <receiver android:name=".deviceinfo.KiroOSUpdateJobService$BootReceiver"
+                  android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".deviceinfo.KiroOSUpdateActivity"
                   android:label="@string/kiroos_updater_title"
                   android:icon="@drawable/ic_kiroos_logo"

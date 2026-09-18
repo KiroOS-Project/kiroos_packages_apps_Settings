@@ -91,6 +91,21 @@
                 android:title="@string/doze_title"
                 android:summary="@string/doze_summary" />
 
+        <!-- KiroOS: always on display -->
+        <SwitchPreference
+                android:key="kiroos_aod"
+                android:title="@string/kiroos_aod_title"
+                android:summary="@string/kiroos_aod_summary"
+                android:persistent="false" />
+
+        <ListPreference
+                android:key="kiroos_aod_timeout"
+                android:title="@string/kiroos_aod_timeout_title"
+                android:summary="%s"
+                android:entries="@array/kiroos_aod_timeout_entries"
+                android:entryValues="@array/kiroos_aod_timeout_values"
+                android:dependency="kiroos_aod"
+                android:persistent="false" />
         <cyanogenmod.preference.RemotePreference
                 android:key="doze_device_settings"
                 android:title="@string/doze_title"

@@ -26,6 +26,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.provider.SearchIndexableResource;
+import android.text.TextUtils;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceScreen;
@@ -64,6 +65,13 @@ public class LegalSettings extends SettingsPreferenceFragment implements Indexab
                 Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
         Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference, KEY_WEBVIEW_LICENSE,
                 Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
+        // KiroOS: no legal page is published yet, show the entry only when a URL is configured
+        if (TextUtils.isEmpty(SystemProperties.get(PROPERTY_CMLICENSE_URL))) {
+            Preference cmLicense = parentPreference.findPreference(KEY_CM_LICENSE);
+            if (cmLicense != null) {
+                parentPreference.removePreference(cmLicense);
+            }
+        }
     }
 
     @Override

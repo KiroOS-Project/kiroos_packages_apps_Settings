@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/kiroos_device_title"
-            android:textColor="#B0BEC5"
+            android:textColor="#B0B0B5"
             android:textSize="13sp"
             android:layout_marginTop="2dp" />
     </LinearLayout>
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="16dp"
-        android:background="#161616"
+        android:background="#181818"
         android:padding="18dp">
 
         <TextView
@@ -105,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/kiroos_software_version_sub"
-            android:textColor="#8E8E93"
+            android:textColor="#B0B0B5"
             android:textSize="13sp"
             android:layout_marginTop="4dp" />
 

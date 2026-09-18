@@ -3276,13 +3276,24 @@
     <string name="bluetooth_connect_access_dialog_content" msgid="4336436466468405850">"<xliff:g id="DEVICE_NAME_0">%1$s</xliff:g> vorrebbe connettersi a questo telefono.\n\nNon hai mai effettuato la connessione al dispositivo <xliff:g id="DEVICE_NAME_1">%2$s</xliff:g>."</string>
     <string name="bluetooth_connect_access_dialog_negative" msgid="4944672755226375059">"Non connettere"</string>
     <string name="bluetooth_connect_access_dialog_positive" msgid="3630561675207269710">"Connetti"</string>
-        <string name="display_resolution_title">Risoluzione display</string>
+    <string name="display_resolution_title">Risoluzione display</string>
     <string name="display_resolution_summary">Regola la risoluzione tra 720p (HD), 1080p (FHD) e 1440p (2K)</string>
     <string name="touchkey_led_title">Illuminazione tasti a sfioramento</string>
     <string name="touchkey_led_summary">Illumina i tasti soft touch alla pressione</string>
     <string name="onscreen_navbar_title">Barra di navigazione a schermo</string>
     <string name="onscreen_navbar_summary">Abilita la barra di navigazione software a schermo</string>
     <string name="navbar_reboot_notice">Modifica salvata. Riavvia il dispositivo per applicare la barra di navigazione a schermo.</string>
+    <string name="kiroos_aod_title">Always On Display</string>
+    <string name="kiroos_aod_summary">Mostra orologio e notifiche a schermo spento</string>
+    <string name="kiroos_aod_timeout_title">Mostra per</string>
+    <string name="kiroos_aod_timeout_5">5 minuti</string>
+    <string name="kiroos_aod_timeout_10">10 minuti</string>
+    <string name="kiroos_aod_timeout_30">30 minuti</string>
+    <string name="kiroos_aod_timeout_60">1 ora</string>
+    <string name="kiroos_aod_timeout_always">Sempre (consuma più batteria)</string>
+    <string name="kiroos_diag_title">Salva diagnostica KiroOS</string>
+    <string name="kiroos_diag_summary">Salva log, messaggi del kernel, dati di batteria e temperatura nella memoria interna (KiroOS/diagnostics). Non viene inviato nulla.</string>
+    <string name="kiroos_diag_started">Salvataggio diagnostica in KiroOS/diagnostics…</string>
     <string name="native_equalizer_title">Equalizzatore KiroOS</string>
     <string name="native_equalizer_summary">Regolazione frequenze a 5 bande, Bass Boost e profili DSP</string>
     <string name="kiroos_about_summary">KiroOS 1.0 per Samsung Galaxy S6</string>
@@ -3297,45 +3308,80 @@
 
     <!-- ColorOS Style KiroOS Hero Card Strings -->
     <string name="kiroos_version_title">1.0</string>
-    <string name="kiroos_badge_internal_beta">BETA INTERNA</string>
-    <string name="kiroos_status_updated">Sistema aggiornato</string>
+    <string name="kiroos_badge_internal_beta"></string>
+    <string name="kiroos_status_updated"></string>
     <string name="kiroos_brand_name">KiroOS</string>
     <string name="kiroos_device_title">Samsung Galaxy S6 (SM-G920F)</string>
-    <string name="kiroos_software_version_title">Versione Software KiroOS</string>
-    <string name="kiroos_software_version_sub">KiroOS 1.0 Beta Interna</string>
-    <string name="kiroos_changelog_title">Changelog • KiroOS 1.0</string>
-    <string name="kiroos_changelog_summary">• Interfaccia scattante e leggera con animazioni fluide a 0.75x\n• Tema Pure Black AMOLED nativo esteso alle Impostazioni\n• Status bar rinnovata con indicatori di segnale verticali e batteria portrait\n• Control Center e Lockscreen completamente rinnovati\n• Equalizzatore DSP permanente attivo in background e audio stereo</string>
+    <string name="kiroos_software_version_title">Versione software</string>
+    <string name="kiroos_software_version_sub">KiroOS 1.0</string>
+    <string name="kiroos_changelog_title">Novità</string>
+    <string name="kiroos_changelog_summary"></string>
     <string name="kiroos_btn_check_updates_text">Cerca aggiornamenti</string>
 
     <!-- KiroOS Internal Updater Activity Strings -->
     <string name="kiroos_update_version_header">KiroOS 1.0</string>
 
-    <!-- KiroOS Updater Beta 2 Strings -->
+    <!-- KiroOS OTA updater strings -->
     <string name="kiroos_updater_title">Aggiornamento KiroOS</string>
-    <string name="kiroos_update_version_header">KiroOS 1.0</string>
-    <string name="kiroos_badge_dev_beta">DEVELOPER BETA 2</string>
-    <string name="kiroos_updater_package_found">KiroOS 1.0 Developer Beta 2</string>
-    <string name="kiroos_updater_package_desc">Pacchetto di sistema verificato pronto per il download e l\'installazione (%s).</string>
-    <string name="kiroos_updater_btn_download_install">Scarica e Installa</string>
-    <string name="kiroos_updater_btn_downloading">Download in corso...</string>
-    <string name="kiroos_updater_downloading_title">Download aggiornamento in corso...</string>
+    <string name="kiroos_badge_dev_beta"></string>
+    <string name="kiroos_updater_package_found">Ricerca aggiornamenti…</string>
+    <string name="kiroos_updater_package_desc"></string>
+    <string name="kiroos_updater_btn_download_install">Verifica aggiornamenti</string>
     <string name="kiroos_updater_initial_progress">0%</string>
-    <string name="kiroos_updater_download_complete">Download completato (100%)</string>
-    <string name="kiroos_updater_verifying_reboot">Verifica del pacchetto e preparazione al riavvio...</string>
-    <string name="kiroos_updater_rebooting_screen">Riavvio nella schermata di aggiornamento KiroOS...</string>
-    <string name="kiroos_updater_btn_check">Verifica aggiornamenti</string>
-    <string name="kiroos_updater_checking_title">Verifica disponibilità in corso...</string>
-    <string name="kiroos_updater_checking_desc">Connessione ai server KiroOS in corso...</string>
-    <string name="kiroos_updater_toast_latest">Aggiornamento KiroOS 1.0 Developer Beta 2 disponibile!</string>
-    <string name="kiroos_updater_release_notes_title">Note di Rilascio • Developer Beta 2</string>
-    <string name="kiroos_updater_release_notes_content">• Aggiornamento Seamless Boot: Nuovo motore di aggiornamento nativo KiroOS integrato nella boot animation con caricamento fluido senza TWRP.&#10;&#10;• OTA Download Engine: Interfaccia realistica con monitoraggio del download, calcolo MB/s e avanzamento percentuale.&#10;&#10;• Ottimizzazioni Super AMOLED: Tema scuro ad altissimo contrasto (#000000) per azzerare i consumi dello schermo.&#10;&#10;• Performance &amp; Stabilità: Kernel governor reattivo, zero throttling e boot logo Samsung Powered by KiroDev.</string>
+    <string name="kiroos_updater_release_notes_title">Novità</string>
+    <string name="kiroos_updater_release_notes_content"></string>
     <string name="kiroos_updater_spec_title">Specifiche Dispositivo &amp; Architettura</string>
-    <string name="kiroos_updater_spec_content">Modello: Samsung Galaxy S6 (SM-G920F)&#10;Piattaforma: Exynos 7420 Octa-Core 64-bit&#10;Display: 5.1" Quad HD Super AMOLED (2560x1440)&#10;Canale di rilascio: KiroDev Developer Channel</string>
-    <!-- Dynamic Beta 2 Hero Card Strings -->
-    <string name="kiroos_updater_summary">KiroOS 1.0 Developer Beta 2 disponibile (692 MB)</string>
-    <string name="kiroos_status_update_available">Aggiornamento disponibile • Developer Beta 2</string>
-    <string name="kiroos_software_version_beta2">KiroOS 1.0 Developer Beta 2 (692 MB)</string>
-    <string name="kiroos_changelog_title_beta2">Novità • Developer Beta 2</string>
-    <string name="kiroos_release_notes_beta2">• Aggiornamento Seamless Boot: Nuovo motore di aggiornamento nativo integrato nella boot animation con caricamento fluido senza passare da TWRP.\n• OTA Download Engine: Interfaccia realistica con monitoraggio del download, calcolo MB/s e avanzamento percentuale.\n• Ottimizzazioni Super AMOLED: Tema scuro ad altissimo contrasto (#000000) per azzerare i consumi dello schermo.\n• Prestazioni e stabilità: Kernel reattivo senza surriscaldamento o throttling, con boot logo Samsung Powered by KiroDev.</string>
-    <string name="kiroos_btn_install_now">Scarica e Installa (692 MB)</string>
+    <string name="kiroos_spec_model">Modello</string>
+    <string name="kiroos_spec_codename">Nome in codice</string>
+    <string name="kiroos_spec_platform">Piattaforma</string>
+    <string name="kiroos_spec_cpu">CPU</string>
+    <string name="kiroos_spec_gpu">GPU</string>
+    <string name="kiroos_spec_arch">Architettura</string>
+    <string name="kiroos_spec_ram">RAM</string>
+    <string name="kiroos_spec_storage">Memoria</string>
+    <string name="kiroos_spec_display">Display</string>
+    <string name="kiroos_spec_resolution">Risoluzione in uso</string>
+    <string name="kiroos_spec_android">Android</string>
+    <string name="kiroos_spec_security">Patch di sicurezza</string>
+    <string name="kiroos_spec_kernel">Kernel</string>
+    <string name="kiroos_spec_baseband">Baseband</string>
+    <string name="kiroos_spec_build">Build</string>
+    <string name="kiroos_spec_channel">Canale di rilascio</string>
+    <string name="kiroos_spec_storage_value">%1$s totali, %2$s liberi</string>
+    <string name="kiroos_updater_summary">Verifica aggiornamenti di sistema</string>
+    <string name="kiroos_status_update_available">Aggiornamento disponibile</string>
+    <string name="kiroos_status_not_checked">Tocca per cercare aggiornamenti</string>
+
+    <string name="kiroos_ota_check">Verifica aggiornamenti</string>
+    <string name="kiroos_ota_checking">Ricerca aggiornamenti…</string>
+    <string name="kiroos_ota_checking_desc">Connessione al server aggiornamenti KiroOS</string>
+    <string name="kiroos_ota_up_to_date">Il sistema è aggiornato</string>
+    <string name="kiroos_ota_last_check">Ultimo controllo: %1$s</string>
+    <string name="kiroos_ota_available">%1$s è disponibile</string>
+    <string name="kiroos_ota_size">Dimensione: %1$s</string>
+    <string name="kiroos_ota_size_incremental">Aggiornamento incrementale, solo le modifiche: %1$s (pacchetto completo %2$s)</string>
+    <string name="kiroos_ota_download">Scarica (%1$s)</string>
+    <string name="kiroos_ota_downloading">Download dell\'aggiornamento…</string>
+    <string name="kiroos_ota_download_progress">%1$s di %2$s • %3$s/s • %4$s rimanenti</string>
+    <string name="kiroos_ota_cancel">Annulla</string>
+    <string name="kiroos_ota_verifying">Verifica del pacchetto…</string>
+    <string name="kiroos_ota_verifying_desc">Controllo di integrità e firma</string>
+    <string name="kiroos_ota_ready">Aggiornamento pronto per l\'installazione</string>
+    <string name="kiroos_ota_ready_desc">Il telefono si riavvierà e installerà l\'aggiornamento. Può richiedere alcuni minuti: non spegnerlo.</string>
+    <string name="kiroos_ota_install">Riavvia e installa</string>
+    <string name="kiroos_ota_installing">Preparazione dell\'installazione…</string>
+    <string name="kiroos_ota_error">Errore di aggiornamento</string>
+    <string name="kiroos_ota_err_server">Impossibile contattare il server aggiornamenti (%1$s)</string>
+    <string name="kiroos_ota_err_download">Download non riuscito. Controlla la connessione e riprova.</string>
+    <string name="kiroos_ota_err_md5">Il pacchetto scaricato è danneggiato ed è stato eliminato.</string>
+    <string name="kiroos_ota_err_signature">La firma del pacchetto non è valida per questo sistema.</string>
+    <string name="kiroos_ota_err_battery">Carica la batteria almeno al %1$d%% o collega il caricabatterie.</string>
+    <string name="kiroos_ota_err_space">Spazio insufficiente per scaricare l\'aggiornamento.</string>
+    <string name="kiroos_ota_err_install">Impossibile avviare l\'installazione.</string>
+    <string name="kiroos_ota_retry">Riprova</string>
+    <string name="kiroos_ota_server_offline">Il server aggiornamenti al momento è offline: il download funzionerà appena tornerà online.</string>
+    <string name="kiroos_ota_server_title">Server aggiornamenti</string>
+    <string name="kiroos_ota_server_saved">Server aggiornamenti salvato</string>
+    <string name="kiroos_ota_notification_title">Aggiornamento KiroOS</string>
+    <string name="kiroos_ota_release_notes">Novità • %1$s</string>
 </resources>
