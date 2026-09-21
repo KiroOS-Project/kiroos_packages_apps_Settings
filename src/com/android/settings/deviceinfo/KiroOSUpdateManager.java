@@ -276,12 +276,22 @@ public class KiroOSUpdateManager {
      * IMEI / serial / account), model, KiroOS and Android version, language, SIM/network
      * country and carrier. Can be turned off on the update screen.
      */
+    /** Settings.Global flag shared with Kiro Setup Wizard (the choice made during setup). */
+    public static final String GLOBAL_SHARE_STATS = "kiroos_share_stats";
+
     public static boolean statsEnabled(Context c) {
+        final String global = android.provider.Settings.Global.getString(c.getContentResolver(),
+                GLOBAL_SHARE_STATS);
+        if (global != null) {
+            return !"0".equals(global);
+        }
         return prefs(c).getBoolean(PREF_SHARE_STATS, true);
     }
 
     public static void setStatsEnabled(Context c, boolean on) {
         prefs(c).edit().putBoolean(PREF_SHARE_STATS, on).apply();
+        android.provider.Settings.Global.putInt(c.getContentResolver(), GLOBAL_SHARE_STATS,
+                on ? 1 : 0);
     }
 
     private static String installId(Context c) {
