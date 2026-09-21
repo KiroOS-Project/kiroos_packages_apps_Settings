@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS: Settings > Display > Edge screen (S6 edge / S6 edge+) -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/kiroos_edge_title">
+
+    <PreferenceCategory
+            android:key="kiroos_edge_touch_category"
+            android:title="@string/kiroos_edge_touch_category">
+
+        <ListPreference
+                android:key="kiroos_edge_zone"
+                android:title="@string/kiroos_edge_zone_title"
+                android:dialogTitle="@string/kiroos_edge_zone_title"
+                android:entries="@array/kiroos_edge_zone_entries"
+                android:entryValues="@array/kiroos_edge_zone_values"
+                android:persistent="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:key="kiroos_edge_lighting_category"
+            android:title="@string/kiroos_edge_lighting_category">
+
+        <SwitchPreference
+                android:key="kiroos_edge_lighting"
+                android:title="@string/kiroos_edge_lighting_title"
+                android:summary="@string/kiroos_edge_lighting_summary"
+                android:persistent="false" />
+
+        <ListPreference
+                android:key="kiroos_edge_lighting_color"
+                android:title="@string/kiroos_edge_lighting_color_title"
+                android:dialogTitle="@string/kiroos_edge_lighting_color_title"
+                android:entries="@array/kiroos_edge_lighting_color_entries"
+                android:entryValues="@array/kiroos_edge_lighting_color_values"
+                android:dependency="kiroos_edge_lighting"
+                android:persistent="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

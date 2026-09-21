@@ -171,14 +171,56 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     return true;
                 }
             });
-            aodTimeoutPref.setValue(String.valueOf(Settings.Secure.getInt(cr,
-                    AmbientDisplayConfiguration.ALWAYS_ON_TIMEOUT,
-                    AmbientDisplayConfiguration.ALWAYS_ON_DEFAULT_TIMEOUT)));
+            aodTimeoutPref.setValue(String.valueOf(AmbientDisplayConfiguration
+                    .alwaysOnTimeoutSeconds(getActivity(), android.os.UserHandle.myUserId())));
+            aodTimeoutPref.setSummary(aodTimeoutPref.getEntry());
             aodTimeoutPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    Settings.Secure.putInt(cr, AmbientDisplayConfiguration.ALWAYS_ON_TIMEOUT,
+                    Settings.Secure.putInt(cr, AmbientDisplayConfiguration.ALWAYS_ON_TIMEOUT_SECONDS,
                             Integer.parseInt((String) newValue));
+                    int index = aodTimeoutPref.findIndexOfValue((String) newValue);
+                    if (index >= 0) aodTimeoutPref.setSummary(aodTimeoutPref.getEntries()[index]);
+                    return true;
+                }
+            });
+        }
+        // KiroOS: one switch for double tap to sleep (anywhere on the lock screen + status bar)
+        final SwitchPreference dt2sPref = (SwitchPreference) findPreference("kiroos_double_tap_sleep");
+        if (dt2sPref != null) {
+            dt2sPref.setChecked(cyanogenmod.providers.CMSettings.Secure.getInt(getContentResolver(),
+                    cyanogenmod.providers.CMSettings.Secure.DOUBLE_TAP_SLEEP_ANYWHERE, 0) == 1);
+            dt2sPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    final int on = (Boolean) newValue ? 1 : 0;
+                    cyanogenmod.providers.CMSettings.Secure.putInt(getContentResolver(),
+                            cyanogenmod.providers.CMSettings.Secure.DOUBLE_TAP_SLEEP_ANYWHERE, on);
+                    cyanogenmod.providers.CMSettings.System.putInt(getContentResolver(),
+                            cyanogenmod.providers.CMSettings.System.DOUBLE_TAP_SLEEP_GESTURE, on);
+                    return true;
+                }
+            });
+        }
+        // KiroOS: Edge screen exists only on the dual edge models (zerolte / zenlte); on the
+        // flat S6 (zeroflte) the whole screen is removed.
+        final Preference edgePref = findPreference("kiroos_edge_screen");
+        if (edgePref != null) {
+            final String device = SystemProperties.get("ro.product.device", "");
+            final boolean edge = com.android.settings.kiroos.KiroOSDevice.isEdge()
+                    || device.startsWith("zerolte") || device.startsWith("zenlte");
+            if (!edge || device.startsWith("zeroflte")) {
+                removeFromHierarchy(getPreferenceScreen(), edgePref);
+            }
+        }
+        // KiroOS: the touch IC watches for a swipe up while the screen is off (init applies it)
+        final SwitchPreference swipeWakePref = (SwitchPreference) findPreference("kiroos_swipe_wake");
+        if (swipeWakePref != null) {
+            swipeWakePref.setChecked(SystemProperties.getBoolean("persist.sys.kiroos.swipe_wake", false));
+            swipeWakePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    SystemProperties.set("persist.sys.kiroos.swipe_wake", (Boolean) newValue ? "1" : "0");
                     return true;
                 }
             });
@@ -528,7 +570,23 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mFontSizePref.setSummary(entries[index]);
     }
 
-    
+    /** Removes pref wherever it sits under group (it may be inside a category). */
+    private static boolean removeFromHierarchy(android.support.v7.preference.PreferenceGroup group,
+            Preference pref) {
+        if (group.removePreference(pref)) {
+            return true;
+        }
+        for (int i = 0; i < group.getPreferenceCount(); i++) {
+            final Preference child = group.getPreference(i);
+            if (child instanceof android.support.v7.preference.PreferenceGroup
+                    && removeFromHierarchy(
+                            (android.support.v7.preference.PreferenceGroup) child, pref)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void updateDisplayResolutionSummary() {
         if (mDisplayResolutionPref == null) return;
         try {

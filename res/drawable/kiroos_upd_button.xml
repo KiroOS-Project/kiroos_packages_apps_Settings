@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS updater: white pill button (ColorOS-like bottom action), dark gray when disabled -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#33000000">
+    <item>
+        <selector>
+            <item android:state_enabled="false">
+                <shape android:shape="rectangle">
+                    <solid android:color="#FF2C2C2E" />
+                    <corners android:radius="26dp" />
+                </shape>
+            </item>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#FFFFFFFF" />
+                    <corners android:radius="26dp" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>

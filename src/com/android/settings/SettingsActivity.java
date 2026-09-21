@@ -293,6 +293,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             UserDictionarySettings.class.getName(),
             HomeSettings.class.getName(),
             DisplaySettings.class.getName(),
+            com.android.settings.kiroos.KiroOSEdgeSettings.class.getName(),
+            com.android.settings.kiroos.KiroOSGameSpaceSettings.class.getName(),
             DeviceInfoSettings.class.getName(),
             ManageApplications.class.getName(),
             NotificationApps.class.getName(),

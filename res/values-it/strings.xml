@@ -3286,6 +3286,12 @@
     <string name="kiroos_aod_title">Always On Display</string>
     <string name="kiroos_aod_summary">Mostra orologio e notifiche a schermo spento</string>
     <string name="kiroos_aod_timeout_title">Mostra per</string>
+    <string name="kiroos_double_tap_sleep_title">Doppio tocco per spegnere lo schermo</string>
+    <string name="kiroos_double_tap_sleep_summary">Tocca due volte un\'area vuota della schermata di blocco o la barra di stato</string>
+    <string name="kiroos_swipe_wake_title">Gesti di accensione</string>
+    <string name="kiroos_swipe_wake_summary">Tocca due volte l\'Always On Display per accendere lo schermo. A schermo completamente spento, scorri verso l\'alto dal bordo inferiore vicino al tasto Home</string>
+    <string name="kiroos_aod_timeout_15s">15 secondi</string>
+    <string name="kiroos_aod_timeout_30s">30 secondi</string>
     <string name="kiroos_aod_timeout_5">5 minuti</string>
     <string name="kiroos_aod_timeout_10">10 minuti</string>
     <string name="kiroos_aod_timeout_30">30 minuti</string>
@@ -3313,6 +3319,9 @@
     <string name="kiroos_brand_name">KiroOS</string>
     <string name="kiroos_device_title">Samsung Galaxy S6 (SM-G920F)</string>
     <string name="kiroos_software_version_title">Versione software</string>
+    <string name="kiroos_about_version">Versione <xliff:g id="version">%1$s</xliff:g></string>
+    <string name="kiroos_stats_title">Condividi statistiche del dispositivo</string>
+    <string name="kiroos_stats_desc">Quando cerca aggiornamenti, il telefono comunica al server KiroOS modello, versione di KiroOS e Android, lingua, paese e operatore, con un codice casuale. Il server vede anche l\'indirizzo di rete. Nessun dato personale, IMEI o numero di serie.</string>
     <string name="kiroos_software_version_sub">KiroOS 1.0</string>
     <string name="kiroos_changelog_title">Novità</string>
     <string name="kiroos_changelog_summary"></string>

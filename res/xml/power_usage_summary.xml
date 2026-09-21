@@ -19,9 +19,15 @@
         android:title="@string/power_usage_summary_title"
         settings:keywords="@string/keywords_battery">
 
-        <!-- Performance profiles -->
-        <org.cyanogenmod.internal.cmparts.CMPartsPreference
-            android:key="perf_profile_settings" />
+        <!-- KiroOS performance profiles (Power saving / Balanced / Performance / Extreme):
+             persist.sys.kiroos.perf, applied to the CPU/GPU by init via kiroos_perf.sh -->
+        <ListPreference
+            android:key="kiroos_power_profile"
+            android:title="@string/kiroos_power_profile_title"
+            android:dialogTitle="@string/kiroos_power_profile_title"
+            android:entries="@array/kiroos_power_profile_entries"
+            android:entryValues="@array/kiroos_power_profile_values"
+            android:persistent="false" />
 
         <com.android.settings.fuelgauge.BatteryHistoryPreference
             android:key="battery_history" />

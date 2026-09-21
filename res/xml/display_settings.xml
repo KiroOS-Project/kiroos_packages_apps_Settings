@@ -106,6 +106,35 @@
                 android:entryValues="@array/kiroos_aod_timeout_values"
                 android:dependency="kiroos_aod"
                 android:persistent="false" />
+
+        <!-- KiroOS: double tap on the lock screen or the status bar turns the screen off -->
+        <SwitchPreference
+                android:key="kiroos_double_tap_sleep"
+                android:title="@string/kiroos_double_tap_sleep_title"
+                android:summary="@string/kiroos_double_tap_sleep_summary"
+                android:persistent="false" />
+
+        <!-- KiroOS: swipe up from the bottom edge with the screen off turns it on -->
+        <SwitchPreference
+                android:key="kiroos_swipe_wake"
+                android:title="@string/kiroos_swipe_wake_title"
+                android:summary="@string/kiroos_swipe_wake_summary"
+                android:persistent="false" />
+
+        <!-- KiroOS: Edge screen, only on the S6 edge / S6 edge+ (DisplaySettings removes it
+             on the flat S6) -->
+        <Preference
+                android:key="kiroos_edge_screen"
+                android:title="@string/kiroos_edge_title"
+                android:summary="@string/kiroos_edge_summary"
+                android:fragment="com.android.settings.kiroos.KiroOSEdgeSettings" />
+
+        <!-- KiroOS: Game Space -->
+        <Preference
+                android:key="kiroos_game_space"
+                android:title="@string/kiroos_game_space_title"
+                android:summary="@string/kiroos_game_space_summary"
+                android:fragment="com.android.settings.kiroos.KiroOSGameSpaceSettings" />
         <cyanogenmod.preference.RemotePreference
                 android:key="doze_device_settings"
                 android:title="@string/doze_title"

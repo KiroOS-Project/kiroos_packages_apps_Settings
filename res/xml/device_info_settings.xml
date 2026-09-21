@@ -22,12 +22,6 @@
         <com.android.settings.deviceinfo.KiroOSColorOSCardPreference
                 android:key="kiroos_hero_card" />
 
-        <!-- System update settings - launches activity -->
-        <PreferenceScreen android:key="system_update_settings"
-                android:title="@string/kiroos_updater_title"
-                android:summary="@string/kiroos_updater_summary">
-            <intent android:action="android.settings.SYSTEM_UPDATE_SETTINGS" />
-        </PreferenceScreen>
 
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
@@ -87,6 +81,22 @@
                 android:summary="@string/device_info_default"
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true"/>
+
+        <!-- KiroOS: battery capacity of the model (2550 / 2600 / 3000 mAh) -->
+        <Preference android:key="kiroos_battery_capacity"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:selectable="false"
+                android:title="@string/kiroos_battery_capacity_title"
+                android:summary="@string/device_info_default"/>
+
+        <!-- KiroOS: RAM detected by the kernel (3 GB / 4 GB) -->
+        <Preference android:key="kiroos_ram"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:selectable="false"
+                android:title="@string/kiroos_ram_title"
+                android:summary="@string/device_info_default"/>
 
         <!-- Device firmware version -->
         <Preference android:key="firmware_version"

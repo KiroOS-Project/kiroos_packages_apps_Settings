@@ -91,6 +91,40 @@ public class PowerUsageSummary extends PowerUsageBase {
         addPreferencesFromResource(R.xml.power_usage_summary);
         mHistPref = (BatteryHistoryPreference) findPreference(KEY_BATTERY_HISTORY);
         mAppListGroup = (PreferenceGroup) findPreference(KEY_APP_LIST);
+        setupPowerProfile();
+    }
+
+    private static final String KEY_KIROOS_POWER_PROFILE = "kiroos_power_profile";
+    private static final String PROP_KIROOS_PERF = "persist.sys.kiroos.perf";
+
+    /** KiroOS: the four battery profiles; init applies the property to CPU and GPU limits. */
+    private void setupPowerProfile() {
+        final android.support.v7.preference.ListPreference profile =
+                (android.support.v7.preference.ListPreference) findPreference(
+                        KEY_KIROOS_POWER_PROFILE);
+        if (profile == null) {
+            return;
+        }
+        final String[] summaries = getResources().getStringArray(
+                R.array.kiroos_power_profile_summaries);
+        final String current = android.os.SystemProperties.get(PROP_KIROOS_PERF, "balanced");
+        profile.setValue(current);
+        int index = profile.findIndexOfValue(current);
+        if (index < 0) {
+            index = profile.findIndexOfValue("balanced");
+            profile.setValue("balanced");
+        }
+        profile.setSummary(profile.getEntries()[index] + "\n" + summaries[index]);
+        profile.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                final String value = (String) newValue;
+                android.os.SystemProperties.set(PROP_KIROOS_PERF, value);
+                final int i = profile.findIndexOfValue(value);
+                profile.setSummary(profile.getEntries()[i] + "\n" + summaries[i]);
+                return true;
+            }
+        });
     }
 
     @Override

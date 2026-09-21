@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Developer Beta 2: Edge screen, Game Space, battery profiles -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="kiroos_edge_zone_entries">
+        <item>@string/kiroos_edge_zone_both</item>
+        <item>@string/kiroos_edge_zone_left</item>
+        <item>@string/kiroos_edge_zone_right</item>
+        <item>@string/kiroos_edge_zone_off</item>
+    </string-array>
+
+    <!-- set_dead_zone of the STM touch IC: 3 both, 5 left only (right off), 4 right only (left off), 6 off -->
+    <string-array name="kiroos_edge_zone_values" translatable="false">
+        <item>3</item>
+        <item>5</item>
+        <item>4</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="kiroos_edge_lighting_color_entries">
+        <item>@string/kiroos_color_kiro_blue</item>
+        <item>@string/kiroos_color_white</item>
+        <item>@string/kiroos_color_violet</item>
+        <item>@string/kiroos_color_orange</item>
+        <item>@string/kiroos_color_green</item>
+    </string-array>
+
+    <!-- ARGB colors as signed ints: 0xFF2A78D6, 0xFFFFFFFF, 0xFF9B59F5, 0xFFFF8A3D, 0xFF34C759 -->
+    <string-array name="kiroos_edge_lighting_color_values" translatable="false">
+        <item>-13993770</item>
+        <item>-1</item>
+        <item>-6596107</item>
+        <item>-30147</item>
+        <item>-13318311</item>
+    </string-array>
+
+    <string-array name="kiroos_power_profile_entries">
+        <item>@string/kiroos_power_saving</item>
+        <item>@string/kiroos_power_balanced</item>
+        <item>@string/kiroos_power_performance</item>
+        <item>@string/kiroos_power_extreme</item>
+    </string-array>
+
+    <string-array name="kiroos_power_profile_values" translatable="false">
+        <item>saving</item>
+        <item>balanced</item>
+        <item>performance</item>
+        <item>extreme</item>
+    </string-array>
+
+    <string-array name="kiroos_power_profile_summaries">
+        <item>@string/kiroos_power_saving_summary</item>
+        <item>@string/kiroos_power_balanced_summary</item>
+        <item>@string/kiroos_power_performance_summary</item>
+        <item>@string/kiroos_power_extreme_summary</item>
+    </string-array>
+
+</resources>

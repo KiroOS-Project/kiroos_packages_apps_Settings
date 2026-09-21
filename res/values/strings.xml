@@ -8008,6 +8008,12 @@
     <string name="kiroos_aod_title">Always On Display</string>
     <string name="kiroos_aod_summary">Show the clock and notifications when the screen is off</string>
     <string name="kiroos_aod_timeout_title">Show for</string>
+    <string name="kiroos_double_tap_sleep_title">Double tap to turn off the screen</string>
+    <string name="kiroos_double_tap_sleep_summary">Double tap an empty area of the lock screen or the status bar</string>
+    <string name="kiroos_swipe_wake_title">Wake gestures</string>
+    <string name="kiroos_swipe_wake_summary">Double tap the Always On Display to turn on the screen. With the screen fully off, swipe up from the bottom edge near the Home button</string>
+    <string name="kiroos_aod_timeout_15s">15 seconds</string>
+    <string name="kiroos_aod_timeout_30s">30 seconds</string>
     <string name="kiroos_aod_timeout_5">5 minutes</string>
     <string name="kiroos_aod_timeout_10">10 minutes</string>
     <string name="kiroos_aod_timeout_30">30 minutes</string>
@@ -8035,6 +8041,9 @@
     <string name="kiroos_brand_name">KiroOS</string>
     <string name="kiroos_device_title">Samsung Galaxy S6 (SM-G920F)</string>
     <string name="kiroos_software_version_title">Software Version</string>
+    <string name="kiroos_about_version">Version <xliff:g id="version">%1$s</xliff:g></string>
+    <string name="kiroos_stats_title">Share device statistics</string>
+    <string name="kiroos_stats_desc">When checking for updates, the phone tells the KiroOS server its model, KiroOS and Android version, language, country and carrier, with a random code. The server also sees the network address. No personal data, no IMEI or serial number.</string>
     <string name="kiroos_software_version_sub">KiroOS 1.0</string>
     <string name="kiroos_changelog_title">What\'s new</string>
     <string name="kiroos_changelog_summary"></string>

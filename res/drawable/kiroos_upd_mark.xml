@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS updater: monochrome K mark shown inside the progress ring -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="48dp"
+        android:height="48dp"
+        android:viewportWidth="48.0"
+        android:viewportHeight="48.0">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M14,11h5.2v26H14zM29.4,11h6.4l-10.3,12.2L36.4,37h-6.6l-10,-13.8z"/>
+</vector>

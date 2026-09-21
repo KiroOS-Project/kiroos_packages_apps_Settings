@@ -64,6 +64,8 @@ public class KiroOSUpdateManager {
 
     public static final String PREFS = "kiroos_ota";
     public static final String PREF_SERVER_URL = "server_url";
+    public static final String PREF_SHARE_STATS = "share_stats";
+    private static final String PREF_INSTALL_ID = "install_id";
     public static final String PREF_LAST_CHECK = "last_check";
     public static final String PREF_INFO_JSON = "info_json";
     /** "sourceTimestamp:targetTimestamp" of the last incremental package sent to recovery. */
@@ -266,6 +268,76 @@ public class KiroOSUpdateManager {
         prefs(c).edit().putString(PREF_SERVER_URL, url == null ? null : url.trim()).apply();
     }
 
+    // ------------------------------------------------------------------ device statistics
+
+    /**
+     * With the update check the phone tells the KiroOS server which build it runs, so the
+     * developer can see how many real devices use each beta. Only a random install id (no
+     * IMEI / serial / account), model, KiroOS and Android version, language, SIM/network
+     * country and carrier. Can be turned off on the update screen.
+     */
+    public static boolean statsEnabled(Context c) {
+        return prefs(c).getBoolean(PREF_SHARE_STATS, true);
+    }
+
+    public static void setStatsEnabled(Context c, boolean on) {
+        prefs(c).edit().putBoolean(PREF_SHARE_STATS, on).apply();
+    }
+
+    private static String installId(Context c) {
+        String id = prefs(c).getString(PREF_INSTALL_ID, null);
+        if (TextUtils.isEmpty(id)) {
+            id = java.util.UUID.randomUUID().toString();
+            prefs(c).edit().putString(PREF_INSTALL_ID, id).apply();
+        }
+        return id;
+    }
+
+    /** HTTP header values must be plain ASCII: drop anything else and cap the length. */
+    private static String headerValue(String s) {
+        if (s == null) return "";
+        StringBuilder b = new StringBuilder();
+        for (int i = 0; i < s.length() && b.length() < 64; i++) {
+            char ch = s.charAt(i);
+            if (ch >= 0x20 && ch < 0x7f) b.append(ch);
+        }
+        return b.toString().trim();
+    }
+
+    private void addDeviceHeaders(HttpURLConnection conn) {
+        if (!statsEnabled(mContext)) return;
+        String country = "";
+        String carrier = "";
+        try {
+            android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager)
+                    mContext.getSystemService(Context.TELEPHONY_SERVICE);
+            if (tm != null) {
+                country = tm.getSimCountryIso();
+                if (TextUtils.isEmpty(country)) country = tm.getNetworkCountryIso();
+                carrier = tm.getNetworkOperatorName();
+            }
+        } catch (RuntimeException e) {
+            // no telephony: leave empty
+        }
+        // A real S6 runs on the Exynos 7420; emulators and other hardware say otherwise.
+        boolean real = !"1".equals(SystemProperties.get("ro.kernel.qemu"))
+                && SystemProperties.get("ro.hardware", "").contains("exynos7420");
+        conn.setRequestProperty("X-KiroOS-Id", installId(mContext));
+        conn.setRequestProperty("X-KiroOS-Version", headerValue(installedVersion()));
+        conn.setRequestProperty("X-KiroOS-Channel", headerValue(installedChannel()));
+        conn.setRequestProperty("X-KiroOS-Build", String.valueOf(installedTimestamp()));
+        conn.setRequestProperty("X-KiroOS-Model", headerValue(android.os.Build.MODEL));
+        conn.setRequestProperty("X-KiroOS-Device", headerValue(android.os.Build.DEVICE));
+        conn.setRequestProperty("X-KiroOS-Android", headerValue(android.os.Build.VERSION.RELEASE));
+        conn.setRequestProperty("X-KiroOS-Patch",
+                headerValue(android.os.Build.VERSION.SECURITY_PATCH));
+        conn.setRequestProperty("X-KiroOS-Locale",
+                headerValue(java.util.Locale.getDefault().toLanguageTag()));
+        conn.setRequestProperty("X-KiroOS-Country", headerValue(country).toUpperCase(Locale.ROOT));
+        conn.setRequestProperty("X-KiroOS-Carrier", headerValue(carrier));
+        conn.setRequestProperty("X-KiroOS-Real", real ? "1" : "0");
+    }
+
     /** Cached result of the last check (used by the About phone card). */
     public static UpdateInfo loadCachedInfo(Context c) {
         String json = prefs(c).getString(PREF_INFO_JSON, null);
@@ -366,6 +438,7 @@ public class KiroOSUpdateManager {
             conn.setConnectTimeout(8000);
             conn.setReadTimeout(15000);
             conn.setUseCaches(false);
+            addDeviceHeaders(conn);
             if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 throw new IOException("HTTP " + conn.getResponseCode());
             }

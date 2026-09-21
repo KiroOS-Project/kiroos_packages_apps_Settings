@@ -1,7 +1,12 @@
 package com.android.settings.deviceinfo;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceViewHolder;
 import android.text.TextUtils;
@@ -10,6 +15,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -64,7 +70,10 @@ public class KiroOSColorOSCardPreference extends Preference {
             topBadge.setText(channel.toUpperCase(Locale.getDefault()));
         }
         if (versionSub != null) {
-            versionSub.setText(KiroOSUpdateManager.installedVersion());
+            // The card already says "KiroOS": show just the version number under it.
+            String version = KiroOSUpdateManager.installedVersion();
+            if (version.startsWith("KiroOS ")) version = version.substring(7);
+            versionSub.setText(getContext().getString(R.string.kiroos_about_version, version));
         }
 
         // Update status comes from the last real check (screen or background job): never claim
@@ -73,15 +82,24 @@ public class KiroOSColorOSCardPreference extends Preference {
         KiroOSUpdateJobService.schedule(context);
         KiroOSUpdateManager.UpdateInfo cached = KiroOSUpdateManager.loadCachedInfo(context);
         boolean available = cached != null && KiroOSUpdateManager.isNewer(cached);
+        View statusDot = root.findViewById(R.id.kiroos_status_dot);
         if (changelogTitle != null) changelogTitle.setVisibility(available ? View.VISIBLE : View.GONE);
         if (changelogSummary != null) {
             changelogSummary.setVisibility(available && !TextUtils.isEmpty(cached.changelog)
                     ? View.VISIBLE : View.GONE);
         }
+        if (statusDot != null) {
+            statusDot.animate().cancel();
+            statusDot.setAlpha(1f);
+            statusDot.setScaleX(1f);
+            statusDot.setScaleY(1f);
+            statusDot.setBackgroundTintList(ColorStateList.valueOf(
+                    available ? 0xFFFFFFFF : 0xFF636366));
+        }
         if (available) {
             if (statusBadge != null) {
                 statusBadge.setText(R.string.kiroos_status_update_available);
-                statusBadge.setTextColor(0xFF00E5FF);
+                statusBadge.setTextColor(0xFFFFFFFF);
             }
             if (changelogTitle != null) {
                 changelogTitle.setText(context.getString(R.string.kiroos_ota_release_notes,
@@ -93,8 +111,29 @@ public class KiroOSColorOSCardPreference extends Preference {
             if (checkUpdatesBtn != null) {
                 checkUpdatesBtn.setText(context.getString(R.string.kiroos_ota_download,
                         Formatter.formatFileSize(context, cached.size)));
+                checkUpdatesBtn.setBackgroundResource(R.drawable.kiroos_upd_button);
+                checkUpdatesBtn.setTextColor(0xFF000000);
+            }
+            if (statusDot != null) pulse(statusDot);
+            // Announce the new update once per version: the card settles in like a widget.
+            String seenKey = "kiroos_card_seen_" + cached.displayName();
+            android.content.SharedPreferences prefs = context.getSharedPreferences(
+                    "kiroos_about_card", Context.MODE_PRIVATE);
+            if (heroCard != null && !prefs.getBoolean(seenKey, false)) {
+                prefs.edit().putBoolean(seenKey, true).apply();
+                heroCard.setScaleX(0.94f);
+                heroCard.setScaleY(0.94f);
+                heroCard.setAlpha(0f);
+                heroCard.animate().scaleX(1f).scaleY(1f).alpha(1f).setStartDelay(120)
+                        .setDuration(520).setInterpolator(new OvershootInterpolator(1.4f)).start();
             }
         } else if (statusBadge != null) {
+            statusBadge.setTextColor(0xFFC7C7CC);
+            if (checkUpdatesBtn != null) {
+                checkUpdatesBtn.setText(R.string.kiroos_btn_check_updates_text);
+                checkUpdatesBtn.setBackgroundResource(R.drawable.kiroos_about_button_secondary);
+                checkUpdatesBtn.setTextColor(0xFFFFFFFF);
+            }
             long last = KiroOSUpdateManager.lastCheck(context);
             if (last == 0) {
                 statusBadge.setText(R.string.kiroos_status_not_checked);
@@ -125,7 +164,7 @@ public class KiroOSColorOSCardPreference extends Preference {
             heroCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    launchInternalUpdater();
+                    launchInternalUpdater(heroCard);
                 }
             });
         }
@@ -134,15 +173,49 @@ public class KiroOSColorOSCardPreference extends Preference {
             checkUpdatesBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    launchInternalUpdater();
+                    launchInternalUpdater(heroCard != null ? heroCard : v);
                 }
             });
         }
     }
 
-    private void launchInternalUpdater() {
+    /** Soft "breathing" of the status dot while an update is waiting. */
+    private static void pulse(final View dot) {
+        final ObjectAnimator anim = ObjectAnimator.ofPropertyValuesHolder(dot,
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 1.35f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 1.35f),
+                PropertyValuesHolder.ofFloat(View.ALPHA, 1f, 0.55f));
+        anim.setDuration(900);
+        anim.setRepeatCount(ValueAnimator.INFINITE);
+        anim.setRepeatMode(ValueAnimator.REVERSE);
+        anim.setInterpolator(new AccelerateDecelerateInterpolator());
+        Object old = dot.getTag(R.id.kiroos_status_dot);
+        if (old instanceof ObjectAnimator) ((ObjectAnimator) old).cancel();
+        dot.setTag(R.id.kiroos_status_dot, anim);
+        dot.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(View v) {
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(View v) {
+                anim.cancel();
+                v.removeOnAttachStateChangeListener(this);
+            }
+        });
+        anim.start();
+    }
+
+    /** Opens the update screen growing out of the card, like opening a widget. */
+    private void launchInternalUpdater(View from) {
         Context context = getContext();
         Intent intent = new Intent(context, KiroOSUpdateActivity.class);
-        context.startActivity(intent);
+        if (from != null && from.getWidth() > 0 && from.getHeight() > 0) {
+            ActivityOptions opts = ActivityOptions.makeClipRevealAnimation(from, 0, 0,
+                    from.getWidth(), from.getHeight());
+            context.startActivity(intent, opts.toBundle());
+        } else {
+            context.startActivity(intent);
+        }
     }
 }

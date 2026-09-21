@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Developer Beta 2 -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Edge screen (S6 edge / S6 edge+) -->
+    <string name="kiroos_edge_title">Edge screen</string>
+    <string name="kiroos_edge_summary">Area sensibile dei bordi curvi e illuminazione laterale</string>
+    <string name="kiroos_edge_touch_category">Tocco sui bordi curvi</string>
+    <string name="kiroos_edge_zone_title">Blocco tocchi involontari</string>
+    <string name="kiroos_edge_zone_both">Entrambi i bordi</string>
+    <string name="kiroos_edge_zone_left">Solo bordo sinistro</string>
+    <string name="kiroos_edge_zone_right">Solo bordo destro</string>
+    <string name="kiroos_edge_zone_off">Disattivato</string>
+    <string name="kiroos_edge_lighting_category">Notifiche laterali</string>
+    <string name="kiroos_edge_lighting_title">Illuminazione bordi</string>
+    <string name="kiroos_edge_lighting_summary">I bordi curvi si illuminano quando arriva una notifica</string>
+    <string name="kiroos_edge_lighting_color_title">Colore illuminazione</string>
+    <string name="kiroos_color_kiro_blue">Blu Kiro</string>
+    <string name="kiroos_color_white">Bianco</string>
+    <string name="kiroos_color_violet">Viola</string>
+    <string name="kiroos_color_orange">Arancione</string>
+    <string name="kiroos_color_green">Verde</string>
+
+    <!-- Game Space -->
+    <string name="kiroos_game_space_title">Game Space</string>
+    <string name="kiroos_game_space_summary">Modalità 720p, prestazioni massime, nessuna interruzione</string>
+    <string name="kiroos_game_downscale_title">Modalità 720p</string>
+    <string name="kiroos_game_downscale_summary">Rendering a 720 x 1280 (320 dpi) per più fotogrammi al secondo e meno calore</string>
+    <string name="kiroos_game_performance_title">Prestazioni massime</string>
+    <string name="kiroos_game_performance_summary">Usa il profilo Prestazioni Estreme mentre Game Space è attivo</string>
+    <string name="kiroos_game_no_heads_up_title">Nessuna interruzione</string>
+    <string name="kiroos_game_no_heads_up_summary">Le notifiche restano nella barra di stato senza comparire sullo schermo</string>
+
+    <!-- Battery profiles -->
+    <string name="kiroos_power_profile_title">Profilo prestazioni</string>
+    <string name="kiroos_power_saving">Risparmio</string>
+    <string name="kiroos_power_balanced">Bilanciato</string>
+    <string name="kiroos_power_performance">Prestazioni</string>
+    <string name="kiroos_power_extreme">Prestazioni Estreme</string>
+    <string name="kiroos_power_saving_summary">CPU fino a 1,2 GHz, GPU fino a 420 MHz: massima autonomia</string>
+    <string name="kiroos_power_balanced_summary">Piena velocità quando serve, frequenze basse a riposo</string>
+    <string name="kiroos_power_performance_summary">Frequenze minime più alte: più reattivo, consuma di più</string>
+    <string name="kiroos_power_extreme_summary">CPU e GPU sempre a frequenze alte: per i giochi, il telefono si scalda di più</string>
+
+    <!-- About phone -->
+    <string name="kiroos_battery_capacity_title">Batteria</string>
+    <string name="kiroos_battery_capacity_value"><xliff:g id="mah">%1$d</xliff:g> mAh</string>
+    <string name="kiroos_ram_title">Memoria RAM</string>
+    <string name="kiroos_ram_value"><xliff:g id="gb">%1$d</xliff:g> GB LPDDR4</string>
+
+</resources>

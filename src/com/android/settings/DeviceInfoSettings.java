@@ -126,6 +126,15 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
         setValueSummary(KEY_EQUIPMENT_ID, PROPERTY_EQUIPMENT_ID);
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
+        // KiroOS: battery capacity of the model and the RAM the kernel reports
+        setStringSummary("kiroos_battery_capacity", getString(R.string.kiroos_battery_capacity_value,
+                com.android.settings.kiroos.KiroOSDevice.batteryCapacityMah(getActivity())));
+        final int ramGb = com.android.settings.kiroos.KiroOSDevice.ramGigabytes();
+        if (ramGb > 0) {
+            setStringSummary("kiroos_ram", getString(R.string.kiroos_ram_value, ramGb));
+        } else {
+            getPreferenceScreen().removePreference(findPreference("kiroos_ram"));
+        }
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
         //setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);

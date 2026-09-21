@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS: Settings > Display > Game Space -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/kiroos_game_space_title">
+
+    <SwitchPreference
+            android:key="kiroos_game_downscale"
+            android:title="@string/kiroos_game_downscale_title"
+            android:summary="@string/kiroos_game_downscale_summary"
+            android:persistent="false" />
+
+    <SwitchPreference
+            android:key="kiroos_game_performance"
+            android:title="@string/kiroos_game_performance_title"
+            android:summary="@string/kiroos_game_performance_summary"
+            android:persistent="false" />
+
+    <SwitchPreference
+            android:key="kiroos_game_no_heads_up"
+            android:title="@string/kiroos_game_no_heads_up_title"
+            android:summary="@string/kiroos_game_no_heads_up_summary"
+            android:persistent="false" />
+
+</PreferenceScreen>

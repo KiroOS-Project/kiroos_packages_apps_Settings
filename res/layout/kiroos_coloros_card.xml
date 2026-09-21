@@ -1,147 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS "About phone" header: one quiet card in the same language as the update screen
+     (pure black page, #121214 card, white type, iOS-like grays). Tapping it expands into
+     the KiroOS update screen. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#FF000000"
     android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="12dp"
-    android:paddingBottom="16dp"
-    android:background="#000000">
+    android:paddingBottom="12dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    android:paddingTop="12dp">
 
-    <!-- ColorOS Style Hero Card matching User Reference -->
     <LinearLayout
         android:id="@+id/kiroos_hero_card_view"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:background="@drawable/kiroos_coloros_card_bg"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kiroos_about_card"
         android:clickable="true"
         android:focusable="true"
-        android:padding="20dp">
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingTop="22dp">
 
-        <!-- Top Section: Huge Typography 1.0 and Developer Beta 1 Badge -->
+        <!-- Identity: mark, name + version, channel -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <TextView
+            <FrameLayout
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:background="@drawable/kiroos_about_mark_bg">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/kiroos_upd_mark" />
+            </FrameLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
                 android:layout_weight="1"
-                android:text="@string/kiroos_version_title"
-                android:textColor="#FFFFFF"
-                android:textSize="64sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-black"
-                android:includeFontPadding="false" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="-0.01"
+                    android:text="@string/kiroos_brand_name"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/kiroos_software_version_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="@string/kiroos_software_version_sub"
+                    android:textColor="#FF8E8E93"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/kiroos_top_badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/kiroos_badge_bg"
+                android:background="@drawable/kiroos_upd_badge"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.06"
                 android:text="@string/kiroos_badge_dev_beta"
-                android:textColor="#00E5FF"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.08" />
+                android:textColor="#FFC7C7CC"
+                android:textSize="10sp" />
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/kiroos_device_title"
+            android:textColor="#FF8E8E93"
+            android:textSize="13sp" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="1px"
+            android:layout_marginTop="16dp"
+            android:background="#FF26262A" />
 
-        <!-- Bottom Section: Subtitle and Branding -->
-        <TextView
-            android:id="@+id/kiroos_status_badge"
-            android:layout_width="wrap_content"
+        <!-- Update status: dot + text + chevron -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/kiroos_status_updated"
-            android:textColor="#80D8FF"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/kiroos_brand_name"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:layout_marginTop="2dp" />
+            <View
+                android:id="@+id/kiroos_status_dot"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/kiroos_about_dot" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/kiroos_device_title"
-            android:textColor="#B0B0B5"
-            android:textSize="13sp"
-            android:layout_marginTop="2dp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/kiroos_status_badge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/kiroos_status_not_checked"
+                android:textColor="#FFC7C7CC"
+                android:textSize="14sp" />
 
-    <!-- Info Detail Card with Developer Beta 1 Changelog -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp"
-        android:background="#181818"
-        android:padding="18dp">
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/kiroos_about_chevron" />
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/kiroos_software_version_title"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/kiroos_software_version_sub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/kiroos_software_version_sub"
-            android:textColor="#B0B0B5"
-            android:textSize="13sp"
-            android:layout_marginTop="4dp" />
-
+        <!-- Only when an update is available -->
         <TextView
             android:id="@+id/kiroos_changelog_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-medium"
             android:text="@string/kiroos_changelog_title"
-            android:textColor="#00E5FF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/kiroos_changelog_summary"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/kiroos_changelog_summary"
-            android:textColor="#B0B0B5"
-            android:textSize="13sp"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
             android:lineSpacingMultiplier="1.3"
-            android:layout_marginTop="6dp" />
+            android:maxLines="3"
+            android:textColor="#FF8E8E93"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/kiroos_btn_check_updates"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/kiroos_about_button_secondary"
+            android:fontFamily="sans-serif-medium"
+            android:stateListAnimator="@null"
+            android:text="@string/kiroos_btn_check_updates_text"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp" />
     </LinearLayout>
-
-    <!-- Prominent Action Button: Cerca aggiornamenti (opens internal screen) -->
-    <Button
-        android:id="@+id/kiroos_btn_check_updates"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/kiroos_button_pill_bg"
-        android:text="@string/kiroos_btn_check_updates_text"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textAllCaps="false"
-        android:stateListAnimator="@null" />
-
 </LinearLayout>

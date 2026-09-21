@@ -17,7 +17,9 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.PathInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
@@ -39,6 +41,8 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
     private KiroOSUpdateManager mManager;
 
     private ImageView mLogoView;
+    private KiroOSRingView mRing;
+    private TextView mRingPercent;
     private TextView mVersionHeader;
     private TextView mBadgeView;
     private TextView mStatusTitle;
@@ -52,6 +56,7 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
     private TextView mNotesContent;
 
     private boolean mCheckedOnOpen;
+    private KiroOSUpdateManager.State mLastState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +66,19 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
         if (getActionBar() != null) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
             getActionBar().setTitle(R.string.kiroos_updater_title);
+            // Flat black bar that blends with the page, like the rest of this screen.
+            getActionBar().setElevation(0);
+            getActionBar().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(0xFF000000));
         }
+        getWindow().setStatusBarColor(0xFF000000);
+        getWindow().setNavigationBarColor(0xFF000000);
 
         mManager = KiroOSUpdateManager.get(this);
         KiroOSUpdateJobService.schedule(this);
 
         mLogoView = (ImageView) findViewById(R.id.kiroos_update_logo);
+        mRing = (KiroOSRingView) findViewById(R.id.kiroos_update_ring);
+        mRingPercent = (TextView) findViewById(R.id.kiroos_update_ring_percent);
         mVersionHeader = (TextView) findViewById(R.id.kiroos_update_version_header_text);
         mBadgeView = (TextView) findViewById(R.id.kiroos_update_badge);
         mStatusTitle = (TextView) findViewById(R.id.kiroos_update_status_title);
@@ -98,6 +110,86 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
         });
 
         populateSpecs((LinearLayout) findViewById(R.id.kiroos_spec_rows));
+
+        android.widget.Switch stats = (android.widget.Switch) findViewById(R.id.kiroos_stats_switch);
+        stats.setChecked(KiroOSUpdateManager.statsEnabled(this));
+        stats.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(android.widget.CompoundButton b, boolean on) {
+                KiroOSUpdateManager.setStatsEnabled(KiroOSUpdateActivity.this, on);
+            }
+        });
+
+        if (savedInstanceState == null) {
+            playEntrance();
+        }
+    }
+
+    // ------------------------------------------------------------------ motion
+
+    /**
+     * While the window grows out of the About card, the content settles in from below one
+     * block at a time (ring, version, status, cards, button), like a widget opening.
+     */
+    private void playEntrance() {
+        View scroll = findViewById(R.id.kiroos_update_scroll);
+        if (!(scroll instanceof ViewGroup) || ((ViewGroup) scroll).getChildCount() == 0) return;
+        ViewGroup content = (ViewGroup) ((ViewGroup) scroll).getChildAt(0);
+        java.util.ArrayList<View> seq = new java.util.ArrayList<>();
+        if (content.getChildAt(0) instanceof ViewGroup) {
+            ViewGroup hero = (ViewGroup) content.getChildAt(0);
+            for (int i = 0; i < hero.getChildCount(); i++) seq.add(hero.getChildAt(i));
+        }
+        for (int i = 1; i < content.getChildCount(); i++) seq.add(content.getChildAt(i));
+        View button = mActionBtn != null ? (View) mActionBtn.getParent() : null;
+        if (button != null) seq.add(button);
+
+        final float dy = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 28,
+                getResources().getDisplayMetrics());
+        PathInterpolator ease = new PathInterpolator(0.2f, 0.9f, 0.1f, 1f);
+        for (int i = 0; i < seq.size(); i++) {
+            View v = seq.get(i);
+            v.setAlpha(0f);
+            v.setTranslationY(dy);
+            if (i == 0) {
+                v.setScaleX(0.82f);
+                v.setScaleY(0.82f);
+            }
+            v.animate().alpha(1f).translationY(0f).scaleX(1f).scaleY(1f)
+                    .setStartDelay(110 + i * 45L).setDuration(480).setInterpolator(ease)
+                    .withLayer().start();
+        }
+    }
+
+    /** A new update was just found: the ring pops and the news slide up into place. */
+    private void playUpdateFound() {
+        View ringFrame = (View) mRing.getParent();
+        ringFrame.animate().cancel();
+        ringFrame.setScaleX(0.9f);
+        ringFrame.setScaleY(0.9f);
+        ringFrame.animate().scaleX(1f).scaleY(1f).setStartDelay(0).setDuration(560)
+                .setInterpolator(new android.view.animation.OvershootInterpolator(2.2f)).start();
+
+        final float dy = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20,
+                getResources().getDisplayMetrics());
+        PathInterpolator ease = new PathInterpolator(0.2f, 0.9f, 0.1f, 1f);
+        View[] seq = { mStatusTitle, mStatusDesc, mNotesCard, (View) mActionBtn.getParent() };
+        for (int i = 0; i < seq.length; i++) {
+            View v = seq[i];
+            if (v.getVisibility() != View.VISIBLE) continue;
+            v.animate().cancel();
+            v.setAlpha(0f);
+            v.setTranslationY(dy);
+            v.animate().alpha(1f).translationY(0f).setStartDelay(80 + i * 60L)
+                    .setDuration(440).setInterpolator(ease).withLayer().start();
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        // Closing shrinks the page back instead of the default slide.
+        overridePendingTransition(0, R.anim.kiroos_upd_close);
     }
 
     // ------------------------------------------------------------------ hardware card
@@ -151,12 +243,12 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
         row.setOrientation(LinearLayout.HORIZONTAL);
         LinearLayout.LayoutParams rowLp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        rowLp.topMargin = (int) (8 * dp);
+        rowLp.topMargin = (int) (10 * dp);
         row.setLayoutParams(rowLp);
 
         TextView label = new TextView(this);
         label.setText(labelRes);
-        label.setTextColor(0xFFB0B0B5);
+        label.setTextColor(0xFF8E8E93);
         label.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
         label.setGravity(Gravity.START);
         label.setLayoutParams(new LinearLayout.LayoutParams(0,
@@ -315,6 +407,17 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
     @Override
     public void onStateChanged(KiroOSUpdateManager.State state) {
         KiroOSUpdateManager.UpdateInfo info = mManager.getInfo();
+        final boolean justFound = state == KiroOSUpdateManager.State.AVAILABLE
+                && mLastState == KiroOSUpdateManager.State.CHECKING;
+        mLastState = state;
+        if (justFound) {
+            mNotesCard.post(new Runnable() {
+                @Override
+                public void run() {
+                    playUpdateFound();
+                }
+            });
+        }
 
         mVersionHeader.setText(KiroOSUpdateManager.installedVersion());
         String badge = KiroOSUpdateManager.installedChannel();
@@ -335,6 +438,13 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
         mProgressContainer.setVisibility(View.GONE);
         mActionBtn.setEnabled(true);
         setSpinning(false);
+        final boolean transferring = state == KiroOSUpdateManager.State.DOWNLOADING
+                || state == KiroOSUpdateManager.State.VERIFYING;
+        if (!transferring) {
+            mRing.setProgress(-1f);
+            mRingPercent.setVisibility(View.GONE);
+            mLogoView.setVisibility(View.VISIBLE);
+        }
 
         switch (state) {
             case IDLE:
@@ -407,6 +517,11 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
         if (total <= 0) return;
         int permille = (int) (done * 1000 / total);
         mProgressBar.setProgress(permille);
+        // The ring around the logo fills up and shows the percentage in its center.
+        mRing.setProgress(permille / 1000f);
+        mLogoView.setVisibility(View.GONE);
+        mRingPercent.setVisibility(View.VISIBLE);
+        mRingPercent.setText(String.format(Locale.getDefault(), "%d%%", permille / 10));
         String pct = String.format(Locale.getDefault(), "%.1f%%", permille / 10f);
         if (mManager.getState() == KiroOSUpdateManager.State.DOWNLOADING) {
             String etaStr = eta >= 0 ? DateUtils.formatElapsedTime(eta) : "--:--";
@@ -435,19 +550,9 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
         }
     }
 
+    /** Checking / installing: a short arc turns around the logo (the logo itself stays still). */
     private void setSpinning(boolean spin) {
-        if (spin) {
-            if (mLogoView.getAnimation() == null) {
-                RotateAnimation rotate = new RotateAnimation(0f, 360f,
-                        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-                rotate.setDuration(1600);
-                rotate.setInterpolator(new LinearInterpolator());
-                rotate.setRepeatCount(Animation.INFINITE);
-                mLogoView.startAnimation(rotate);
-            }
-        } else {
-            mLogoView.clearAnimation();
-        }
+        mRing.setSpinning(spin);
     }
 
     @Override
