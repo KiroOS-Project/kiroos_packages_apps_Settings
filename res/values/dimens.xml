@@ -121,7 +121,7 @@
 
     <!-- Dashboard tile image margin start / end -->
     <dimen name="dashboard_tile_image_margin_start">16dp</dimen>
-    <dimen name="dashboard_tile_image_margin_end">32dp</dimen>
+    <dimen name="dashboard_tile_image_margin_end">20dp</dimen>
 
     <!-- SwitchBar margin start / end -->
     <dimen name="switchbar_margin_start">16dp</dimen>
@@ -324,4 +324,7 @@
     <!-- Visible vertical space we want to show below password edittext field when ime is shown.
          The unit is sp as it is related to the text size of password requirement item. -->
     <dimen name="visible_vertical_space_below_password">20sp</dimen>
+    <!-- KiroOS: dashboard icons on a coloured plate -->
+    <dimen name="kiro_tile_plate_size">34dp</dimen>
+    <dimen name="kiro_tile_plate_padding">7dp</dimen>
 </resources>

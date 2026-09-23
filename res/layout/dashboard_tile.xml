@@ -17,9 +17,10 @@
 
     <ImageView
         android:id="@android:id/icon"
-        android:layout_width="@dimen/dashboard_tile_image_size"
-        android:layout_height="@dimen/dashboard_tile_image_size"
-        android:scaleType="centerInside"
+        android:layout_width="@dimen/kiro_tile_plate_size"
+        android:layout_height="@dimen/kiro_tile_plate_size"
+        android:padding="@dimen/kiro_tile_plate_padding"
+        android:scaleType="fitCenter"
         android:layout_marginStart="@dimen/dashboard_tile_image_margin_start"
         android:layout_marginEnd="@dimen/dashboard_tile_image_margin_end" />
 
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.TileTitle"
-            android:textColor="#FFFFFFFF"
+            android:textColor="@color/kiro_tile_title"
             android:textSize="16sp"
             android:ellipsize="marquee"
             android:fadingEdge="horizontal" />
@@ -43,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.Small"
-            android:textColor="#FFB0B0B5"
+            android:textColor="@color/kiro_tile_summary"
             android:textSize="13sp"
             android:maxLines="1"
             android:ellipsize="end"

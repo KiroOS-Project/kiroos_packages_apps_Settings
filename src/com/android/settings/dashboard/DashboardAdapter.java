@@ -352,8 +352,64 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
                 && mSuggestions.size() > DEFAULT_SUGGESTION_COUNT);
     }
 
+    /** KiroOS: tile icon plates, never green (blue, indigo, violet, orange, red, graphite) */
+    private static final int KIRO_BLUE = 0xFF3987E5;
+    private static final int KIRO_INDIGO = 0xFF5E5CE6;
+    private static final int KIRO_VIOLET = 0xFFA55EEA;
+    private static final int KIRO_ORANGE = 0xFFF28C28;
+    private static final int KIRO_RED = 0xFFF0544C;
+    private static final int KIRO_GRAPHITE = 0xFF5B5B63;
+    private static final int[] KIRO_PALETTE = {
+        KIRO_BLUE, KIRO_INDIGO, KIRO_VIOLET, KIRO_ORANGE, KIRO_RED, KIRO_GRAPHITE,
+    };
+
+    /** a colour per kind of setting, from the tile's screen */
+    private static int plateColor(Tile tile) {
+        String k = tile.intent != null && tile.intent.getComponent() != null
+                ? tile.intent.getComponent().getClassName()
+                : (tile.intent != null && tile.intent.getAction() != null
+                        ? tile.intent.getAction() : String.valueOf(tile.title));
+        k = k.toLowerCase(java.util.Locale.ROOT);
+        if (k.contains("wifi") || k.contains("bluetooth") || k.contains("wireless")
+                || k.contains("network") || k.contains("sim")) {
+            return KIRO_BLUE;
+        }
+        if (k.contains("datausage") || k.contains("data_usage") || k.contains("storage")
+                || k.contains("memory")) {
+            return KIRO_INDIGO;
+        }
+        if (k.contains("display") || k.contains("battery") || k.contains("power")
+                || k.contains("kiroos") || k.contains("gamespace") || k.contains("edge")) {
+            return KIRO_ORANGE;
+        }
+        if (k.contains("notification") || k.contains("sound") || k.contains("zen")) {
+            return KIRO_RED;
+        }
+        if (k.contains("app") || k.contains("gesture") || k.contains("button")
+                || k.contains("user") || k.contains("account")) {
+            return KIRO_VIOLET;
+        }
+        if (k.contains("security") || k.contains("location") || k.contains("privacy")
+                || k.contains("fingerprint")) {
+            return KIRO_BLUE;
+        }
+        if (k.contains("date") || k.contains("language") || k.contains("accessibility")
+                || k.contains("print") || k.contains("development") || k.contains("deviceinfo")
+                || k.contains("backup") || k.contains("more")) {
+            return KIRO_GRAPHITE;
+        }
+        return KIRO_PALETTE[Math.abs(k.hashCode()) % KIRO_PALETTE.length];
+    }
+
     private void onBindTile(DashboardItemHolder holder, Tile tile) {
         holder.icon.setImageDrawable(mCache.getIcon(tile.icon));
+        // KiroOS: a white symbol on a rounded coloured plate
+        final android.graphics.drawable.GradientDrawable plate =
+                new android.graphics.drawable.GradientDrawable();
+        plate.setCornerRadius(10 * mContext.getResources().getDisplayMetrics().density);
+        plate.setColor(plateColor(tile));
+        holder.icon.setBackground(plate);
+        holder.icon.setImageTintList(android.content.res.ColorStateList.valueOf(0xFFFFFFFF));
         holder.title.setText(tile.title);
         if (!TextUtils.isEmpty(tile.summary)) {
             holder.summary.setText(tile.summary);

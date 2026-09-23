@@ -15,9 +15,10 @@
         android:ellipsize="marquee"
         android:gravity="center_vertical"
         android:textAppearance="@style/TextAppearance.CategoryTitle"
-        android:textColor="#FF00E5FF"
-        android:textStyle="bold"
-        android:letterSpacing="0.04"
+        android:textColor="@color/kiro_category_title"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="13sp"
+        android:letterSpacing="0.06"
         android:textAlignment="viewStart" />
 
 </LinearLayout>
