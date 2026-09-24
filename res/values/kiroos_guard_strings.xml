@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="kiroos_charge_limit_title">Protect battery</string>
-    <string name="kiroos_charge_limit_summary">Charging stops at 80% and restarts at 77%, so the battery lasts longer. The charger and USB stay connected.</string>
+    <string name="kiroos_charge_limit_summary" formatted="false">Charging stops at 80% and restarts at 77%, so the battery lasts longer. The charger and USB stay connected.</string>
     <string name="kiroos_bypass_title">Bypass charging</string>
-    <string name="kiroos_bypass_summary">On the charger the phone runs directly from it and the battery is not charged, so it stays cooler while you play (it charges again below 20%).</string>
+    <string name="kiroos_bypass_summary" formatted="false">On the charger the phone runs directly from it and the battery is not charged, so it stays cooler while you play (it charges again below 20%).</string>
 </resources>
