@@ -92,10 +92,33 @@ public class PowerUsageSummary extends PowerUsageBase {
         mHistPref = (BatteryHistoryPreference) findPreference(KEY_BATTERY_HISTORY);
         mAppListGroup = (PreferenceGroup) findPreference(KEY_APP_LIST);
         setupPowerProfile();
+        setupChargeLimit();
     }
 
     private static final String KEY_KIROOS_POWER_PROFILE = "kiroos_power_profile";
     private static final String PROP_KIROOS_PERF = "persist.sys.kiroos.perf";
+
+    private static final String KEY_KIROOS_CHARGE_LIMIT = "kiroos_charge_limit";
+
+    /** KiroOS Battery Guardian: charging stops at 80% (and restarts at 77%). */
+    private void setupChargeLimit() {
+        final android.support.v14.preference.SwitchPreference limit =
+                (android.support.v14.preference.SwitchPreference) findPreference(
+                        KEY_KIROOS_CHARGE_LIMIT);
+        if (limit == null) {
+            return;
+        }
+        limit.setChecked(android.provider.Settings.System.getInt(getContentResolver(),
+                KEY_KIROOS_CHARGE_LIMIT, 0) != 0);
+        limit.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                android.provider.Settings.System.putInt(getContentResolver(),
+                        KEY_KIROOS_CHARGE_LIMIT, (Boolean) newValue ? 1 : 0);
+                return true;
+            }
+        });
+    }
 
     /** KiroOS: the four battery profiles; init applies the property to CPU and GPU limits. */
     private void setupPowerProfile() {

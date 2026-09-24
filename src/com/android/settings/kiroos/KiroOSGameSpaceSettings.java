@@ -51,6 +51,8 @@ public class KiroOSGameSpaceSettings extends SettingsPreferenceFragment
     private static final String KEY_DOWNSCALE = "kiroos_game_downscale";
     private static final String KEY_PERFORMANCE = "kiroos_game_performance";
     private static final String KEY_NO_HEADS_UP = "kiroos_game_no_heads_up";
+    /** Settings.System, read by SystemUI's KiroGuardian (kernel batt_kiro_charge = 2) */
+    private static final String KEY_BYPASS = "kiroos_bypass_charging";
 
     static final String PROP_PERF = "persist.sys.kiroos.perf";
     /** profile in use before Game Space raised it, restored when it is turned off */
@@ -63,6 +65,7 @@ public class KiroOSGameSpaceSettings extends SettingsPreferenceFragment
     private SwitchPreference mDownscale;
     private SwitchPreference mPerformance;
     private SwitchPreference mNoHeadsUp;
+    private SwitchPreference mBypass;
 
     @Override
     protected int getMetricsCategory() {
@@ -82,6 +85,10 @@ public class KiroOSGameSpaceSettings extends SettingsPreferenceFragment
         mPerformance.setChecked(!SystemProperties.get(PROP_PERF_SAVED, "").isEmpty());
         mPerformance.setOnPreferenceChangeListener(this);
 
+        mBypass = (SwitchPreference) findPreference(KEY_BYPASS);
+        mBypass.setChecked(Settings.System.getInt(getContentResolver(), KEY_BYPASS, 0) != 0);
+        mBypass.setOnPreferenceChangeListener(this);
+
         mNoHeadsUp = (SwitchPreference) findPreference(KEY_NO_HEADS_UP);
         mNoHeadsUp.setChecked(Settings.Global.getInt(getContentResolver(),
                 Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED, 1) == 0);
@@ -95,6 +102,9 @@ public class KiroOSGameSpaceSettings extends SettingsPreferenceFragment
             return setDownscaled(on);
         } else if (preference == mPerformance) {
             setGamePerformance(on);
+            return true;
+        } else if (preference == mBypass) {
+            Settings.System.putInt(getContentResolver(), KEY_BYPASS, on ? 1 : 0);
             return true;
         } else if (preference == mNoHeadsUp) {
             final ContentResolver cr = getContentResolver();

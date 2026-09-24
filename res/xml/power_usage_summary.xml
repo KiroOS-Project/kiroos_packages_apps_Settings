@@ -29,6 +29,13 @@
             android:entryValues="@array/kiroos_power_profile_values"
             android:persistent="false" />
 
+        <!-- KiroOS Battery Guardian: the kernel stops charging at 80% (SystemUI KiroGuardian) -->
+        <SwitchPreference
+            android:key="kiroos_charge_limit"
+            android:title="@string/kiroos_charge_limit_title"
+            android:summary="@string/kiroos_charge_limit_summary"
+            android:persistent="false" />
+
         <com.android.settings.fuelgauge.BatteryHistoryPreference
             android:key="battery_history" />
 

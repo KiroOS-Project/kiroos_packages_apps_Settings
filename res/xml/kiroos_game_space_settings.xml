@@ -16,6 +16,12 @@
             android:persistent="false" />
 
     <SwitchPreference
+            android:key="kiroos_bypass_charging"
+            android:title="@string/kiroos_bypass_title"
+            android:summary="@string/kiroos_bypass_summary"
+            android:persistent="false" />
+
+    <SwitchPreference
             android:key="kiroos_game_no_heads_up"
             android:title="@string/kiroos_game_no_heads_up_title"
             android:summary="@string/kiroos_game_no_heads_up_summary"
