@@ -6,4 +6,16 @@
     <string name="kiroos_bypass_summary" formatted="false">On the charger the phone runs directly from it and the battery is not charged, so it stays cooler while you play (it charges again below 20%).</string>
     <string name="kiroos_dc_dimming_title">DC dimming</string>
     <string name="kiroos_dc_dimming_summary">Less flicker at low brightness: the panel stays bright enough not to flicker and the picture is darkened instead. Colours may look slightly flatter in the dark.</string>
+    <string name="kiroos_theme_title">Theme</string>
+    <string-array name="kiroos_theme_entries">
+        <item>Dark</item>
+        <item>Light</item>
+        <item>Automatic (sunset to sunrise)</item>
+    </string-array>
+    <string-array name="kiroos_theme_values" translatable="false">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string name="kiroos_header_specs">%1$d GB RAM \u00b7 %2$d mAh \u00b7 Android %3$s</string>
 </resources>

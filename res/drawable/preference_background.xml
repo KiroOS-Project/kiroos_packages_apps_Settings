@@ -1,3 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS 2.1: transparent, the grouped cards (KiroGroupDecoration) show through -->
 <color xmlns:android="http://schemas.android.com/apk/res/android"
-       android:color="#FF000000" />
+       android:color="@android:color/transparent" />

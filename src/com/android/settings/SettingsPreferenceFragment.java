@@ -126,6 +126,16 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
     }
 
     @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // KiroOS 2.1: the preferences of each category on one rounded card
+        if (getListView() != null) {
+            getListView().addItemDecoration(
+                    new com.android.settings.kiroos.KiroGroupDecoration(getPrefContext()));
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         final View root = super.onCreateView(inflater, container, savedInstanceState);

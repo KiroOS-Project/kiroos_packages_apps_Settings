@@ -138,10 +138,11 @@
         <item name="android:windowBackground">@color/settings_pure_black</item>
         <item name="android:colorBackground">@color/settings_pure_black</item>
         <item name="android:colorBackgroundFloating">@color/settings_card_black</item>
-        <item name="android:textColorPrimary">#FFFFFFFF</item>
-        <item name="android:textColorSecondary">#FFB0B0B5</item>
+        <item name="android:textColorPrimary">@color/kiro_settings_text</item>
+        <item name="android:textColorSecondary">@color/kiro_settings_text_secondary</item>
         <item name="android:navigationBarColor">#FF000000</item>
-        <item name="android:statusBarColor">#FF000000</item>
+        <item name="android:statusBarColor">@color/settings_pure_black</item>
+        <item name="android:windowLightStatusBar">@bool/kiro_light_bars</item>
 
         <item name="preferenceTheme">@style/PreferenceTheme</item>
         <item name="@*android:preferenceHeaderPanelStyle">@style/PreferenceHeaderPanelSinglePane</item>

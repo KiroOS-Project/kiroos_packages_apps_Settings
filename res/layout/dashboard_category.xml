@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/dashboard_category_height"
     android:orientation="vertical"
-    android:paddingBottom="8dip"
-    android:background="#FF000000">
+    android:paddingBottom="4dip"
+    android:paddingTop="12dip">
 
     <TextView android:id="@android:id/title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="@dimen/dashboard_category_title_margin_start"
+        android:paddingStart="30dp"
         android:singleLine="true"
         android:ellipsize="marquee"
         android:gravity="center_vertical"

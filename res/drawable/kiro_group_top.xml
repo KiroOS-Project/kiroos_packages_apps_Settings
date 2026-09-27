@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS 2.1 grouped card, top row -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:attr/colorControlHighlight">
+    <item>
+        <layer-list>
+            <item>
+                <shape>
+                    <solid android:color="@color/kiro_group_card" />
+                    <corners android:topLeftRadius="18dp" android:topRightRadius="18dp" android:bottomLeftRadius="0dp" android:bottomRightRadius="0dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:id="@android:id/mask">
+        <shape>
+            <solid android:color="#FFFFFFFF" />
+            <corners android:topLeftRadius="18dp" android:topRightRadius="18dp" android:bottomLeftRadius="0dp" android:bottomRightRadius="0dp" />
+        </shape>
+    </item>
+</ripple>

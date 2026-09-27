@@ -204,6 +204,24 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
         // KiroOS: Edge screen exists only on the dual edge models (zerolte / zenlte); on the
         // flat S6 (zeroflte) the whole screen is removed.
+        final ListPreference themePref = (ListPreference) findPreference("kiroos_theme");
+        if (themePref != null) {
+            final android.app.UiModeManager ui = (android.app.UiModeManager)
+                    getSystemService(Context.UI_MODE_SERVICE);
+            themePref.setValue(String.valueOf(ui.getNightMode()));
+            themePref.setSummary(themePref.getEntry());
+            themePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    // every open app redraws in the new theme: nothing restarts
+                    ui.setNightMode(Integer.parseInt((String) newValue));
+                    themePref.setValue((String) newValue);
+                    themePref.setSummary(themePref.getEntry());
+                    return true;
+                }
+            });
+        }
+
         final SwitchPreference dcPref = (SwitchPreference) findPreference("kiroos_dc_dimming");
         if (dcPref != null) {
             dcPref.setChecked(Settings.System.getInt(getContentResolver(),

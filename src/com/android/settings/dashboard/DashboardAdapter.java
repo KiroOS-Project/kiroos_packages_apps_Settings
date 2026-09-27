@@ -63,6 +63,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     private static final int NS_SUGGESTION = 1000;
     private static final int NS_ITEMS = 2000;
     private static final int NS_CONDITION = 3000;
+    private static final int NS_KIRO_HEADER = 5000;
 
     private static int SUGGESTION_MODE_DEFAULT = 0;
     private static int SUGGESTION_MODE_COLLAPSED = 1;
@@ -162,6 +163,9 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
 
     private void recountItems() {
         reset();
+        // KiroOS 2.1: the phone and its KiroOS version first
+        countItem(null, R.layout.kiro_dashboard_header, true, NS_KIRO_HEADER);
+        resetCount();
         boolean hasConditions = false;
         for (int i = 0; mConditions != null && i < mConditions.size(); i++) {
             boolean shouldShow = mConditions.get(i).shouldShow();
@@ -235,7 +239,18 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
             case R.layout.dashboard_category:
                 onBindCategory(holder, (DashboardCategory) mItems.get(position));
                 break;
+            case R.layout.kiro_dashboard_header:
+                onBindKiroHeader(holder);
+                break;
             case R.layout.dashboard_tile:
+                // KiroOS 2.1: the tiles of a category form one rounded card
+                final boolean firstInGroup = position == 0
+                        || mTypes.get(position - 1) != R.layout.dashboard_tile;
+                final boolean lastInGroup = position == mTypes.size() - 1
+                        || mTypes.get(position + 1) != R.layout.dashboard_tile;
+                holder.itemView.setBackgroundResource(firstInGroup && lastInGroup
+                        ? R.drawable.kiro_group_single : firstInGroup ? R.drawable.kiro_group_top
+                        : lastInGroup ? R.drawable.kiro_group_bottom : R.drawable.kiro_group_middle);
                 final Tile tile = (Tile) mItems.get(position);
                 onBindTile(holder, tile);
                 holder.itemView.setTag(tile);
@@ -451,6 +466,30 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
             }
         }
 
+    }
+
+    private void onBindKiroHeader(DashboardItemHolder holder) {
+        final View v = holder.itemView;
+        final String device = android.os.SystemProperties.get("ro.product.device", "");
+        final String model = device.startsWith("zenlte") ? "Galaxy S6 edge+"
+                : device.startsWith("zerolte") ? "Galaxy S6 edge" : "Galaxy S6";
+        ((TextView) v.findViewById(R.id.kiro_header_model)).setText(model);
+        final String version = android.os.SystemProperties.get("ro.kiro.display.version", "KiroOS");
+        final String channel = android.os.SystemProperties.get("ro.kiro.release.channel", "");
+        ((TextView) v.findViewById(R.id.kiro_header_version)).setText(
+                channel.isEmpty() ? version : version + " \u00b7 " + channel);
+        ((TextView) v.findViewById(R.id.kiro_header_specs)).setText(mContext.getString(
+                R.string.kiroos_header_specs,
+                com.android.settings.kiroos.KiroOSDevice.ramGigabytes(),
+                com.android.settings.kiroos.KiroOSDevice.batteryCapacityMah(mContext),
+                android.os.Build.VERSION.RELEASE));
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContext.startActivity(new android.content.Intent(
+                        android.provider.Settings.ACTION_DEVICE_INFO_SETTINGS));
+            }
+        });
     }
 
     private void onBindCategory(DashboardItemHolder holder, DashboardCategory category) {

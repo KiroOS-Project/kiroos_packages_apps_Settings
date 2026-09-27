@@ -134,6 +134,12 @@
     <color name="gestures_setting_background_color">#FF000000</color>
 
     <!-- KiroOS Settings dashboard -->
+    <!-- KiroOS 2.1: grouped cards, header, theme text (light values in values-notnight) -->
+    <color name="kiro_group_card">#FF141416</color>
+    <color name="kiro_group_divider">#FF26262A</color>
+    <color name="kiro_settings_text">#FFFFFFFF</color>
+    <color name="kiro_settings_text_secondary">#FFB0B0B5</color>
+    <bool name="kiro_light_bars">false</bool>
     <color name="kiro_condition_card">#FF26262B</color>
     <color name="kiro_condition_text">#FFF2F2F5</color>
     <color name="kiro_condition_divider">#FF3A3A40</color>
