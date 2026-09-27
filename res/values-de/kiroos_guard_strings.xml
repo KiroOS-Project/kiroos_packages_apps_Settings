@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS 2.1 translation (de). Source: kai/l10n/de.txt -->
+<resources>
+    <string name="kiroos_charge_limit_title">Akku schützen</string>
+    <string name="kiroos_charge_limit_summary" formatted="false">Das Laden stoppt bei 80% und startet wieder bei 77%, damit der Akku länger hält. Ladegerät und USB bleiben verbunden.</string>
+    <string name="kiroos_bypass_title">Bypass-Laden</string>
+    <string name="kiroos_bypass_summary" formatted="false">Am Ladegerät läuft das Telefon direkt über das Netzteil und der Akku wird nicht geladen, so bleibt es beim Spielen kühler (unter 20% wird wieder geladen).</string>
+    <string name="kiroos_dc_dimming_title">DC-Dimming</string>
+    <string name="kiroos_dc_dimming_summary">Weniger Flimmern bei geringer Helligkeit: Das Panel bleibt hell genug, um nicht zu flimmern, stattdessen wird das Bild abgedunkelt. Farben können im Dunkeln etwas flacher wirken.</string>
+    <string name="kiroos_theme_title">Design</string>
+    <string-array name="kiroos_theme_entries">
+        <item>Dunkel</item>
+        <item>Hell</item>
+        <item>Automatisch (Sonnenuntergang bis Sonnenaufgang)</item>
+    </string-array>
+</resources>

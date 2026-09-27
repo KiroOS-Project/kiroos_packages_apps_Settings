@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS 2.1: in the light theme Settings builds on the framework's light settings theme -->
+<resources>
+    <style name="Theme.SettingsBase" parent="@*android:style/Theme.DeviceDefault.Settings" />
+</resources>

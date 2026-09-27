@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS 2.1 translation (pt). Source: kai/l10n/pt.txt -->
+<resources>
+    <string name="kiroos_edge_title">Tela Edge</string>
+    <string name="kiroos_edge_summary">Área de toque das laterais curvas e iluminação das bordas</string>
+    <string name="kiroos_edge_touch_category">Toque nas laterais curvas</string>
+    <string name="kiroos_edge_zone_title">Rejeição da palma</string>
+    <string name="kiroos_edge_zone_both">Ambas as bordas</string>
+    <string name="kiroos_edge_zone_left">Só a borda esquerda</string>
+    <string name="kiroos_edge_zone_right">Só a borda direita</string>
+    <string name="kiroos_edge_zone_off">Desativado</string>
+    <string name="kiroos_edge_lighting_category">Notificações nas bordas</string>
+    <string name="kiroos_edge_lighting_title">Iluminação das bordas</string>
+    <string name="kiroos_edge_lighting_summary">As laterais curvas brilham quando chega uma notificação</string>
+    <string name="kiroos_edge_lighting_color_title">Cor da iluminação</string>
+    <string name="kiroos_color_kiro_blue">Azul Kiro</string>
+    <string name="kiroos_color_white">Branco</string>
+    <string name="kiroos_color_violet">Violeta</string>
+    <string name="kiroos_color_orange">Laranja</string>
+    <string name="kiroos_color_green">Verde</string>
+    <string name="kiroos_game_space_summary">Modo 720p, desempenho máximo, sem interrupções</string>
+    <string name="kiroos_game_downscale_title">Modo 720p</string>
+    <string name="kiroos_game_downscale_summary">Renderiza em 720 x 1280 (320 dpi) para mais quadros por segundo e menos calor</string>
+    <string name="kiroos_game_performance_title">Desempenho máximo</string>
+    <string name="kiroos_game_performance_summary">Usa o perfil Desempenho extremo enquanto o Game Space está ativo</string>
+    <string name="kiroos_game_no_heads_up_title">Sem interrupções</string>
+    <string name="kiroos_game_no_heads_up_summary">As notificações ficam na barra de status em vez de aparecer na tela</string>
+    <string name="kiroos_power_profile_title">Perfil de desempenho</string>
+    <string name="kiroos_power_saving">Economia de energia</string>
+    <string name="kiroos_power_balanced">Equilibrado</string>
+    <string name="kiroos_power_performance">Desempenho</string>
+    <string name="kiroos_power_extreme">Desempenho extremo</string>
+    <string name="kiroos_power_saving_summary">CPU até 1,2 GHz, GPU até 420 MHz: a maior duração da bateria</string>
+    <string name="kiroos_power_balanced_summary">Velocidade máxima quando necessário, frequências baixas em repouso</string>
+    <string name="kiroos_power_performance_summary">Frequências mínimas mais altas: mais ágil, usa mais bateria</string>
+    <string name="kiroos_power_extreme_summary">CPU e GPU em frequências altas: para jogos, o telefone esquenta mais</string>
+    <string name="kiroos_battery_capacity_title">Bateria</string>
+</resources>

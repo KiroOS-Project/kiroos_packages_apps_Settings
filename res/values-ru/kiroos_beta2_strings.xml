@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS 2.1 translation (ru). Source: kai/l10n/ru.txt -->
+<resources>
+    <string name="kiroos_edge_title">Экран Edge</string>
+    <string name="kiroos_edge_summary">Сенсорная зона изогнутых краёв и подсветка краёв</string>
+    <string name="kiroos_edge_touch_category">Касания на изогнутых краях</string>
+    <string name="kiroos_edge_zone_title">Защита от касаний ладонью</string>
+    <string name="kiroos_edge_zone_both">Оба края</string>
+    <string name="kiroos_edge_zone_left">Только левый край</string>
+    <string name="kiroos_edge_zone_right">Только правый край</string>
+    <string name="kiroos_edge_zone_off">Выключено</string>
+    <string name="kiroos_edge_lighting_category">Уведомления на краях</string>
+    <string name="kiroos_edge_lighting_title">Подсветка краёв</string>
+    <string name="kiroos_edge_lighting_summary">Изогнутые края светятся при получении уведомления</string>
+    <string name="kiroos_edge_lighting_color_title">Цвет подсветки</string>
+    <string name="kiroos_color_kiro_blue">Синий Kiro</string>
+    <string name="kiroos_color_white">Белый</string>
+    <string name="kiroos_color_violet">Фиолетовый</string>
+    <string name="kiroos_color_orange">Оранжевый</string>
+    <string name="kiroos_color_green">Зелёный</string>
+    <string name="kiroos_game_space_summary">Режим 720p, максимальная производительность, без отвлечений</string>
+    <string name="kiroos_game_downscale_title">Режим 720p</string>
+    <string name="kiroos_game_downscale_summary">Рендеринг в 720 x 1280 (320 dpi) для большей частоты кадров и меньшего нагрева</string>
+    <string name="kiroos_game_performance_title">Максимальная производительность</string>
+    <string name="kiroos_game_performance_summary">Использует профиль «Экстремальная производительность», пока включён Game Space</string>
+    <string name="kiroos_game_no_heads_up_title">Без отвлечений</string>
+    <string name="kiroos_game_no_heads_up_summary">Уведомления остаются в строке состояния и не всплывают</string>
+    <string name="kiroos_power_profile_title">Профиль производительности</string>
+    <string name="kiroos_power_saving">Энергосбережение</string>
+    <string name="kiroos_power_balanced">Сбалансированный</string>
+    <string name="kiroos_power_performance">Производительность</string>
+    <string name="kiroos_power_extreme">Экстремальная производительность</string>
+    <string name="kiroos_power_saving_summary">CPU до 1,2 ГГц, GPU до 420 МГц: максимальное время работы</string>
+    <string name="kiroos_power_balanced_summary">Полная скорость при необходимости, низкие частоты в покое</string>
+    <string name="kiroos_power_performance_summary">Более высокие минимальные частоты: отзывчивее, больше расход батареи</string>
+    <string name="kiroos_power_extreme_summary">CPU и GPU на высоких частотах: для игр, телефон сильнее нагревается</string>
+    <string name="kiroos_battery_capacity_title">Батарея</string>
+    <string name="kiroos_battery_capacity_value">%1$d мА·ч</string>
+    <string name="kiroos_ram_title">ОЗУ</string>
+    <string name="kiroos_ram_value">%1$d ГБ LPDDR4</string>
+</resources>

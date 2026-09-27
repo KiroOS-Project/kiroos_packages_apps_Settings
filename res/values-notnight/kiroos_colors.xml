@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS 2.1 light theme for Settings (Settings > Display > Theme: Light) -->
+<resources>
+    <color name="settings_pure_black">#FFF2F2F7</color>
+    <color name="settings_card_black">#FFFFFFFF</color>
+    <color name="kiro_group_card">#FFFFFFFF</color>
+    <color name="kiro_group_divider">#FFE4E4EA</color>
+    <color name="kiro_settings_text">#FF111114</color>
+    <color name="kiro_settings_text_secondary">#FF6E6E76</color>
+    <bool name="kiro_light_bars">true</bool>
+    <color name="kiro_condition_card">#FFE9E9EF</color>
+    <color name="kiro_condition_text">#FF111114</color>
+    <color name="kiro_condition_divider">#FFD6D6DD</color>
+    <color name="kiro_category_title">#FF6E6E76</color>
+    <color name="kiro_tile_title">#FF111114</color>
+    <color name="kiro_tile_summary">#FF6E6E76</color>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS 2.1 translation (fr). Source: kai/l10n/fr.txt -->
+<resources>
+    <string name="kiroos_charge_limit_title">Protéger la batterie</string>
+    <string name="kiroos_charge_limit_summary" formatted="false">La charge s\'arrête à 80% et reprend à 77%, pour que la batterie dure plus longtemps. Le chargeur et l\'USB restent connectés.</string>
+    <string name="kiroos_bypass_title">Charge bypass</string>
+    <string name="kiroos_bypass_summary" formatted="false">Sur le chargeur, le téléphone est alimenté directement et la batterie n\'est pas chargée : il reste donc plus frais pendant que vous jouez (il recharge sous 20%).</string>
+    <string name="kiroos_dc_dimming_title">DC Dimming</string>
+    <string name="kiroos_dc_dimming_summary">Moins de scintillement à faible luminosité : l\'écran reste assez lumineux pour ne pas scintiller et l\'image est assombrie à la place. Les couleurs peuvent sembler un peu plus ternes dans le noir.</string>
+    <string name="kiroos_theme_title">Thème</string>
+    <string-array name="kiroos_theme_entries">
+        <item>Sombre</item>
+        <item>Clair</item>
+        <item>Automatique (du coucher au lever du soleil)</item>
+    </string-array>
+    <string name="kiroos_header_specs">%1$d Go de RAM · %2$d mAh · Android %3$s</string>
+</resources>
