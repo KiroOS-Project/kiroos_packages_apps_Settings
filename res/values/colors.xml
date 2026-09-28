@@ -136,6 +136,7 @@
     <!-- KiroOS Settings dashboard -->
     <!-- KiroOS 2.1: grouped cards, header, theme text (light values in values-notnight) -->
     <color name="kiro_group_card">#FF141416</color>
+    <color name="kiro_group_divider">#1AFFFFFF</color>
     <color name="kiro_group_divider">#FF26262A</color>
     <color name="kiro_settings_text">#FFFFFFFF</color>
     <color name="kiro_settings_text_secondary">#FFB0B0B5</color>

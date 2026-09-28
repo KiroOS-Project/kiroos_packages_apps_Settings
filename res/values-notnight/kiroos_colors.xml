@@ -4,6 +4,7 @@
     <color name="settings_pure_black">#FFF2F2F7</color>
     <color name="settings_card_black">#FFFFFFFF</color>
     <color name="kiro_group_card">#FFFFFFFF</color>
+    <color name="kiro_group_divider">#14000000</color>
     <color name="kiro_group_divider">#FFE4E4EA</color>
     <color name="kiro_settings_text">#FF111114</color>
     <color name="kiro_settings_text_secondary">#FF6E6E76</color>

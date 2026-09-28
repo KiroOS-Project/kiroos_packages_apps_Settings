@@ -17,5 +17,4 @@
         <item>1</item>
         <item>0</item>
     </string-array>
-    <string name="kiroos_header_specs">%1$d GB RAM \u00b7 %2$d mAh \u00b7 Android %3$s</string>
 </resources>

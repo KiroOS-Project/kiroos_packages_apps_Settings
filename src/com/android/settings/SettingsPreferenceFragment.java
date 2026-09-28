@@ -130,6 +130,7 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
         super.onViewCreated(view, savedInstanceState);
         // KiroOS 2.1: the preferences of each category on one rounded card
         if (getListView() != null) {
+            setDivider(null);   // the cards draw their own separators, inset
             getListView().addItemDecoration(
                     new com.android.settings.kiroos.KiroGroupDecoration(getPrefContext()));
         }

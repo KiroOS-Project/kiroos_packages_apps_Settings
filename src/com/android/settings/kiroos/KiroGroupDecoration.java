@@ -37,12 +37,15 @@ import com.android.settings.R;
 public class KiroGroupDecoration extends RecyclerView.ItemDecoration {
 
     private final Paint mCard = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint mLine = new Paint();
     private final Path mPath = new Path();
     private final RectF mRect = new RectF();
     private final float[] mRadii = new float[8];
     private final int mInset;
     private final int mGap;
     private final float mRadius;
+    private final int mLineInset;
+    private final int mLineAlpha;
 
     public KiroGroupDecoration(Context c) {
         final float d = c.getResources().getDisplayMetrics().density;
@@ -50,6 +53,10 @@ public class KiroGroupDecoration extends RecyclerView.ItemDecoration {
         mInset = Math.round(16 * d);
         mGap = Math.round(14 * d);
         mRadius = 18 * d;
+        mLine.setColor(c.getColor(R.color.kiro_group_divider));
+        mLine.setStrokeWidth(Math.max(1f, d * 0.6f));
+        mLineAlpha = mLine.getAlpha();
+        mLineInset = Math.round(20 * d);
     }
 
     private static Preference item(RecyclerView parent, int position) {
@@ -102,6 +109,12 @@ public class KiroGroupDecoration extends RecyclerView.ItemDecoration {
             mPath.addRoundRect(mRect, mRadii, Path.Direction.CW);
             mCard.setAlpha(Math.round(255 * v.getAlpha()));
             c.drawPath(mPath, mCard);
+            if (!last) {
+                // a hairline between two rows of the same card, inside the card
+                mLine.setAlpha(Math.round(mLineAlpha * v.getAlpha()));
+                c.drawLine(v.getLeft() + mLineInset, bottom, v.getRight() - mLineInset, bottom,
+                        mLine);
+            }
         }
     }
 }

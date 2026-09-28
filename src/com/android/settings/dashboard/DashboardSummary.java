@@ -207,7 +207,7 @@ public class DashboardSummary extends InstrumentedFragment
         mDashboard.setLayoutManager(mLayoutManager);
         mDashboard.setHasFixedSize(true);
         mDashboard.setListener(this);
-        mDashboard.addItemDecoration(new DashboardDecorator(getContext()));
+        // KiroOS 2.1: categories are separate rounded cards, no full-width line between them
         mAdapter = new DashboardAdapter(getContext(), mSuggestionParser, bundle,
                 mConditionManager.getConditions());
         mDashboard.setAdapter(mAdapter);

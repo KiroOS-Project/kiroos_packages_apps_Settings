@@ -13,5 +13,4 @@
         <item>Светлая</item>
         <item>Автоматически (от заката до рассвета)</item>
     </string-array>
-    <string name="kiroos_header_specs">%1$d ГБ ОЗУ · %2$d мА·ч · Android %3$s</string>
 </resources>

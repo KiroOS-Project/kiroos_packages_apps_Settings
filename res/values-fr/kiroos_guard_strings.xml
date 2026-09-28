@@ -13,5 +13,4 @@
         <item>Clair</item>
         <item>Automatique (du coucher au lever du soleil)</item>
     </string-array>
-    <string name="kiroos_header_specs">%1$d Go de RAM · %2$d mAh · Android %3$s</string>
 </resources>
