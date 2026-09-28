@@ -68,10 +68,18 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
             getActionBar().setTitle(R.string.kiroos_updater_title);
             // Flat black bar that blends with the page, like the rest of this screen.
             getActionBar().setElevation(0);
-            getActionBar().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(0xFF000000));
+            getActionBar().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(
+                    getColor(R.color.kiroos_upd_bg)));
         }
-        getWindow().setStatusBarColor(0xFF000000);
-        getWindow().setNavigationBarColor(0xFF000000);
+        getWindow().setStatusBarColor(getColor(R.color.kiroos_upd_bg));
+        getWindow().setNavigationBarColor(getColor(R.color.kiroos_upd_bg));
+        // KiroOS: dark status bar icons on the light theme's light background
+        if ((getResources().getConfiguration().uiMode
+                & android.content.res.Configuration.UI_MODE_NIGHT_MASK)
+                != android.content.res.Configuration.UI_MODE_NIGHT_YES) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
 
         mManager = KiroOSUpdateManager.get(this);
         KiroOSUpdateJobService.schedule(this);
@@ -248,7 +256,7 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
 
         TextView label = new TextView(this);
         label.setText(labelRes);
-        label.setTextColor(0xFF8E8E93);
+        label.setTextColor(getColor(R.color.kiroos_upd_text3));
         label.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
         label.setGravity(Gravity.START);
         label.setLayoutParams(new LinearLayout.LayoutParams(0,
@@ -256,7 +264,7 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
 
         TextView val = new TextView(this);
         val.setText(value);
-        val.setTextColor(0xFFFFFFFF);
+        val.setTextColor(getColor(R.color.kiroos_upd_text));
         val.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
         val.setGravity(Gravity.START);
         val.setTextIsSelectable(true);

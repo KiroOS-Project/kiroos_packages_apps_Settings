@@ -94,12 +94,13 @@ public class KiroOSColorOSCardPreference extends Preference {
             statusDot.setScaleX(1f);
             statusDot.setScaleY(1f);
             statusDot.setBackgroundTintList(ColorStateList.valueOf(
-                    available ? 0xFFFFFFFF : 0xFF636366));
+                    available ? getContext().getColor(R.color.kiroos_upd_text)
+                            : getContext().getColor(R.color.kiroos_upd_text4)));
         }
         if (available) {
             if (statusBadge != null) {
                 statusBadge.setText(R.string.kiroos_status_update_available);
-                statusBadge.setTextColor(0xFFFFFFFF);
+                statusBadge.setTextColor(getContext().getColor(R.color.kiroos_upd_text));
             }
             if (changelogTitle != null) {
                 changelogTitle.setText(context.getString(R.string.kiroos_ota_release_notes,
@@ -112,7 +113,7 @@ public class KiroOSColorOSCardPreference extends Preference {
                 checkUpdatesBtn.setText(context.getString(R.string.kiroos_ota_download,
                         Formatter.formatFileSize(context, cached.size)));
                 checkUpdatesBtn.setBackgroundResource(R.drawable.kiroos_upd_button);
-                checkUpdatesBtn.setTextColor(0xFF000000);
+                checkUpdatesBtn.setTextColor(getContext().getColor(R.color.kiroos_upd_button_fg));
             }
             if (statusDot != null) pulse(statusDot);
             // Announce the new update once per version: the card settles in like a widget.
@@ -128,11 +129,11 @@ public class KiroOSColorOSCardPreference extends Preference {
                         .setDuration(520).setInterpolator(new OvershootInterpolator(1.4f)).start();
             }
         } else if (statusBadge != null) {
-            statusBadge.setTextColor(0xFFC7C7CC);
+            statusBadge.setTextColor(getContext().getColor(R.color.kiroos_upd_text2));
             if (checkUpdatesBtn != null) {
                 checkUpdatesBtn.setText(R.string.kiroos_btn_check_updates_text);
                 checkUpdatesBtn.setBackgroundResource(R.drawable.kiroos_about_button_secondary);
-                checkUpdatesBtn.setTextColor(0xFFFFFFFF);
+                checkUpdatesBtn.setTextColor(getContext().getColor(R.color.kiroos_upd_text));
             }
             long last = KiroOSUpdateManager.lastCheck(context);
             if (last == 0) {

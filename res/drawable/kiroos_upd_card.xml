@@ -2,6 +2,6 @@
 <!-- KiroOS updater: section card -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="#FF121214" />
+    <solid android:color="@color/kiroos_upd_card" />
     <corners android:radius="20dp" />
 </shape>

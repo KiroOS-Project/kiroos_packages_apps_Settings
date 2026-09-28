@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- KiroOS About phone: quiet pill button (no update pending) -->
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="#26FFFFFF">
+    android:color="@color/kiroos_upd_stroke2">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#FF1C1C1E" />
+            <solid android:color="@color/kiroos_upd_raised" />
             <corners android:radius="23dp" />
         </shape>
     </item>

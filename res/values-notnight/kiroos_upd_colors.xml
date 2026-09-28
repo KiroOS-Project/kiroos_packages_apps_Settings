@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS update screens: light theme -->
+<resources>
+    <color name="kiroos_upd_bg">#FFF2F2F7</color>
+    <color name="kiroos_upd_bg_e6">#E6F2F2F7</color>
+    <color name="kiroos_upd_bg_00">#00F2F2F7</color>
+    <color name="kiroos_upd_card">#FFFFFFFF</color>
+    <color name="kiroos_upd_raised">#FFE5E5EA</color>
+    <color name="kiroos_upd_raised2">#FFD1D1D6</color>
+    <color name="kiroos_upd_text">#FF1C1C1E</color>
+    <color name="kiroos_upd_text2">#FF3C3C43</color>
+    <color name="kiroos_upd_text3">#FF6D6D72</color>
+    <color name="kiroos_upd_text4">#FFAEAEB2</color>
+    <color name="kiroos_upd_divider">#FFD8D8DC</color>
+    <color name="kiroos_upd_stroke">#14000000</color>
+    <color name="kiroos_upd_stroke2">#1F000000</color>
+    <color name="kiroos_upd_press">#1A000000</color>
+    <color name="kiroos_upd_button">#FF1C1C1E</color>
+    <color name="kiroos_upd_button_fg">#FFFFFFFF</color>
+</resources>

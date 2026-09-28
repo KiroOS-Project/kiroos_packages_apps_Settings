@@ -4,7 +4,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF000000">
+    android:background="@color/kiroos_upd_bg">
 
     <ScrollView
         android:id="@+id/kiroos_update_scroll"
@@ -53,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="sans-serif-light"
-                        android:textColor="#FFFFFFFF"
+                        android:textColor="@color/kiroos_upd_text"
                         android:textSize="30sp"
                         android:visibility="gone" />
                 </FrameLayout>
@@ -66,7 +66,7 @@
                     android:fontFamily="sans-serif-medium"
                     android:letterSpacing="-0.01"
                     android:text="@string/kiroos_update_version_header"
-                    android:textColor="#FFFFFFFF"
+                    android:textColor="@color/kiroos_upd_text"
                     android:textSize="32sp" />
 
                 <TextView
@@ -78,7 +78,7 @@
                     android:fontFamily="sans-serif-medium"
                     android:letterSpacing="0.06"
                     android:text="@string/kiroos_badge_dev_beta"
-                    android:textColor="#FFC7C7CC"
+                    android:textColor="@color/kiroos_upd_text2"
                     android:textSize="11sp" />
 
                 <TextView
@@ -89,7 +89,7 @@
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:text="@string/kiroos_ota_checking"
-                    android:textColor="#FFFFFFFF"
+                    android:textColor="@color/kiroos_upd_text"
                     android:textSize="17sp" />
 
                 <TextView
@@ -101,7 +101,7 @@
                     android:lineSpacingMultiplier="1.25"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
-                    android:textColor="#FF8E8E93"
+                    android:textColor="@color/kiroos_upd_text3"
                     android:textSize="13sp" />
 
                 <!-- Download / verification details under the status -->
@@ -123,7 +123,7 @@
                         android:layout_marginEnd="32dp"
                         android:max="1000"
                         android:progressBackgroundTint="#FF1C1C1E"
-                        android:progressTint="#FFFFFFFF" />
+                        android:progressTint="@color/kiroos_upd_text" />
 
                     <TextView
                         android:id="@+id/kiroos_update_progress_text"
@@ -131,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:textColor="#FF8E8E93"
+                        android:textColor="@color/kiroos_upd_text3"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -155,7 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:textColor="#FFFFFFFF"
+                    android:textColor="@color/kiroos_upd_text"
                     android:textSize="16sp" />
 
                 <TextView
@@ -164,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:lineSpacingMultiplier="1.45"
-                    android:textColor="#FFC7C7CC"
+                    android:textColor="@color/kiroos_upd_text2"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -184,7 +184,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
                     android:text="@string/kiroos_updater_spec_title"
-                    android:textColor="#FFFFFFFF"
+                    android:textColor="@color/kiroos_upd_text"
                     android:textSize="16sp" />
 
                 <!-- One row per spec (label | value), filled by KiroOSUpdateActivity -->
@@ -220,7 +220,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:text="@string/kiroos_stats_title"
-                        android:textColor="#FFFFFFFF"
+                        android:textColor="@color/kiroos_upd_text"
                         android:textSize="15sp" />
 
                     <TextView
@@ -229,7 +229,7 @@
                         android:layout_marginTop="4dp"
                         android:lineSpacingMultiplier="1.25"
                         android:text="@string/kiroos_stats_desc"
-                        android:textColor="#FF8E8E93"
+                        android:textColor="@color/kiroos_upd_text3"
                         android:textSize="12sp" />
                 </LinearLayout>
 

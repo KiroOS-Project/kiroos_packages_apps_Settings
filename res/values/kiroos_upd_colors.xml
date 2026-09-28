@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS update screens (About card, OTA update): dark theme -->
+<resources>
+    <color name="kiroos_upd_bg">#FF000000</color>
+    <color name="kiroos_upd_bg_e6">#E6000000</color>
+    <color name="kiroos_upd_bg_00">#00000000</color>
+    <color name="kiroos_upd_card">#FF121214</color>
+    <color name="kiroos_upd_raised">#FF1C1C1E</color>
+    <color name="kiroos_upd_raised2">#FF2C2C2E</color>
+    <color name="kiroos_upd_text">#FFFFFFFF</color>
+    <color name="kiroos_upd_text2">#FFC7C7CC</color>
+    <color name="kiroos_upd_text3">#FF8E8E93</color>
+    <color name="kiroos_upd_text4">#FF636366</color>
+    <color name="kiroos_upd_divider">#FF26262A</color>
+    <color name="kiroos_upd_stroke">#14FFFFFF</color>
+    <color name="kiroos_upd_stroke2">#26FFFFFF</color>
+    <color name="kiroos_upd_press">#33000000</color>
+    <color name="kiroos_upd_button">#FFFFFFFF</color>
+    <color name="kiroos_upd_button_fg">#FF000000</color>
+</resources>

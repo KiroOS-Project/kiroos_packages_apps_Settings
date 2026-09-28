@@ -16,8 +16,6 @@ import android.view.animation.LinearInterpolator;
  */
 public class KiroOSRingView extends View {
 
-    private static final int TRACK = 0xFF1C1C1E;
-    private static final int ARC = 0xFFFFFFFF;
 
     private final Paint mTrackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint mArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -39,11 +37,11 @@ public class KiroOSRingView extends View {
         final float stroke = 3f * getResources().getDisplayMetrics().density;
         mTrackPaint.setStyle(Paint.Style.STROKE);
         mTrackPaint.setStrokeWidth(stroke);
-        mTrackPaint.setColor(TRACK);
+        mTrackPaint.setColor(context.getColor(com.android.settings.R.color.kiroos_upd_raised));
         mArcPaint.setStyle(Paint.Style.STROKE);
         mArcPaint.setStrokeWidth(stroke);
         mArcPaint.setStrokeCap(Paint.Cap.ROUND);
-        mArcPaint.setColor(ARC);
+        mArcPaint.setColor(context.getColor(com.android.settings.R.color.kiroos_upd_text));
     }
 
     /** Indeterminate: a short arc turning around the ring. */
