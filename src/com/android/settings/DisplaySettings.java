@@ -222,24 +222,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             });
         }
 
-        final SwitchPreference dcPref = (SwitchPreference) findPreference("kiroos_dc_dimming");
-        if (dcPref != null) {
-            dcPref.setChecked(Settings.System.getInt(getContentResolver(),
-                    "kiroos_dc_dimming", 0) != 0);
-            dcPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    final ContentResolver cr = getContentResolver();
-                    Settings.System.putInt(cr, "kiroos_dc_dimming", (Boolean) newValue ? 1 : 0);
-                    // a brightness update applies it now (the display controller reads it there)
-                    final int b = Settings.System.getInt(cr, Settings.System.SCREEN_BRIGHTNESS, 128);
-                    Settings.System.putInt(cr, Settings.System.SCREEN_BRIGHTNESS, b > 1 ? b - 1 : b + 1);
-                    Settings.System.putInt(cr, Settings.System.SCREEN_BRIGHTNESS, b);
-                    return true;
-                }
-            });
-        }
-
         final Preference edgePref = findPreference("kiroos_edge_screen");
         if (edgePref != null) {
             final String device = SystemProperties.get("ro.product.device", "");

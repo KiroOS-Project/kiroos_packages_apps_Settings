@@ -45,13 +45,6 @@
                 android:entryValues="@array/kiroos_theme_values"
                 android:persistent="false" />
 
-        <!-- KiroOS DC dimming: low brightness without PWM flicker (DisplayPowerController) -->
-        <SwitchPreference
-                android:key="kiroos_dc_dimming"
-                android:title="@string/kiroos_dc_dimming_title"
-                android:summary="@string/kiroos_dc_dimming_summary"
-                android:persistent="false" />
-
         <!-- LiveDisplay -->
         <org.cyanogenmod.internal.cmparts.CMPartsPreference
             android:key="livedisplay"

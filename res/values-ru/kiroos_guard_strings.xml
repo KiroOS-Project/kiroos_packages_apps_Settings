@@ -5,8 +5,6 @@
     <string name="kiroos_charge_limit_summary" formatted="false">Зарядка останавливается на 80% и возобновляется на 77%, чтобы батарея служила дольше. Зарядное устройство и USB остаются подключены.</string>
     <string name="kiroos_bypass_title">Зарядка в обход батареи</string>
     <string name="kiroos_bypass_summary" formatted="false">При подключении к зарядке телефон питается напрямую, а батарея не заряжается, поэтому он меньше греется во время игры (снова заряжается ниже 20%).</string>
-    <string name="kiroos_dc_dimming_title">DC Dimming</string>
-    <string name="kiroos_dc_dimming_summary">Меньше мерцания на низкой яркости: панель остаётся достаточно яркой, чтобы не мерцать, а изображение затемняется. В темноте цвета могут выглядеть чуть более блёклыми.</string>
     <string name="kiroos_theme_title">Тема</string>
     <string-array name="kiroos_theme_entries">
         <item>Тёмная</item>

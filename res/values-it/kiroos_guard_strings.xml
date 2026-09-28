@@ -4,8 +4,6 @@
     <string name="kiroos_charge_limit_summary" formatted="false">La ricarica si ferma all\'80% e riparte al 77%, così la batteria dura di più. Caricatore e USB restano collegati.</string>
     <string name="kiroos_bypass_title">Bypass di ricarica</string>
     <string name="kiroos_bypass_summary" formatted="false">In carica il telefono va direttamente col caricatore e la batteria non si carica, così resta più fresca mentre giochi (sotto il 20% si ricarica comunque).</string>
-    <string name="kiroos_dc_dimming_title">DC Dimming</string>
-    <string name="kiroos_dc_dimming_summary">Meno sfarfallio a bassa luminosità: il pannello resta abbastanza acceso da non sfarfallare e viene scurita l\'immagine. Al buio i colori possono sembrare un po\' più piatti.</string>
     <string name="kiroos_theme_title">Tema</string>
     <string-array name="kiroos_theme_entries">
         <item>Scuro</item>
