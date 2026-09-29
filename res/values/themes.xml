@@ -143,6 +143,11 @@
         <item name="android:navigationBarColor">@color/kiro_settings_navbar</item>
         <item name="android:statusBarColor">@color/settings_pure_black</item>
         <item name="android:windowLightStatusBar">@bool/kiro_light_bars</item>
+        <!-- the drawer activities' Toolbar is painted with colorPrimary and themed by
+             actionBarTheme (SettingsLib settings_with_drawer): same bar as the action bar -->
+        <item name="android:colorPrimary">@color/kiro_settings_bar</item>
+        <item name="android:colorPrimaryDark">@color/settings_pure_black</item>
+        <item name="android:actionBarTheme">@style/ThemeOverlay.Kiro.ActionBar</item>
 
         <item name="preferenceTheme">@style/PreferenceTheme</item>
         <item name="@*android:preferenceHeaderPanelStyle">@style/PreferenceHeaderPanelSinglePane</item>
