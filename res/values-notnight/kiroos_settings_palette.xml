@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Settings palette, light theme -->
+<resources>
+    <color name="kiro_settings_bar">#FFF2F2F7</color>
+    <color name="kiro_settings_bar_text">#FF111114</color>
+    <color name="kiro_settings_switchbar">#FFFFFFFF</color>
+    <color name="kiro_settings_card_stroke">#FFE4E4EA</color>
+    <color name="kiro_settings_ripple">#1F000000</color>
+    <color name="kiro_settings_field">#FFF2F2F7</color>
+    <color name="kiro_settings_positive">#FF1E8E4E</color>
+
+    <!-- stock colours Settings keeps dark in values/: their light twins -->
+    <color name="card_background">#FFFFFFFF</color>
+    <color name="card_background_grey">#FFF2F2F7</color>
+    <color name="conversation_background">#FFF2F2F7</color>
+    <color name="divider_color">#1F000000</color>
+    <color name="fab_ripple">#1F000000</color>
+    <color name="material_empty_color_light">#FFE5E5EA</color>
+    <color name="seek_bar_preference_preview_text">#FF111114</color>
+    <color name="gestures_setting_background_color">#FFF2F2F7</color>
+</resources>

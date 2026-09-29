@@ -122,7 +122,7 @@
                         android:layout_marginStart="32dp"
                         android:layout_marginEnd="32dp"
                         android:max="1000"
-                        android:progressBackgroundTint="#FF1C1C1E"
+                        android:progressBackgroundTint="@color/kiroos_upd_raised"
                         android:progressTint="@color/kiroos_upd_text" />
 
                     <TextView

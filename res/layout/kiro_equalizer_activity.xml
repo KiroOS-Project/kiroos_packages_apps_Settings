@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@color/settings_pure_black"
     android:fillViewport="true">
 
     <LinearLayout
@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#181818"
+            android:background="@drawable/kiro_group_single"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:padding="16dp"
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/eq_master_switch_title"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/kiro_settings_text"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
             android:id="@+id/eq_preset_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#181818"
+            android:background="@drawable/kiro_group_single"
             android:orientation="vertical"
             android:padding="16dp"
             android:layout_marginBottom="12dp">
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/eq_preset_title"
-                android:textColor="#B0B0B5"
+                android:textColor="@color/kiro_settings_text_secondary"
                 android:textSize="14sp"
                 android:layout_marginBottom="8dp" />
 
@@ -58,7 +58,7 @@
                 android:id="@+id/eq_preset_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#242424"
+                android:background="@color/kiro_settings_field"
                 android:minHeight="48dp" />
         </LinearLayout>
 
@@ -67,7 +67,7 @@
             android:id="@+id/eq_bass_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#181818"
+            android:background="@drawable/kiro_group_single"
             android:orientation="vertical"
             android:padding="16dp"
             android:layout_marginBottom="12dp">
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/eq_bass_title"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/kiro_settings_text"
                     android:textSize="16sp" />
 
                 <TextView
@@ -91,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/eq_bass_default"
-                    android:textColor="#3DDC84"
+                    android:textColor="@color/kiro_settings_positive"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -108,7 +108,7 @@
             android:id="@+id/eq_bands_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#181818"
+            android:background="@drawable/kiro_group_single"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -116,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/eq_bands_title"
-                android:textColor="#B0B0B5"
+                android:textColor="@color/kiro_settings_text_secondary"
                 android:textSize="14sp"
                 android:layout_marginBottom="12dp" />
 

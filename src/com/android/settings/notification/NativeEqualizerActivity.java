@@ -203,7 +203,7 @@ public class NativeEqualizerActivity extends Activity {
 
             TextView freqLabel = new TextView(this);
             freqLabel.setText(freqStr);
-            freqLabel.setTextColor(Color.WHITE);
+            freqLabel.setTextColor(getColor(R.color.kiro_settings_text));
             freqLabel.setTextSize(15);
             LinearLayout.LayoutParams p1 = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f);
             labelRow.addView(freqLabel, p1);
@@ -211,7 +211,7 @@ public class NativeEqualizerActivity extends Activity {
             final TextView dbLabel = new TextView(this);
             int currentLevel = mEqualizer.getBandLevel(bandIndex);
             dbLabel.setText(formatDb(currentLevel));
-            dbLabel.setTextColor(Color.parseColor("#3DDC84"));
+            dbLabel.setTextColor(getColor(R.color.kiro_settings_positive));
             dbLabel.setTextSize(15);
             labelRow.addView(dbLabel);
 

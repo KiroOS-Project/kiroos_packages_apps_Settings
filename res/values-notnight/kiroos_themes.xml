@@ -2,4 +2,19 @@
 <!-- KiroOS 2.1: in the light theme Settings builds on the framework's light settings theme -->
 <resources>
     <style name="Theme.SettingsBase" parent="@*android:style/Theme.DeviceDefault.Settings" />
+
+    <!-- the switch bar (Wi-Fi, Bluetooth, ...) and the dialog-when-large action bar, light -->
+    <style name="ThemeOverlay.SwitchBar.Settings" parent="@android:style/ThemeOverlay.Material.Light">
+        <item name="switchBarMarginStart">@dimen/switchbar_subsettings_margin_start</item>
+        <item name="switchBarMarginEnd">@dimen/switchbar_subsettings_margin_end</item>
+        <item name="switchBarBackgroundColor">@color/kiro_settings_switchbar</item>
+    </style>
+
+    <style name="ThemeOverlay.SwitchBar.SubSettings" parent="@android:style/ThemeOverlay.Material.Light">
+        <item name="switchBarMarginStart">@dimen/switchbar_subsettings_margin_start</item>
+        <item name="switchBarMarginEnd">@dimen/switchbar_subsettings_margin_end</item>
+        <item name="switchBarBackgroundColor">@color/kiro_settings_switchbar</item>
+    </style>
+
+    <style name="ThemeOverlay.Kiro.ActionBar" parent="@android:style/ThemeOverlay.Material.Light" />
 </resources>

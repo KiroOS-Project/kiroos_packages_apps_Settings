@@ -140,7 +140,7 @@
         <item name="android:colorBackgroundFloating">@color/settings_card_black</item>
         <item name="android:textColorPrimary">@color/kiro_settings_text</item>
         <item name="android:textColorSecondary">@color/kiro_settings_text_secondary</item>
-        <item name="android:navigationBarColor">#FF000000</item>
+        <item name="android:navigationBarColor">@color/kiro_settings_navbar</item>
         <item name="android:statusBarColor">@color/settings_pure_black</item>
         <item name="android:windowLightStatusBar">@bool/kiro_light_bars</item>
 
@@ -187,12 +187,13 @@
         <item name="android:windowBackground">@color/settings_pure_black</item>
         <item name="android:colorBackground">@color/settings_pure_black</item>
         <item name="android:colorBackgroundFloating">@color/settings_card_black</item>
-        <item name="android:textColorPrimary">#FFFFFFFF</item>
-        <item name="android:textColorSecondary">#FFB0B0B5</item>
+        <item name="android:textColorPrimary">@color/kiro_settings_text</item>
+        <item name="android:textColorSecondary">@color/kiro_settings_text_secondary</item>
         <item name="android:actionBarStyle">@style/Theme.ActionBar.SubSettings</item>
         <item name="switchBarTheme">@style/ThemeOverlay.SwitchBar.SubSettings</item>
-        <item name="android:navigationBarColor">#FF000000</item>
-        <item name="android:statusBarColor">#FF000000</item>
+        <item name="android:navigationBarColor">@color/kiro_settings_navbar</item>
+        <item name="android:statusBarColor">@color/settings_pure_black</item>
+        <item name="android:windowLightStatusBar">@bool/kiro_light_bars</item>
     </style>
 
     <style name="Theme.ProvisioningActivity" parent="@android:style/Theme.Translucent.NoTitleBar">
@@ -207,12 +208,12 @@
 
     <style name="Theme.ActionBar" parent="@android:style/Widget.Material.ActionBar.Solid">
         <item name="android:contentInsetStart">@dimen/actionbar_contentInsetStart</item>
-        <item name="android:background">#FF000000</item>
+        <item name="android:background">@color/kiro_settings_bar</item>
         <item name="android:titleTextStyle">@style/Theme.ActionBar.TitleText</item>
         <item name="android:elevation">0dp</item>
     </style>
     <style name="Theme.ActionBar.TitleText" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">
-        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textColor">@color/kiro_settings_bar_text</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -223,22 +224,26 @@
     <style name="ThemeOverlay.SwitchBar.Settings" parent="@*android:style/ThemeOverlay.DeviceDefault.Dark.ActionBar.Accent">
         <item name="switchBarMarginStart">@dimen/switchbar_subsettings_margin_start</item>
         <item name="switchBarMarginEnd">@dimen/switchbar_subsettings_margin_end</item>
-        <item name="switchBarBackgroundColor">?android:attr/colorSecondary</item>
+        <item name="switchBarBackgroundColor">@color/kiro_settings_switchbar</item>
     </style>
 
     <style name="ThemeOverlay.SwitchBar.SubSettings" parent="@android:style/ThemeOverlay.Material.Dark.ActionBar">
         <item name="switchBarMarginStart">@dimen/switchbar_subsettings_margin_start</item>
         <item name="switchBarMarginEnd">@dimen/switchbar_subsettings_margin_end</item>
-        <item name="switchBarBackgroundColor">?android:attr/colorSecondary</item>
+        <item name="switchBarBackgroundColor">@color/kiro_settings_switchbar</item>
     </style>
+
+    <!-- KiroOS: the action bar overlay of the dialog-when-large screens (light twin in
+         values-notnight) -->
+    <style name="ThemeOverlay.Kiro.ActionBar" parent="@android:style/ThemeOverlay.Material.Dark.ActionBar" />
 
     <style name="Theme.DialogWhenLarge" parent="Theme.Settings">
         <item name="android:actionBarStyle">@style/Theme.ActionBar</item>
         <item name="preferenceBackgroundColor">@drawable/preference_background</item>
         <item name="android:windowBackground">@color/settings_pure_black</item>
         <item name="android:colorBackground">@color/settings_pure_black</item>
-        <item name="android:textColorPrimary">#FFFFFFFF</item>
-        <item name="android:textColorSecondary">#FFB0B0B5</item>
+        <item name="android:textColorPrimary">@color/kiro_settings_text</item>
+        <item name="android:textColorSecondary">@color/kiro_settings_text_secondary</item>
     </style>
 
     <style name="Theme.CryptKeeper" parent="@android:style/Theme.Material.NoActionBar">
@@ -256,11 +261,11 @@
     <style name="Theme.SubSettingsDialogWhenLarge" parent="Theme.SubSettings">
         <item name="preferenceTheme">@style/PreferenceTheme</item>
         <item name="android:actionBarWidgetTheme">@null</item>
-        <item name="android:actionBarTheme">@android:style/ThemeOverlay.Material.Dark.ActionBar</item>
+        <item name="android:actionBarTheme">@style/ThemeOverlay.Kiro.ActionBar</item>
         <item name="android:windowBackground">@color/settings_pure_black</item>
         <item name="android:colorBackground">@color/settings_pure_black</item>
-        <item name="android:textColorPrimary">#FFFFFFFF</item>
-        <item name="android:textColorSecondary">#FFB0B0B5</item>
+        <item name="android:textColorPrimary">@color/kiro_settings_text</item>
+        <item name="android:textColorSecondary">@color/kiro_settings_text_secondary</item>
         <item name="preferenceBackgroundColor">@drawable/preference_background</item>
     </style>
 
@@ -273,8 +278,8 @@
         <item name="android:colorBackground">@color/settings_pure_black</item>
         <item name="android:colorBackgroundFloating">@color/settings_card_black</item>
         <item name="android:windowBackground">@color/settings_pure_black</item>
-        <item name="android:textColorPrimary">#FFFFFFFF</item>
-        <item name="android:textColorSecondary">#FFB0B0B5</item>
+        <item name="android:textColorPrimary">@color/kiro_settings_text</item>
+        <item name="android:textColorSecondary">@color/kiro_settings_text_secondary</item>
         <item name="android:actionBarStyle">@style/Theme.ActionBar</item>
     </style>
 

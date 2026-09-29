@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Settings palette, dark theme (the light values are in values-notnight). Every colour
+     of the KiroOS Settings theme comes from here: nothing in the themes is a literal. -->
+<resources>
+    <color name="kiro_settings_bar">#FF000000</color>
+    <color name="kiro_settings_bar_text">#FFFFFFFF</color>
+    <color name="kiro_settings_switchbar">#FF1C1C1E</color>
+    <color name="kiro_settings_card_stroke">#FF262628</color>
+    <color name="kiro_settings_ripple">#33FFFFFF</color>
+    <color name="kiro_settings_field">#FF242426</color>
+    <color name="kiro_settings_positive">#FF3DDC84</color>
+    <!-- Android 7.1 draws the navigation keys white only: the bar stays black in both themes -->
+    <color name="kiro_settings_navbar">#FF000000</color>
+</resources>
