@@ -70,7 +70,7 @@ public class KiroGroupDecoration extends RecyclerView.ItemDecoration {
 
     private static boolean isCard(RecyclerView parent, int position) {
         final Preference p = item(parent, position);
-        return p != null && !(p instanceof PreferenceCategory);
+        return p != null && !(p instanceof PreferenceCategory) && !(p instanceof KiroOwnCard);
     }
 
     @Override

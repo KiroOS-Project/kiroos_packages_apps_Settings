@@ -23,7 +23,8 @@ import com.android.settings.R;
 
 import java.util.Locale;
 
-public class KiroOSColorOSCardPreference extends Preference {
+public class KiroOSColorOSCardPreference extends Preference
+        implements com.android.settings.kiroos.KiroOwnCard {
 
     public KiroOSColorOSCardPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);

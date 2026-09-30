@@ -4,7 +4,7 @@
     <string name="kiroos_charge_limit_title">Proteger a bateria</string>
     <string name="kiroos_charge_limit_summary" formatted="false">O carregamento para em 80% e recomeça em 77%, para a bateria durar mais. O carregador e o USB continuam conectados.</string>
     <string name="kiroos_bypass_title">Carregamento bypass</string>
-    <string name="kiroos_bypass_summary" formatted="false">No carregador, o telefone funciona direto pela tomada e a bateria não é carregada, assim ele fica mais frio enquanto você joga (volta a carregar abaixo de 20%).</string>
+    <string name="kiroos_bypass_summary" formatted="false">Enquanto você joga com o telefone no carregador, ele funciona direto pela tomada e a bateria não é carregada, assim fica mais frio. No resto do tempo carrega normalmente (e sempre abaixo de 20%).</string>
     <string name="kiroos_theme_title">Tema</string>
     <string-array name="kiroos_theme_entries">
         <item>Escuro</item>

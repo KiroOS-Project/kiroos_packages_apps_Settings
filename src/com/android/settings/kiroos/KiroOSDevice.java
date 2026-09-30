@@ -39,20 +39,52 @@ public final class KiroOSDevice {
         return SystemProperties.get("ro.product.device", "");
     }
 
-    /** "Samsung Galaxy S6", "Samsung Galaxy S6 edge" or "Samsung Galaxy S6 edge+". */
-    public static String name() {
-        final String device = device();
-        if (device.startsWith("zenlte")) {
-            return "Samsung Galaxy S6 edge+";
-        }
-        if (device.startsWith("zerolte")) {
-            return "Samsung Galaxy S6 edge";
-        }
-        return "Samsung Galaxy S6";
+    private static final int S6 = 0;
+    private static final int S6_EDGE = 1;
+    private static final int S6_EDGE_PLUS = 2;
+
+    /**
+     * Samsung model code of the phone itself, from its bootloader version (G920FXXU6EVG1 ->
+     * G920F, G925F..., G928F..., G920W8...): right whatever build is installed. Empty if the
+     * bootloader string is not a Galaxy S6 family one.
+     */
+    private static String hardwareCode() {
+        final java.util.regex.Matcher m = java.util.regex.Pattern
+                .compile("^(G92[058][A-Z][0-9]?)")
+                .matcher(SystemProperties.get("ro.bootloader", ""));
+        return m.find() ? m.group(1) : "";
     }
 
-    /** Model number from the device tree: SM-G920F, SM-G925F or SM-G928F. */
+    /** Which model this is: the bootloader first, then the build's ro.product.device. */
+    private static int family() {
+        final String code = hardwareCode();
+        if (code.startsWith("G928")) return S6_EDGE_PLUS;
+        if (code.startsWith("G925")) return S6_EDGE;
+        if (code.startsWith("G920")) return S6;
+        final String device = device();
+        if (device.startsWith("zenlte")) return S6_EDGE_PLUS;
+        if (device.startsWith("zerolte")) return S6_EDGE;
+        return S6;
+    }
+
+    /** "Samsung Galaxy S6", "Samsung Galaxy S6 edge" or "Samsung Galaxy S6 edge+". */
+    public static String name() {
+        switch (family()) {
+            case S6_EDGE_PLUS:
+                return "Samsung Galaxy S6 edge+";
+            case S6_EDGE:
+                return "Samsung Galaxy S6 edge";
+            default:
+                return "Samsung Galaxy S6";
+        }
+    }
+
+    /** Model number: SM-G920F, SM-G925F, SM-G928F... from the phone, else the device tree's. */
     public static String modelNumber() {
+        final String code = hardwareCode();
+        if (!code.isEmpty()) {
+            return "SM-" + code;
+        }
         return SystemProperties.get("ro.kiroos.model", android.os.Build.MODEL);
     }
 
@@ -63,7 +95,7 @@ public final class KiroOSDevice {
 
     /** The panel: 5.1" on the S6 and S6 edge, 5.7" on the S6 edge+, all 1440 × 2560. */
     public static String displaySpec() {
-        if (device().startsWith("zenlte")) {
+        if (family() == S6_EDGE_PLUS) {
             return "5.7\" Super AMOLED dual edge, 1440 × 2560 (518 ppi)";
         }
         if (isEdge()) {
@@ -74,12 +106,7 @@ public final class KiroOSDevice {
 
     /** True on the dual edge models (S6 edge, S6 edge+), which get the Edge screen settings. */
     public static boolean isEdge() {
-        final String prop = SystemProperties.get("ro.kiroos.edge", "");
-        if (!prop.isEmpty()) {
-            return "1".equals(prop);
-        }
-        final String device = device();
-        return device.startsWith("zerolte") || device.startsWith("zenlte");
+        return family() != S6;
     }
 
     /** Nominal battery capacity in mAh: 2550 (S6), 2600 (S6 edge), 3000 (S6 edge+). */
