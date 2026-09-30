@@ -216,12 +216,18 @@ public class KiroOSColorOSCardPreference extends Preference {
     private void launchInternalUpdater(View from) {
         Context context = getContext();
         Intent intent = new Intent(context, KiroOSUpdateActivity.class);
-        if (from != null && from.getWidth() > 0 && from.getHeight() > 0) {
-            ActivityOptions opts = ActivityOptions.makeClipRevealAnimation(from, 0, 0,
-                    from.getWidth(), from.getHeight());
-            context.startActivity(intent, opts.toBundle());
-        } else {
-            context.startActivity(intent);
+        if (from != null && from.isAttachedToWindow() && from.getWidth() > 0
+                && from.getHeight() > 0) {
+            try {
+                ActivityOptions opts = ActivityOptions.makeClipRevealAnimation(from, 0, 0,
+                        from.getWidth(), from.getHeight());
+                context.startActivity(intent, opts.toBundle());
+                return;
+            } catch (RuntimeException e) {
+                // the animation is optional: open the screen without it
+                android.util.Log.w("KiroOSUpdate", "Clip reveal failed", e);
+            }
         }
+        context.startActivity(intent);
     }
 }

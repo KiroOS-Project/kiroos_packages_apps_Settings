@@ -74,6 +74,9 @@ public class KiroOSUpdateManager {
     public static final String PREF_NOTIFIED = "notified_timestamp";
 
     public static final String PROP_OTA_URL = "ro.kiroos.ota.url";
+    /** Public KiroOS channel (GitHub Releases), one manifest per model: the last address tried. */
+    private static final String PUBLIC_URL_PREFIX =
+            "https://github.com/nicholas2fma/kiroos-ota/releases/latest/download/update-";
     public static final String PROP_CHANNEL = "ro.kiro.release.channel";
     public static final String PROP_VERSION = "ro.kiro.display.version";
     public static final String PROP_BUILD_UTC = "ro.build.date.utc";
@@ -207,7 +210,7 @@ public class KiroOSUpdateManager {
     private volatile int mError = ERR_NONE;
     private volatile boolean mCancel;
     private volatile boolean mServerUnreachable;
-    private UpdateInfo mInfo;
+    private volatile UpdateInfo mInfo;
     private long mDone, mTotal, mSpeed, mEta = -1;
 
     public static synchronized KiroOSUpdateManager get(Context context) {
@@ -266,6 +269,26 @@ public class KiroOSUpdateManager {
 
     public static void setServerUrl(Context c, String url) {
         prefs(c).edit().putString(PREF_SERVER_URL, url == null ? null : url.trim()).apply();
+    }
+
+    /**
+     * Where to look for updates, in this order: the address saved on the phone (set by hand or
+     * moved by a server), the one this build shipped with, then the public KiroOS channel for
+     * this model. A phone left on an address it can't reach (2.1 builds pointed at a home
+     * server that only answers on its own Wi-Fi) still finds its update.
+     */
+    static List<String> serverCandidates(Context c) {
+        List<String> urls = new ArrayList<String>();
+        addCandidate(urls, prefs(c).getString(PREF_SERVER_URL, null));
+        addCandidate(urls, SystemProperties.get(PROP_OTA_URL, ""));
+        addCandidate(urls, PUBLIC_URL_PREFIX + android.os.Build.DEVICE + ".json");
+        return urls;
+    }
+
+    private static void addCandidate(List<String> urls, String url) {
+        if (url == null) return;
+        url = url.trim();
+        if (url.startsWith("http") && !urls.contains(url)) urls.add(url);
     }
 
     // ------------------------------------------------------------------ device statistics
@@ -376,9 +399,13 @@ public class KiroOSUpdateManager {
 
     public void addListener(Listener l) {
         if (!mListeners.contains(l)) mListeners.add(l);
-        l.onStateChanged(mState);
-        if (mState == State.DOWNLOADING || mState == State.VERIFYING) {
-            l.onProgress(mDone, mTotal, mSpeed, mEta);
+        try {
+            l.onStateChanged(mState);
+            if (mState == State.DOWNLOADING || mState == State.VERIFYING) {
+                l.onProgress(mDone, mTotal, mSpeed, mEta);
+            }
+        } catch (RuntimeException e) {
+            Log.e(TAG, "Update screen failed on " + mState, e);
         }
     }
 
@@ -392,8 +419,19 @@ public class KiroOSUpdateManager {
         mMain.post(new Runnable() {
             @Override
             public void run() {
-                for (Listener l : new ArrayList<Listener>(mListeners)) l.onStateChanged(s);
-                KiroOSUpdateService.update(mContext, s);
+                // A screen that can't draw a state must not take Settings down with it.
+                for (Listener l : new ArrayList<Listener>(mListeners)) {
+                    try {
+                        l.onStateChanged(s);
+                    } catch (RuntimeException e) {
+                        Log.e(TAG, "Update screen failed on " + s, e);
+                    }
+                }
+                try {
+                    KiroOSUpdateService.update(mContext, s);
+                } catch (RuntimeException e) {
+                    Log.e(TAG, "Update notification failed on " + s, e);
+                }
             }
         });
     }
@@ -407,8 +445,18 @@ public class KiroOSUpdateManager {
         mMain.post(new Runnable() {
             @Override
             public void run() {
-                for (Listener l : new ArrayList<Listener>(mListeners)) l.onProgress(d, t, sp, e);
-                KiroOSUpdateService.progress(mContext, d, t);
+                for (Listener l : new ArrayList<Listener>(mListeners)) {
+                    try {
+                        l.onProgress(d, t, sp, e);
+                    } catch (RuntimeException ex) {
+                        Log.e(TAG, "Update screen failed on progress", ex);
+                    }
+                }
+                try {
+                    KiroOSUpdateService.progress(mContext, d, t);
+                } catch (RuntimeException ex) {
+                    Log.e(TAG, "Update notification failed on progress", ex);
+                }
             }
         });
     }
@@ -421,8 +469,11 @@ public class KiroOSUpdateManager {
     // ------------------------------------------------------------------ check
 
     public void check() {
-        if (isBusy()) return;
-        setState(State.CHECKING, ERR_NONE);
+        // same lock as checkBlocking(): the screen and the background job never check at once
+        synchronized (this) {
+            if (isBusy()) return;
+            setState(State.CHECKING, ERR_NONE);
+        }
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -440,11 +491,10 @@ public class KiroOSUpdateManager {
         doCheck();
     }
 
-    private void doCheck() {
-        HttpURLConnection conn = null;
+    /** Downloads and parses one manifest; any failure (network, HTTP, JSON) is an exception. */
+    private JSONObject fetchManifest(URL url) throws Exception {
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         try {
-            URL url = new URL(serverUrl(mContext));
-            conn = (HttpURLConnection) url.openConnection();
             conn.setConnectTimeout(8000);
             conn.setReadTimeout(15000);
             conn.setUseCaches(false);
@@ -460,13 +510,42 @@ public class KiroOSUpdateManager {
             } finally {
                 r.close();
             }
-            JSONObject json = new JSONObject(sb.toString());
+            return new JSONObject(sb.toString());
+        } finally {
+            conn.disconnect();
+        }
+    }
+
+    private void doCheck() {
+        try {
+            // First address that answers wins (see serverCandidates).
+            URL url = null;
+            JSONObject json = null;
+            Exception lastError = null;
+            List<String> candidates = serverCandidates(mContext);
+            for (int i = 0; i < candidates.size() && json == null; i++) {
+                try {
+                    url = new URL(candidates.get(i));
+                    json = fetchManifest(url);
+                } catch (Exception e) {
+                    Log.w(TAG, "No answer from " + candidates.get(i) + ": " + e);
+                    lastError = e;
+                    json = null;
+                }
+            }
+            if (json == null) {
+                throw lastError != null ? lastError : new IOException("no update server");
+            }
             UpdateInfo info = UpdateInfo.fromJson(json, url,
                     prefs(mContext).getString(PREF_DELTA_ATTEMPT, null));
             mServerUnreachable = false;
 
             SharedPreferences.Editor ed = prefs(mContext).edit();
             ed.putLong(PREF_LAST_CHECK, System.currentTimeMillis());
+            // An earlier address did not answer: remember the one that did.
+            if (!url.toString().equals(candidates.get(0))) {
+                ed.putString(PREF_SERVER_URL, url.toString());
+            }
             // The server can move all phones to a new permanent address.
             String moved = json.optString("server_url", "").trim();
             if (moved.startsWith("http") && !moved.equals(url.toString())) {
@@ -485,7 +564,8 @@ public class KiroOSUpdateManager {
                 cleanupDownloads(null);
                 setState(State.UP_TO_DATE, ERR_NONE);
             }
-        } catch (Exception e) {
+        } catch (Throwable e) {
+            // Throwable: anything thrown on this thread would otherwise kill Settings.
             Log.w(TAG, "Update check failed", e);
             mServerUnreachable = true;
             // Never report "up to date" without an answer: keep showing an update found
@@ -497,8 +577,6 @@ public class KiroOSUpdateManager {
             } else {
                 setState(State.ERROR, ERR_SERVER);
             }
-        } finally {
-            if (conn != null) conn.disconnect();
         }
     }
 
@@ -516,10 +594,17 @@ public class KiroOSUpdateManager {
 
     public void startDownload() {
         final UpdateInfo info = mInfo;
-        if (info == null || isBusy()) return;
-        mCancel = false;
-        setState(State.DOWNLOADING, ERR_NONE);
-        KiroOSUpdateService.start(mContext);
+        synchronized (this) {
+            if (info == null || isBusy()) return;
+            mCancel = false;
+            setState(State.DOWNLOADING, ERR_NONE);
+        }
+        try {
+            KiroOSUpdateService.start(mContext);
+        } catch (RuntimeException e) {
+            // no progress notification: the download itself still runs
+            Log.w(TAG, "Update service not started", e);
+        }
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -533,15 +618,25 @@ public class KiroOSUpdateManager {
     }
 
     private void doDownload(UpdateInfo info) {
-        PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
-        WifiManager wm = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
-        WifiManager.WifiLock wifiLock = wm.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, TAG);
-        wl.acquire();
-        wifiLock.acquire();
+        PowerManager.WakeLock wl = null;
+        WifiManager.WifiLock wifiLock = null;
         HttpURLConnection conn = null;
         File out = packageFile(info);
         try {
+            PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+            if (pm != null) {
+                wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
+                wl.acquire();
+            }
+            // on mobile data there may be no Wi-Fi to keep awake: the lock is optional
+            WifiManager wm = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+            if (wm != null) {
+                wifiLock = wm.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, TAG);
+                wifiLock.acquire();
+            }
+            if (!DOWNLOAD_DIR.isDirectory()) {
+                throw new IOException(DOWNLOAD_DIR + " missing");
+            }
             long existing = out.exists() ? out.length() : 0;
             if (existing > info.size) {
                 out.delete();
@@ -609,13 +704,13 @@ public class KiroOSUpdateManager {
             }
             out.setReadable(true, false);
             verify(info, out);
-        } catch (Exception e) {
+        } catch (Throwable e) {
             Log.w(TAG, "Download failed", e);
             setState(State.ERROR, ERR_DOWNLOAD);
         } finally {
             if (conn != null) conn.disconnect();
-            if (wifiLock.isHeld()) wifiLock.release();
-            if (wl.isHeld()) wl.release();
+            if (wifiLock != null && wifiLock.isHeld()) wifiLock.release();
+            if (wl != null && wl.isHeld()) wl.release();
         }
     }
 
@@ -704,7 +799,7 @@ public class KiroOSUpdateManager {
                     }
                     // Writes /cache/recovery/command + BCB and reboots into the KiroOS recovery.
                     RecoverySystem.installPackage(mContext, packageFile(info));
-                } catch (IOException e) {
+                } catch (Throwable e) {
                     Log.e(TAG, "installPackage failed", e);
                     setState(State.ERROR, ERR_INSTALL);
                 }

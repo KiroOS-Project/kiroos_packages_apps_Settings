@@ -29,17 +29,22 @@ public class KiroOSUpdateJobService extends JobService {
 
     /** Schedules the periodic check (no-op if it is already scheduled). */
     public static void schedule(Context context) {
-        JobScheduler js = context.getSystemService(JobScheduler.class);
-        if (js == null) return;
-        for (JobInfo job : js.getAllPendingJobs()) {
-            if (job.getId() == JOB_ID) return;
+        try {
+            JobScheduler js = context.getSystemService(JobScheduler.class);
+            if (js == null) return;
+            for (JobInfo job : js.getAllPendingJobs()) {
+                if (job.getId() == JOB_ID) return;
+            }
+            js.schedule(new JobInfo.Builder(JOB_ID,
+                    new ComponentName(context, KiroOSUpdateJobService.class))
+                    .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+                    .setPeriodic(PERIOD_MS)
+                    .setPersisted(true)
+                    .build());
+        } catch (RuntimeException e) {
+            // called while About phone and the update screen are drawn: never crash them
+            Log.w(TAG, "Could not schedule the update check", e);
         }
-        js.schedule(new JobInfo.Builder(JOB_ID,
-                new ComponentName(context, KiroOSUpdateJobService.class))
-                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-                .setPeriodic(PERIOD_MS)
-                .setPersisted(true)
-                .build());
     }
 
     /** Schedules the job after boot and after an OTA (package replaced). */
@@ -62,7 +67,8 @@ public class KiroOSUpdateJobService extends JobService {
                     if (manager.getState() == KiroOSUpdateManager.State.AVAILABLE && info != null) {
                         notifyUpdate(info);
                     }
-                } catch (Exception e) {
+                } catch (Throwable e) {
+                    // Throwable: an error on this thread would kill the Settings process
                     Log.w(TAG, "Background check failed", e);
                 }
                 jobFinished(params, false);
@@ -91,7 +97,8 @@ public class KiroOSUpdateJobService extends JobService {
                 .setContentTitle(getString(R.string.kiroos_status_update_available))
                 .setContentText(info.displayName())
                 .setStyle(new Notification.BigTextStyle().bigText(
-                        info.displayName() + (info.changelog.isEmpty() ? "" : "\n" + info.changelog)))
+                        info.displayName() + (android.text.TextUtils.isEmpty(info.changelog)
+                                ? "" : "\n" + info.changelog)))
                 .setContentIntent(pi)
                 .setAutoCancel(true)
                 .build();

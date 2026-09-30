@@ -417,6 +417,12 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
     @Override
     public void onStateChanged(KiroOSUpdateManager.State state) {
         KiroOSUpdateManager.UpdateInfo info = mManager.getInfo();
+        if (state == KiroOSUpdateManager.State.AVAILABLE && info == null) {
+            // A check that ran meanwhile dropped the update this state was posted for: ask
+            // the server again instead of drawing an update that is not there any more.
+            mManager.check();
+            return;
+        }
         final boolean justFound = state == KiroOSUpdateManager.State.AVAILABLE
                 && mLastState == KiroOSUpdateManager.State.CHECKING;
         mLastState = state;

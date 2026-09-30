@@ -27,7 +27,7 @@ public class KiroOSUpdateService extends Service {
 
     static void update(Context context, KiroOSUpdateManager.State state) {
         KiroOSUpdateService s = sRunning;
-        if (s == null) return;
+        if (s == null || s.mBuilder == null) return;
         if (state == KiroOSUpdateManager.State.VERIFYING) {
             s.mLastPercent = -1;
             s.mBuilder.setContentText(s.getString(R.string.kiroos_ota_verifying));
@@ -41,7 +41,7 @@ public class KiroOSUpdateService extends Service {
 
     static void progress(Context context, long done, long total) {
         KiroOSUpdateService s = sRunning;
-        if (s == null || total <= 0) return;
+        if (s == null || s.mBuilder == null || total <= 0) return;
         int pct = (int) (done * 100 / total);
         if (pct == s.mLastPercent) return;
         s.mLastPercent = pct;
@@ -52,7 +52,6 @@ public class KiroOSUpdateService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        sRunning = this;
         PendingIntent pi = PendingIntent.getActivity(this, 0,
                 new Intent(this, KiroOSUpdateActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder = new Notification.Builder(this)
@@ -63,6 +62,8 @@ public class KiroOSUpdateService extends Service {
                 .setShowWhen(false)
                 .setContentIntent(pi)
                 .setProgress(100, 0, true);
+        // only once the notification can be built: update()/progress() read it
+        sRunning = this;
     }
 
     @Override
