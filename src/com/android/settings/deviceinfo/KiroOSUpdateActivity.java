@@ -206,7 +206,8 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
     private void populateSpecs(LinearLayout rows) {
         if (rows == null) return;
         String abis = TextUtils.join(", ", Build.SUPPORTED_ABIS);
-        addSpec(rows, R.string.kiroos_spec_model, "Samsung Galaxy S6 (" + Build.MODEL + ")");
+        addSpec(rows, R.string.kiroos_spec_model,
+                com.android.settings.kiroos.KiroOSDevice.displayName());
         addSpec(rows, R.string.kiroos_spec_codename, Build.DEVICE);
         addSpec(rows, R.string.kiroos_spec_platform, "Samsung Exynos 7420 Octa (14 nm)");
         addSpec(rows, R.string.kiroos_spec_cpu, "4× Cortex-A57 @ " + cpuMaxFreq(4)
@@ -225,7 +226,8 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
         } catch (IllegalArgumentException e) {
             // data partition not readable: skip the row
         }
-        addSpec(rows, R.string.kiroos_spec_display, "5.1\" Super AMOLED, 1440 × 2560 (577 ppi)");
+        addSpec(rows, R.string.kiroos_spec_display,
+                com.android.settings.kiroos.KiroOSDevice.displaySpec());
         Point size = new Point();
         getWindowManager().getDefaultDisplay().getRealSize(size);
         addSpec(rows, R.string.kiroos_spec_resolution, Math.min(size.x, size.y) + " × "

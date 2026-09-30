@@ -39,6 +39,39 @@ public final class KiroOSDevice {
         return SystemProperties.get("ro.product.device", "");
     }
 
+    /** "Samsung Galaxy S6", "Samsung Galaxy S6 edge" or "Samsung Galaxy S6 edge+". */
+    public static String name() {
+        final String device = device();
+        if (device.startsWith("zenlte")) {
+            return "Samsung Galaxy S6 edge+";
+        }
+        if (device.startsWith("zerolte")) {
+            return "Samsung Galaxy S6 edge";
+        }
+        return "Samsung Galaxy S6";
+    }
+
+    /** Model number from the device tree: SM-G920F, SM-G925F or SM-G928F. */
+    public static String modelNumber() {
+        return SystemProperties.get("ro.kiroos.model", android.os.Build.MODEL);
+    }
+
+    /** Name and model number, e.g. "Samsung Galaxy S6 edge (SM-G925F)". */
+    public static String displayName() {
+        return name() + " (" + modelNumber() + ")";
+    }
+
+    /** The panel: 5.1" on the S6 and S6 edge, 5.7" on the S6 edge+, all 1440 × 2560. */
+    public static String displaySpec() {
+        if (device().startsWith("zenlte")) {
+            return "5.7\" Super AMOLED dual edge, 1440 × 2560 (518 ppi)";
+        }
+        if (isEdge()) {
+            return "5.1\" Super AMOLED dual edge, 1440 × 2560 (577 ppi)";
+        }
+        return "5.1\" Super AMOLED, 1440 × 2560 (577 ppi)";
+    }
+
     /** True on the dual edge models (S6 edge, S6 edge+), which get the Edge screen settings. */
     public static boolean isEdge() {
         final String prop = SystemProperties.get("ro.kiroos.edge", "");

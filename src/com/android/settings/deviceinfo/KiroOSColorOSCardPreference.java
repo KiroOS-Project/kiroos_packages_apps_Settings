@@ -62,6 +62,11 @@ public class KiroOSColorOSCardPreference extends Preference {
         TextView versionSub = (TextView) root.findViewById(R.id.kiroos_software_version_sub);
         TextView changelogTitle = (TextView) root.findViewById(R.id.kiroos_changelog_title);
         TextView changelogSummary = (TextView) root.findViewById(R.id.kiroos_changelog_summary);
+        TextView deviceTitle = (TextView) root.findViewById(R.id.kiroos_device_title);
+        if (deviceTitle != null) {
+            // the model this build runs on (S6, S6 edge or S6 edge+), not a fixed name
+            deviceTitle.setText(com.android.settings.kiroos.KiroOSDevice.displayName());
+        }
 
         // Installed version and channel come from the build properties.
         String channel = KiroOSUpdateManager.installedChannel();
