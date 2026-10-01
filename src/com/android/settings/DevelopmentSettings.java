@@ -583,7 +583,15 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
 
         mDevelopmentTools = (PreferenceScreen) findPreference(DEVELOPMENT_TOOLS);
-        mAllPrefs.add(mDevelopmentTools);
+        // KiroOS 2.1.1: Dev Tools (com.android.development) is not in the ROM: without the app
+        // the entry would open nothing (ActivityNotFoundException)
+        if (mDevelopmentTools != null
+                && !isPackageInstalled(getActivity(), "com.android.development")) {
+            removePreference(mDevelopmentTools);
+            mDevelopmentTools = null;
+        } else {
+            mAllPrefs.add(mDevelopmentTools);
+        }
     }
 
     private ListPreference addListPreference(String prefKey) {
