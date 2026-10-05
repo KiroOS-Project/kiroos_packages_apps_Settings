@@ -48,6 +48,8 @@ import java.util.Locale;
  *   "md5": "...",
  *   "changelog": "...",                 // English, also used when no translation matches
  *   "changelogs": { "en": "...", "it": "...", "pt-BR": "..." },   // optional, per language
+ *   "changelog_full" / "changelogs_full": the complete notes (since 2.1.1 the two above are
+ *                                        short: older clients crash on long notes)
  *   "server_url": "https://...",         // optional: moves every phone to a new endpoint
  *   "incrementals": [                    // optional: packages with only the changes
  *     { "source_timestamp": 1789300000,  // ro.build.date.utc the package applies to
@@ -135,8 +137,13 @@ public class KiroOSUpdateManager {
             i.version = o.optString("version", "KiroOS");
             i.channel = o.optString("channel", "");
             i.timestamp = o.getLong("timestamp");
-            i.changelogs = o.optJSONObject("changelogs");
-            i.changelog = localizedChangelog(i.changelogs, o.optString("changelog", ""));
+            // the full notes when the server has them (the short ones are for 2.0 - 2.1.1, whose
+            // update screen crashed on long notes); a saved copy keeps them in "changelogs"
+            JSONObject full = o.optJSONObject("changelogs_full");
+            i.changelogs = full != null ? full : o.optJSONObject("changelogs");
+            i.changelog = localizedChangelog(i.changelogs, full != null
+                    ? o.optString("changelog_full", o.optString("changelog", ""))
+                    : o.optString("changelog", ""));
             i.incremental = o.optBoolean("incremental", false);
             readPackage(i, o, base);
             i.fullSize = o.optLong("full_size", i.size);

@@ -18,6 +18,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.view.animation.PathInterpolator;
 import android.view.animation.LinearInterpolator;
@@ -163,10 +164,21 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
                 v.setScaleX(0.82f);
                 v.setScaleY(0.82f);
             }
-            v.animate().alpha(1f).translationY(0f).scaleX(1f).scaleY(1f)
-                    .setStartDelay(110 + i * 45L).setDuration(480).setInterpolator(ease)
-                    .withLayer().start();
+            ViewPropertyAnimator a = v.animate().alpha(1f).translationY(0f).scaleX(1f).scaleY(1f)
+                    .setStartDelay(110 + i * 45L).setDuration(480).setInterpolator(ease);
+            if (layerSafe(v)) a.withLayer();
+            a.start();
         }
+    }
+
+    /**
+     * The release notes card can be taller than the GPU's largest texture (8192 px on the
+     * Mali-T760: about 80 lines of notes): drawn through a hardware layer it made the renderer
+     * abort with GL_INVALID_VALUE as soon as the screen opened (2.1.1 notes, 2.0 -> 2.1 notes
+     * on an S6 edge). It animates without a layer; the other cards are small.
+     */
+    private boolean layerSafe(View v) {
+        return v != mNotesCard;
     }
 
     /** A new update was just found: the ring pops and the news slide up into place. */
@@ -188,8 +200,10 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
             v.animate().cancel();
             v.setAlpha(0f);
             v.setTranslationY(dy);
-            v.animate().alpha(1f).translationY(0f).setStartDelay(80 + i * 60L)
-                    .setDuration(440).setInterpolator(ease).withLayer().start();
+            ViewPropertyAnimator a = v.animate().alpha(1f).translationY(0f)
+                    .setStartDelay(80 + i * 60L).setDuration(440).setInterpolator(ease);
+            if (layerSafe(v)) a.withLayer();
+            a.start();
         }
     }
 
