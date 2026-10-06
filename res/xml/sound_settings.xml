@@ -104,13 +104,14 @@
                 android:summary="@string/headset_connect_player_summary" />
 
         <!-- Other sounds -->
-                <!-- KiroOS Native Equalizer -->
+        <!-- KiroOS Beta 3: the equalizer is Kiro Sound (com.kiroos.sound), rewritten from
+             scratch; the old Settings one lived in this process and applied its effects twice -->
         <Preference
                 android:key="native_equalizer"
                 android:title="@string/native_equalizer_title"
                 android:summary="@string/native_equalizer_summary">
-            <intent android:targetPackage="com.android.settings"
-                    android:targetClass="com.android.settings.notification.NativeEqualizerActivity" />
+            <intent android:targetPackage="com.kiroos.sound"
+                    android:targetClass="com.kiroos.sound.SoundActivity" />
         </Preference>
 
         <Preference

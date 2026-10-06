@@ -3211,36 +3211,8 @@
             </intent-filter>
         </activity>
 
-            <!-- KiroOS Native Equalizer Activity & Intent Handler -->
-        <activity android:name=".notification.NativeEqualizerActivity"
-                android:label="@string/native_equalizer_title"
-                android:theme="@style/Theme.SubSettings"
-                android:exported="true">
-            <intent-filter>
-                <action android:name="android.media.action.DISPLAY_AUDIO_EFFECT_CONTROL_PANEL" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <!-- KiroOS Beta 3: the equalizer moved to Kiro Sound (packages/apps/KiroOS/KiroSound) -->
 
-                <service android:name=".notification.NativeEqualizerService"
-                 android:exported="true">
-            <intent-filter>
-                <action android:name="android.media.action.OPEN_AUDIO_EFFECT_CONTROL_SESSION" />
-                <action android:name="android.media.action.CLOSE_AUDIO_EFFECT_CONTROL_SESSION" />
-            </intent-filter>
-        </service>
-
-        <receiver android:name=".notification.NativeEqualizerReceiver" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-    
         <service android:name=".deviceinfo.KiroOSUpdateService"
                  android:exported="false" />
 
