@@ -39,7 +39,7 @@ import java.util.Locale;
  *
  * Server format (update.json):
  * {
- *   "version": "KiroOS 1.0",
+ *   "version": "KiroOS 3.0",
  *   "channel": "Developer Beta 2",
  *   "timestamp": 1789381335,            // ro.build.date.utc of the new build
  *   "filename": "KiroOS-1.0-20260917-zerofltexx.zip",
@@ -119,7 +119,7 @@ public class KiroOSUpdateManager {
         public boolean incremental;
         public long fullSize;
 
-        /** Brand name and build date, e.g. "KiroOS 1.0 (17 Sep 2026)". The channel is shown apart. */
+        /** Brand name and build date, e.g. "KiroOS 3.0 (8 Oct 2026)". The channel is shown apart. */
         public String displayName() {
             String date = java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM)
                     .format(new java.util.Date(timestamp * 1000L));
@@ -250,7 +250,7 @@ public class KiroOSUpdateManager {
 
     // ------------------------------------------------------------------ helpers
 
-    /** Brand name only ("KiroOS 1.0"): the release channel is shown as a separate badge. */
+    /** Brand name only ("KiroOS 3.0"): the release channel is shown as a separate badge. */
     public static String installedVersion() {
         return SystemProperties.get(PROP_VERSION, "KiroOS");
     }

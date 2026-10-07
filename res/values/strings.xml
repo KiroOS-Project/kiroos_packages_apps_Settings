@@ -8024,7 +8024,7 @@
     <string name="kiroos_diag_started">Saving diagnostics to KiroOS/diagnostics…</string>
     <string name="native_equalizer_title">KiroOS Equalizer</string>
     <string name="native_equalizer_summary">5-band frequency adjustment, Bass Boost and DSP profiles</string>
-    <string name="kiroos_about_summary">KiroOS 1.0 for Samsung Galaxy S6</string>
+    <string name="kiroos_about_summary">KiroOS for Samsung Galaxy S6</string>
 
     <!-- KiroOS Equalizer UI Strings -->
     <string name="eq_master_switch_title">Enable Equalizer</string>
@@ -8044,13 +8044,13 @@
     <string name="kiroos_about_version">Version <xliff:g id="version">%1$s</xliff:g></string>
     <string name="kiroos_stats_title">Share device statistics</string>
     <string name="kiroos_stats_desc">When checking for updates, the phone tells the KiroOS server its model, KiroOS and Android version, language, country and carrier, with a random code. The server also sees the network address. No personal data, no IMEI or serial number.</string>
-    <string name="kiroos_software_version_sub">KiroOS 1.0</string>
+    <string name="kiroos_software_version_sub">KiroOS</string>
     <string name="kiroos_changelog_title">What\'s new</string>
     <string name="kiroos_changelog_summary"></string>
     <string name="kiroos_btn_check_updates_text">Check for updates</string>
 
     <!-- KiroOS Internal Updater Activity Strings -->
-    <string name="kiroos_update_version_header">KiroOS 1.0</string>
+    <string name="kiroos_update_version_header">KiroOS</string>
 
     <!-- KiroOS OTA updater strings -->
     <string name="kiroos_updater_title">KiroOS Update</string>
