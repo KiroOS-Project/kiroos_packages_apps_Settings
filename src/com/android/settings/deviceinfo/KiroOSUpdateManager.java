@@ -35,7 +35,7 @@ import java.util.Locale;
 
 /**
  * KiroOS OTA engine: checks the update server, downloads the package for real,
- * verifies MD5 + OTA signature and hands it to the recovery for installation.
+ * verifies SHA-256 (MD5 for older manifests) + OTA signature and hands it to the recovery.
  *
  * Server format (update.json):
  * {
@@ -46,7 +46,8 @@ import java.util.Locale;
  *   "url": "KiroOS-1.0-20260917-zerofltexx.zip",   // absolute or relative to update.json
  *   "size": 725581804,
  *   "md5": "...",
- *   "changelog": "...",                 // English, also used when no translation matches
+ *   "sha256": "...",                    // since Beta 3, verified instead of md5 when present
+ *   "changelog": "...",                // English, also used when no translation matches
  *   "changelogs": { "en": "...", "it": "...", "pt-BR": "..." },   // optional, per language
  *   "changelog_full" / "changelogs_full": the complete notes (since 2.1.1 the two above are
  *                                        short: older clients crash on long notes)
@@ -109,6 +110,8 @@ public class KiroOSUpdateManager {
         public String url;
         public long size;
         public String md5;
+        /** since Beta 3; checked instead of md5 when the manifest has it */
+        public String sha256;
         /** Release notes in the phone language (falls back to English). */
         public String changelog;
         /** All translations as sent by the server, kept so a language change is picked up. */
@@ -182,6 +185,7 @@ public class KiroOSUpdateManager {
             i.url = base != null ? new URL(base, u).toString() : u;
             i.size = o.getLong("size");
             i.md5 = o.optString("md5", "").toLowerCase(Locale.US);
+            i.sha256 = o.optString("sha256", "").toLowerCase(Locale.US);
         }
 
         JSONObject toJson() throws Exception {
@@ -193,6 +197,7 @@ public class KiroOSUpdateManager {
             o.put("url", url);
             o.put("size", size);
             o.put("md5", md5);
+            o.put("sha256", sha256);
             o.put("changelog", changelog);
             if (changelogs != null) o.put("changelogs", changelogs);
             o.put("incremental", incremental);
@@ -727,9 +732,11 @@ public class KiroOSUpdateManager {
         setState(State.VERIFYING, ERR_NONE);
         final long total = file.length();
 
-        // 1) MD5 (0-50%)
-        if (!TextUtils.isEmpty(info.md5)) {
-            MessageDigest md = MessageDigest.getInstance("MD5");
+        // 1) SHA-256 since Beta 3, MD5 for a manifest without it (0-50%)
+        final boolean sha256 = !TextUtils.isEmpty(info.sha256);
+        final String expected = sha256 ? info.sha256 : info.md5;
+        if (!TextUtils.isEmpty(expected)) {
+            MessageDigest md = MessageDigest.getInstance(sha256 ? "SHA-256" : "MD5");
             InputStream in = new FileInputStream(file);
             try {
                 byte[] buf = new byte[1024 * 1024];
@@ -753,8 +760,8 @@ public class KiroOSUpdateManager {
             }
             StringBuilder hex = new StringBuilder();
             for (byte b : md.digest()) hex.append(String.format(Locale.US, "%02x", b));
-            if (!hex.toString().equals(info.md5)) {
-                Log.e(TAG, "MD5 mismatch: " + hex + " != " + info.md5);
+            if (!hex.toString().equals(expected)) {
+                Log.e(TAG, (sha256 ? "SHA-256" : "MD5") + " mismatch: " + hex + " != " + expected);
                 file.delete();
                 setState(State.ERROR, ERR_MD5);
                 return;
