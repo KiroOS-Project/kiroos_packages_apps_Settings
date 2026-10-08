@@ -18,6 +18,30 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/security_settings_title">
 
+    <!-- KiroOS: App Lock (an app is locked from the home screen's long-press menu; the list is
+         here) and the private vault. SecuritySettings removes it without KiroAppLock. -->
+    <PreferenceCategory android:key="kiroos_privacy"
+            android:title="@string/kiroos_privacy_category"
+            android:persistent="false">
+
+        <Preference android:key="kiroos_applock"
+                android:title="@string/kiroos_applock_title"
+                android:summary="@string/kiroos_applock_summary"
+                android:persistent="false">
+            <intent android:action="com.kiroos.applock.action.SETTINGS" />
+        </Preference>
+
+        <Preference android:key="kiroos_vault"
+                android:title="@string/kiroos_vault_title"
+                android:summary="@string/kiroos_vault_summary"
+                android:persistent="false">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.kiroos.applock"
+                    android:targetClass="com.kiroos.applock.VaultActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:key="sim_lock"
             android:title="@string/sim_lock_settings_title"
             android:persistent="false">

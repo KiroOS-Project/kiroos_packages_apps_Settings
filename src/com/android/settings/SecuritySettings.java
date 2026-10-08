@@ -308,6 +308,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // Append the rest of the settings
         addPreferencesFromResource(R.xml.security_settings_misc);
 
+        // KiroOS: App lock and the private vault, only with KiroAppLock (and for the owner)
+        final Preference kiroPrivacy = root.findPreference("kiroos_privacy");
+        if (kiroPrivacy != null && (!mIsAdmin || getActivity().getPackageManager().resolveActivity(
+                new Intent("com.kiroos.applock.action.SETTINGS"), 0) == null)) {
+            root.removePreference(kiroPrivacy);
+        }
+
         // Do not display SIM lock for devices without an Icc card
         CarrierConfigManager cfgMgr = (CarrierConfigManager)
                 getActivity().getSystemService(Context.CARRIER_CONFIG_SERVICE);

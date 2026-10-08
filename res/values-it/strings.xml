@@ -3393,4 +3393,10 @@
     <string name="kiroos_ota_server_saved">Server aggiornamenti salvato</string>
     <string name="kiroos_ota_notification_title">Aggiornamento KiroOS</string>
     <string name="kiroos_ota_release_notes">Novità • %1$s</string>
+    <!-- KiroOS: App Lock and the private vault in Settings > Security -->
+    <string name="kiroos_privacy_category">Privacy</string>
+    <string name="kiroos_applock_title">Blocco app</string>
+    <string name="kiroos_applock_summary">App che si aprono con l\'impronta. Bloccane una dalla home: tieni premuta la sua icona.</string>
+    <string name="kiroos_vault_title">Cassaforte privata</string>
+    <string name="kiroos_vault_summary">Foto, video e file cifrati</string>
 </resources>
