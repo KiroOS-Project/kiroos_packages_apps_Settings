@@ -262,7 +262,8 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
             }
         }
 
-        addItem(screen, R.string.storage_detail_cached, null, UserHandle.USER_NULL);
+        // KiroOS Beta 4: no "Cached data" row; every app cache is cleared at each boot
+        // (kiroos_perf.sh trimcache), so there is nothing to clear by hand
 
         if (showShared) {
             addPreference(screen, mExplore);
