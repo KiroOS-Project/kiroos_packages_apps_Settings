@@ -83,6 +83,8 @@ public class Settings extends SettingsActivity {
     public static class RunningServicesActivity extends SettingsActivity { /* empty */ }
     public static class ManageAccountsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class PowerUsageSummaryActivity extends SettingsActivity { /* empty */ }
+    /** KiroOS Beta 4.1: Game Space is its own entry, right below Battery (it was in Display) */
+    public static class KiroOSGameSpaceActivity extends SettingsActivity { /* empty */ }
     public static class BatterySaverSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccountSyncSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccountSettingsActivity extends SettingsActivity { /* empty */ }

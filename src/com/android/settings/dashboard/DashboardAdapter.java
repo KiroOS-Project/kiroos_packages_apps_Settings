@@ -378,6 +378,10 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
                 : (tile.intent != null && tile.intent.getAction() != null
                         ? tile.intent.getAction() : String.valueOf(tile.title));
         k = k.toLowerCase(java.util.Locale.ROOT);
+        // Game Space sits right below Battery (orange): its own colour
+        if (k.contains("gamespace")) {
+            return KIRO_VIOLET;
+        }
         if (k.contains("wifi") || k.contains("bluetooth") || k.contains("wireless")
                 || k.contains("network") || k.contains("sim")) {
             return KIRO_BLUE;

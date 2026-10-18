@@ -58,7 +58,8 @@
     <string name="kiroos_ota_install">Reiniciar e instalar</string>
     <string name="kiroos_ota_installing">Preparando la instalación…</string>
     <string name="kiroos_ota_error">Error de actualización</string>
-    <string name="kiroos_ota_err_server">No se puede conectar con el servidor de actualizaciones (%1$s)</string>
+    <string name="kiroos_ota_err_server">El servidor de actualizaciones no ha respondido. Vuelve a intentarlo en unos minutos.</string>
+    <string name="kiroos_ota_err_offline">Sin conexión a Internet. Activa el Wi-Fi o los datos móviles: KiroOS volverá a buscar en cuanto te conectes.</string>
     <string name="kiroos_ota_err_download">Error en la descarga. Comprueba la conexión y vuelve a intentarlo.</string>
     <string name="kiroos_ota_err_md5">El paquete descargado está dañado y se ha eliminado.</string>
     <string name="kiroos_ota_err_signature">La firma del paquete no es válida para este sistema.</string>

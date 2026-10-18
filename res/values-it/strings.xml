@@ -3300,7 +3300,7 @@
     <string name="kiroos_diag_title">Salva diagnostica KiroOS</string>
     <string name="kiroos_diag_summary">Salva log, messaggi del kernel, dati di batteria e temperatura nella memoria interna (KiroOS/diagnostics). Non viene inviato nulla.</string>
     <string name="kiroos_diag_started">Salvataggio diagnostica in KiroOS/diagnostics…</string>
-    <string name="native_equalizer_title">Equalizzatore KiroOS</string>
+    <string name="native_equalizer_title">Kiro EQ</string>
     <string name="native_equalizer_summary">Regolazione frequenze a 5 bande, Bass Boost e profili DSP</string>
     <string name="kiroos_about_summary">KiroOS 1.0 per Samsung Galaxy S6</string>
 
@@ -3380,7 +3380,8 @@
     <string name="kiroos_ota_install">Riavvia e installa</string>
     <string name="kiroos_ota_installing">Preparazione dell\'installazione…</string>
     <string name="kiroos_ota_error">Errore di aggiornamento</string>
-    <string name="kiroos_ota_err_server">Impossibile contattare il server aggiornamenti (%1$s)</string>
+    <string name="kiroos_ota_err_server">Il server degli aggiornamenti non ha risposto. Riprova tra qualche minuto.</string>
+    <string name="kiroos_ota_err_offline">Nessuna connessione a Internet. Attiva il Wi-Fi o i dati mobili: KiroOS controlla di nuovo appena sei connesso.</string>
     <string name="kiroos_ota_err_download">Download non riuscito. Controlla la connessione e riprova.</string>
     <string name="kiroos_ota_err_md5">Il pacchetto scaricato è danneggiato ed è stato eliminato.</string>
     <string name="kiroos_ota_err_signature">La firma del pacchetto non è valida per questo sistema.</string>

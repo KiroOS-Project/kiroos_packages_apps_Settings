@@ -57,7 +57,8 @@
     <string name="kiroos_ota_install">Yeniden başlat ve yükle</string>
     <string name="kiroos_ota_installing">Kurulum hazırlanıyor…</string>
     <string name="kiroos_ota_error">Güncelleme hatası</string>
-    <string name="kiroos_ota_err_server">Güncelleme sunucusuna ulaşılamıyor (%1$s)</string>
+    <string name="kiroos_ota_err_server">Güncelleme sunucusu yanıt vermedi. Birkaç dakika sonra tekrar deneyin.</string>
+    <string name="kiroos_ota_err_offline">İnternet bağlantısı yok. Wi-Fi\'ı veya mobil veriyi açın: bağlanır bağlanmaz KiroOS tekrar kontrol eder.</string>
     <string name="kiroos_ota_err_download">İndirme başarısız. Bağlantıyı kontrol edip tekrar deneyin.</string>
     <string name="kiroos_ota_err_md5">İndirilen paket bozuk ve silindi.</string>
     <string name="kiroos_ota_err_signature">Paket imzası bu sistem için geçerli değil.</string>

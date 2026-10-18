@@ -59,7 +59,8 @@
     <string name="kiroos_ota_install">Перезагрузить и установить</string>
     <string name="kiroos_ota_installing">Подготовка к установке…</string>
     <string name="kiroos_ota_error">Ошибка обновления</string>
-    <string name="kiroos_ota_err_server">Не удаётся связаться с сервером обновлений (%1$s)</string>
+    <string name="kiroos_ota_err_server">Сервер обновлений не ответил. Повторите попытку через несколько минут.</string>
+    <string name="kiroos_ota_err_offline">Нет подключения к Интернету. Включите Wi-Fi или мобильный интернет: KiroOS проверит снова, как только появится связь.</string>
     <string name="kiroos_ota_err_download">Ошибка скачивания. Проверьте подключение и повторите попытку.</string>
     <string name="kiroos_ota_err_md5">Скачанный пакет повреждён и был удалён.</string>
     <string name="kiroos_ota_err_signature">Подпись пакета недействительна для этой системы.</string>

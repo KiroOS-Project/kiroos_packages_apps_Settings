@@ -347,13 +347,42 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
             mCheckedOnOpen = true;
             mManager.check();
         }
+        // A check that failed for lack of network runs again as soon as a network connects.
+        try {
+            ((android.net.ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE))
+                    .registerDefaultNetworkCallback(mNetworkCallback);
+        } catch (RuntimeException e) {
+            // no network service: the Retry button still works
+        }
     }
 
     @Override
     protected void onPause() {
+        try {
+            ((android.net.ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE))
+                    .unregisterNetworkCallback(mNetworkCallback);
+        } catch (RuntimeException e) {
+            // was not registered
+        }
         mManager.removeListener(this);
         super.onPause();
     }
+
+    private final android.net.ConnectivityManager.NetworkCallback mNetworkCallback =
+            new android.net.ConnectivityManager.NetworkCallback() {
+        @Override
+        public void onAvailable(android.net.Network network) {
+            // Called on a binder thread; the network needs a moment for DNS to come up.
+            mVersionHeader.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (!isFinishing() && mManager.getState() == KiroOSUpdateManager.State.ERROR) {
+                        mManager.check();
+                    }
+                }
+            }, 1500);
+        }
+    };
 
     private void onActionClicked() {
         switch (mManager.getState()) {
@@ -565,8 +594,10 @@ public class KiroOSUpdateActivity extends Activity implements KiroOSUpdateManage
 
     private String errorText(int error) {
         switch (error) {
+            case KiroOSUpdateManager.ERR_OFFLINE:
+                return getString(R.string.kiroos_ota_err_offline);
             case KiroOSUpdateManager.ERR_SERVER:
-                return getString(R.string.kiroos_ota_err_server, KiroOSUpdateManager.serverUrl(this));
+                return getString(R.string.kiroos_ota_err_server);
             case KiroOSUpdateManager.ERR_MD5:
                 return getString(R.string.kiroos_ota_err_md5);
             case KiroOSUpdateManager.ERR_SIGNATURE:

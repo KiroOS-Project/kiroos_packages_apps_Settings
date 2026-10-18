@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- KiroOS: Settings > Display > Game Space -->
+<!-- KiroOS: Settings > Game Space (its own entry below Battery since Beta 4.1) -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/kiroos_game_space_title">
 

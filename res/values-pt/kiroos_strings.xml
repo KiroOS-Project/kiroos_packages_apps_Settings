@@ -57,7 +57,8 @@
     <string name="kiroos_ota_install">Reiniciar e instalar</string>
     <string name="kiroos_ota_installing">Preparando a instalação…</string>
     <string name="kiroos_ota_error">Erro na atualização</string>
-    <string name="kiroos_ota_err_server">Não é possível acessar o servidor de atualizações (%1$s)</string>
+    <string name="kiroos_ota_err_server">O servidor de atualizações não respondeu. Tente novamente em alguns minutos.</string>
+    <string name="kiroos_ota_err_offline">Sem conexão com a Internet. Ative o Wi-Fi ou os dados móveis: o KiroOS verifica de novo assim que você se conectar.</string>
     <string name="kiroos_ota_err_download">Falha no download. Verifique a conexão e tente novamente.</string>
     <string name="kiroos_ota_err_md5">O pacote baixado está corrompido e foi excluído.</string>
     <string name="kiroos_ota_err_signature">A assinatura do pacote não é válida para este sistema.</string>

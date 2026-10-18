@@ -1108,7 +1108,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.android.settings.SHORTCUT" />
             </intent-filter>
-            <intent-filter android:priority="3">
+            <intent-filter android:priority="2">
                 <action android:name="com.android.settings.action.SETTINGS" />
             </intent-filter>
             <meta-data android:name="com.android.settings.category"
@@ -2347,6 +2347,27 @@
                 android:value="com.android.settings.fuelgauge.PowerUsageSummary" />
         </activity>
 
+        <!-- KiroOS Beta 4.1: Game Space, right below Battery (priority 3; Memory and Users moved
+             down one) -->
+        <activity android:name="Settings$KiroOSGameSpaceActivity"
+                android:label="@string/kiroos_game_space_title"
+                android:icon="@drawable/ic_settings_game_space"
+                android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:priority="3">
+                <action android:name="com.android.settings.action.SETTINGS" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                android:value="com.android.settings.category.device" />
+            <meta-data android:name="com.android.settings.summary"
+                android:resource="@string/kiroos_game_space_summary" />
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.kiroos.KiroOSGameSpaceSettings" />
+        </activity>
+
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name=".fuelgauge.PowerUsageSummary"
                 android:label="@string/power_usage_summary_title"
@@ -2578,7 +2599,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter android:priority="2">
+            <intent-filter android:priority="1">
                 <action android:name="com.android.settings.action.SETTINGS" />
             </intent-filter>
             <meta-data android:name="com.android.settings.category"

@@ -53,7 +53,8 @@
     <string name="kiroos_ota_install">Neu starten und installieren</string>
     <string name="kiroos_ota_installing">Installation wird vorbereitet…</string>
     <string name="kiroos_ota_error">Updatefehler</string>
-    <string name="kiroos_ota_err_server">Der Updateserver ist nicht erreichbar (%1$s)</string>
+    <string name="kiroos_ota_err_server">Der Updateserver hat nicht geantwortet. Versuche es in ein paar Minuten erneut.</string>
+    <string name="kiroos_ota_err_offline">Keine Internetverbindung. Schalte WLAN oder mobile Daten ein: KiroOS sucht erneut, sobald du verbunden bist.</string>
     <string name="kiroos_ota_err_download">Download fehlgeschlagen. Prüfe die Verbindung und versuche es erneut.</string>
     <string name="kiroos_ota_err_md5">Das heruntergeladene Paket ist beschädigt und wurde gelöscht.</string>
     <string name="kiroos_ota_err_signature">Die Signatur des Pakets ist für dieses System nicht gültig.</string>

@@ -101,6 +101,16 @@ public class KiroOSUpdateManager {
     public static final int ERR_SIGNATURE = 4;
     public static final int ERR_SPACE = 5;
     public static final int ERR_INSTALL = 6;
+    /** No Wi-Fi or mobile data: nothing to blame on the server. */
+    public static final int ERR_OFFLINE = 7;
+
+    /** True when the phone has a connected network (Wi-Fi, mobile data, Ethernet...). */
+    public static boolean isOnline(Context context) {
+        android.net.ConnectivityManager cm = (android.net.ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        android.net.NetworkInfo ni = cm != null ? cm.getActiveNetworkInfo() : null;
+        return ni != null && ni.isConnected();
+    }
 
     public static class UpdateInfo {
         public String version;
@@ -535,6 +545,7 @@ public class KiroOSUpdateManager {
             JSONObject json = null;
             Exception lastError = null;
             List<String> candidates = serverCandidates(mContext);
+            if (!isOnline(mContext)) throw new IOException("offline");
             for (int i = 0; i < candidates.size() && json == null; i++) {
                 try {
                     url = new URL(candidates.get(i));
@@ -587,7 +598,7 @@ public class KiroOSUpdateManager {
                 mInfo = cached;
                 setState(State.AVAILABLE, ERR_NONE);
             } else {
-                setState(State.ERROR, ERR_SERVER);
+                setState(State.ERROR, isOnline(mContext) ? ERR_SERVER : ERR_OFFLINE);
             }
         }
     }

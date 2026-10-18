@@ -58,7 +58,8 @@
     <string name="kiroos_ota_install">Redémarrer et installer</string>
     <string name="kiroos_ota_installing">Préparation de l\'installation…</string>
     <string name="kiroos_ota_error">Erreur de mise à jour</string>
-    <string name="kiroos_ota_err_server">Impossible de joindre le serveur de mises à jour (%1$s)</string>
+    <string name="kiroos_ota_err_server">Le serveur de mises à jour n\'a pas répondu. Réessayez dans quelques minutes.</string>
+    <string name="kiroos_ota_err_offline">Aucune connexion Internet. Activez le Wi-Fi ou les données mobiles : KiroOS vérifiera dès que vous serez connecté.</string>
     <string name="kiroos_ota_err_download">Échec du téléchargement. Vérifiez la connexion et réessayez.</string>
     <string name="kiroos_ota_err_md5">Le paquet téléchargé est corrompu et a été supprimé.</string>
     <string name="kiroos_ota_err_signature">La signature du paquet n\'est pas valide pour ce système.</string>

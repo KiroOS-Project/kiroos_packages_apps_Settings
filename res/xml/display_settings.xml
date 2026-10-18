@@ -137,12 +137,7 @@
                 android:summary="@string/kiroos_edge_summary"
                 android:fragment="com.android.settings.kiroos.KiroOSEdgeSettings" />
 
-        <!-- KiroOS: Game Space -->
-        <Preference
-                android:key="kiroos_game_space"
-                android:title="@string/kiroos_game_space_title"
-                android:summary="@string/kiroos_game_space_summary"
-                android:fragment="com.android.settings.kiroos.KiroOSGameSpaceSettings" />
+        <!-- KiroOS: Game Space moved to its own entry below Battery in Beta 4.1 -->
         <cyanogenmod.preference.RemotePreference
                 android:key="doze_device_settings"
                 android:title="@string/doze_title"
