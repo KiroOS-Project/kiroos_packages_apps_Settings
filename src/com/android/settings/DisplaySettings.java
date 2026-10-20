@@ -123,7 +123,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private ListPreference mDisplayResolutionPref;
     private SwitchPreference mTouchkeyLedPref;
-    private SwitchPreference mNavbarPref;
+    private Preference mNavbarPref;
 
 
     @Override
@@ -274,33 +274,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             });
         }
 
-        mNavbarPref = (SwitchPreference) findPreference(KEY_ONSCREEN_NAVBAR);
-        if (mNavbarPref != null) {
-            boolean navOn = "0".equals(SystemProperties.get("persist.sys.qemu.mainkeys", SystemProperties.get("qemu.hw.mainkeys", "1")));
-            mNavbarPref.setChecked(navOn);
-            mNavbarPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    boolean enabled = (Boolean) newValue;
-                    SystemProperties.set("persist.sys.qemu.mainkeys", enabled ? "0" : "1");
-                    try {
-                        FileWriter fw = new FileWriter("/sys/class/sec/sec_touchkey/input/enabled");
-                        fw.write(enabled ? "0\n" : "1\n");
-                        fw.close();
-                    } catch (Exception ignored) {}
-                    try {
-                        boolean ledOn = cyanogenmod.providers.CMSettings.Secure.getInt(
-                                getContentResolver(),
-                                cyanogenmod.providers.CMSettings.Secure.BUTTON_BRIGHTNESS, 255) > 0;
-                        FileWriter fw = new FileWriter("/sys/class/sec/sec_touchkey/brightness");
-                        fw.write(!enabled && ledOn ? "1\n" : "0\n");
-                        fw.close();
-                    } catch (Exception ignored) {}
-                    Toast.makeText(getActivity(), R.string.navbar_reboot_notice, Toast.LENGTH_LONG).show();
-                    return true;
-                }
-            });
-        }
+        // Beta 5: its own page (KiroOSNavBarSettings), live; the summary says which is on
+        mNavbarPref = findPreference(KEY_ONSCREEN_NAVBAR);
 
         mScreenTimeoutPreference = (TimeoutListPreference) findPreference(KEY_SCREEN_TIMEOUT);
         mFontSizePref = findPreference(KEY_FONT_SIZE);
@@ -514,6 +489,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
         updateState();
+        if (mNavbarPref != null) {
+            mNavbarPref.setSummary(com.android.settings.kiroos.KiroOSNavBarSettings.isBarOn(
+                    getActivity()) ? R.string.kiroos_navbar_bar : R.string.kiroos_navbar_keys);
+        }
 
         final long currentTimeout = Settings.System.getLong(getActivity().getContentResolver(),
                 SCREEN_OFF_TIMEOUT, FALLBACK_SCREEN_TIMEOUT_VALUE);

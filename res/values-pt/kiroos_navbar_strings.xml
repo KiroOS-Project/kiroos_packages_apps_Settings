@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Beta 5: Display > Navigation bar -->
+<resources>
+    <string name="kiroos_navbar_title">Barra de navegação</string>
+    <string name="kiroos_navbar_keys">Teclas do telefone</string>
+    <string name="kiroos_navbar_bar">Barra na tela</string>
+    <string name="kiroos_navbar_keys_summary">Você usa a tecla Início e as teclas Voltar e Recentes abaixo da tela: os apps têm a tela inteira.</string>
+    <string name="kiroos_navbar_bar_summary">Voltar, Início e Recentes aparecem na parte de baixo da tela; as teclas abaixo são desligadas. Útil se não respondem mais bem.</string>
+    <string name="kiroos_navbar_live">Muda na hora, sem reiniciar.</string>
+</resources>

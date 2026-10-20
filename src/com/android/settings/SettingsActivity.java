@@ -294,6 +294,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             HomeSettings.class.getName(),
             DisplaySettings.class.getName(),
             com.android.settings.kiroos.KiroOSEdgeSettings.class.getName(),
+            com.android.settings.kiroos.KiroOSNavBarSettings.class.getName(),
             com.android.settings.kiroos.KiroOSGameSpaceSettings.class.getName(),
             DeviceInfoSettings.class.getName(),
             ManageApplications.class.getName(),

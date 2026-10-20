@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Beta 5: Display > Navigation bar -->
+<resources>
+    <string name="kiroos_navbar_title">Gezinme çubuğu</string>
+    <string name="kiroos_navbar_keys">Telefon tuşları</string>
+    <string name="kiroos_navbar_bar">Ekran çubuğu</string>
+    <string name="kiroos_navbar_keys_summary">Ana ekran tuşunu ve ekranın altındaki Geri ve Son uygulamalar tuşlarını kullanırsınız: uygulamalar tüm ekranı kullanır.</string>
+    <string name="kiroos_navbar_bar_summary">Geri, Ana ekran ve Son uygulamalar ekranın altında görünür; alttaki tuşlar kapanır. Tuşlar artık iyi tepki vermiyorsa kullanışlıdır.</string>
+    <string name="kiroos_navbar_live">Yeniden başlatmadan hemen değişir.</string>
+</resources>

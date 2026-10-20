@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Beta 5: Display > Navigation bar -->
+<resources>
+    <string name="kiroos_navbar_title">Barra de navegación</string>
+    <string name="kiroos_navbar_keys">Botones del teléfono</string>
+    <string name="kiroos_navbar_bar">Barra en pantalla</string>
+    <string name="kiroos_navbar_keys_summary">Usas el botón de inicio y los botones Atrás y Recientes bajo la pantalla: las apps tienen toda la pantalla.</string>
+    <string name="kiroos_navbar_bar_summary">Atrás, Inicio y Recientes aparecen abajo en la pantalla; los botones de debajo se apagan. Útil si ya no responden bien.</string>
+    <string name="kiroos_navbar_live">Cambia al momento, sin reiniciar.</string>
+</resources>

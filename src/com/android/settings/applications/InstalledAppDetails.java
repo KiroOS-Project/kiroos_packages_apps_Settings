@@ -213,6 +213,11 @@ public class InstalledAppDetails extends AppInfoBase
         boolean enabled = true;
         if (isBundled) {
             enabled = handleDisableable(mUninstallButton);
+            // KiroOS: the apps that come with the system (and Play Store) can't be disabled;
+            // one disabled before can still be turned back on
+            if (mAppEntry.info.enabled && !isDisabledUntilUsed()) {
+                enabled = false;
+            }
         } else {
             if ((mPackageInfo.applicationInfo.flags & ApplicationInfo.FLAG_INSTALLED) == 0
                     && mUserManager.getUsers().size() >= 2) {
@@ -474,7 +479,9 @@ public class InstalledAppDetails extends AppInfoBase
         menu.findItem(UNINSTALL_ALL_USERS_MENU).setVisible(showIt);
         mUpdatedSysApp = (mAppEntry.info.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
         MenuItem uninstallUpdatesItem = menu.findItem(UNINSTALL_UPDATES);
-        uninstallUpdatesItem.setVisible(mUpdatedSysApp && !mAppsControlDisallowedBySystem);
+        // KiroOS: the apps that come with the system (Play Store too) are not taken back to
+        // their first version either
+        uninstallUpdatesItem.setVisible(false);
         if (uninstallUpdatesItem.isVisible()) {
             RestrictedLockUtils.setMenuItemAsDisabledByAdmin(getActivity(),
                     uninstallUpdatesItem, mAppsControlDisallowedAdmin);

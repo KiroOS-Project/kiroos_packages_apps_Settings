@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Beta 5: Display > Navigation bar -->
+<resources>
+    <string name="kiroos_navbar_title">Navigationsleiste</string>
+    <string name="kiroos_navbar_keys">Telefontasten</string>
+    <string name="kiroos_navbar_bar">Leiste auf dem Bildschirm</string>
+    <string name="kiroos_navbar_keys_summary">Du nutzt die Home-Taste und die Tasten Zurück und Zuletzt verwendet unter dem Bildschirm: Apps haben den ganzen Bildschirm.</string>
+    <string name="kiroos_navbar_bar_summary">Zurück, Home und Zuletzt verwendet erscheinen unten auf dem Bildschirm; die Tasten darunter werden ausgeschaltet. Nützlich, wenn sie nicht mehr gut reagieren.</string>
+    <string name="kiroos_navbar_live">Die Änderung gilt sofort, ohne Neustart.</string>
+</resources>

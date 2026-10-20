@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Beta 5: Display > Navigation bar -->
+<resources>
+    <string name="kiroos_navbar_title">Navigation bar</string>
+    <string name="kiroos_navbar_keys">Phone keys</string>
+    <string name="kiroos_navbar_bar">On-screen bar</string>
+    <string name="kiroos_navbar_keys_summary">You use the Home key and the Back and Recents keys under the screen: apps get the whole screen.</string>
+    <string name="kiroos_navbar_bar_summary">Back, Home and Recents appear at the bottom of the screen; the keys under it are turned off. Useful if they no longer respond well.</string>
+    <string name="kiroos_navbar_live">It changes at once, with no restart.</string>
+</resources>

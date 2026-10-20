@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Beta 5: Display > Navigation bar -->
+<resources>
+    <string name="kiroos_navbar_title">Панель навигации</string>
+    <string name="kiroos_navbar_keys">Кнопки телефона</string>
+    <string name="kiroos_navbar_bar">Панель на экране</string>
+    <string name="kiroos_navbar_keys_summary">Используются кнопка «Домой» и кнопки «Назад» и «Недавние» под экраном: приложениям доступен весь экран.</string>
+    <string name="kiroos_navbar_bar_summary">Кнопки «Назад», «Домой» и «Недавние» появляются внизу экрана; кнопки под ним отключаются. Полезно, если они плохо реагируют.</string>
+    <string name="kiroos_navbar_live">Меняется сразу, без перезагрузки.</string>
+</resources>

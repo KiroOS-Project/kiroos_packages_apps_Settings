@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Beta 5: Display > Navigation bar -->
+<resources>
+    <string name="kiroos_navbar_title">Barra di navigazione</string>
+    <string name="kiroos_navbar_keys">Tasti del telefono</string>
+    <string name="kiroos_navbar_bar">Barra sullo schermo</string>
+    <string name="kiroos_navbar_keys_summary">Usi il tasto Home e i tasti Indietro e App recenti sotto lo schermo: le app hanno tutto lo schermo.</string>
+    <string name="kiroos_navbar_bar_summary">Indietro, Home e App recenti compaiono in basso sullo schermo; i tasti sotto si spengono. Utile se non rispondono più bene.</string>
+    <string name="kiroos_navbar_live">Cambia subito, senza riavviare.</string>
+</resources>

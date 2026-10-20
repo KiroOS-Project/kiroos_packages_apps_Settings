@@ -197,11 +197,10 @@
                 android:summary="@string/touchkey_led_summary"
                 android:defaultValue="true" />
 
-        <SwitchPreference
+        <Preference
                 android:key="onscreen_navbar_toggle"
-                android:title="@string/onscreen_navbar_title"
-                android:summary="@string/onscreen_navbar_summary"
-                android:defaultValue="false" />
+                android:title="@string/kiroos_navbar_title"
+                android:fragment="com.android.settings.kiroos.KiroOSNavBarSettings" />
 
         <com.android.settings.display.ScreenZoomPreference
                 android:key="screen_zoom"

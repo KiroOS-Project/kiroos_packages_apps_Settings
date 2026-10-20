@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- KiroOS Beta 5: Display > Navigation bar -->
+<resources>
+    <string name="kiroos_navbar_title">Barre de navigation</string>
+    <string name="kiroos_navbar_keys">Touches du téléphone</string>
+    <string name="kiroos_navbar_bar">Barre à l\'écran</string>
+    <string name="kiroos_navbar_keys_summary">Vous utilisez la touche Accueil et les touches Retour et Récents sous l\'écran : les apps ont tout l\'écran.</string>
+    <string name="kiroos_navbar_bar_summary">Retour, Accueil et Récents apparaissent en bas de l\'écran ; les touches du dessous sont désactivées. Utile si elles ne répondent plus bien.</string>
+    <string name="kiroos_navbar_live">Le changement est immédiat, sans redémarrage.</string>
+</resources>
